@@ -56,4 +56,8 @@ export const GlobalStyles = css`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text};
   }
+
+  a:hover {
+    cursor: pointer;
+  }
 `

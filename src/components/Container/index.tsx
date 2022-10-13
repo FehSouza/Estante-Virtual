@@ -1,13 +1,16 @@
 import { Outlet } from 'react-router-dom'
 import { Footer } from '../Footer'
-import { Menu } from '../Menu'
+import { Header } from '../Header'
+import * as S from './styles'
 
 export const Container = () => {
   return (
-    <>
-      <Menu />
-      <Outlet />
-      <Footer />
-    </>
+    <S.Container>
+      <Header />
+      <S.Content>
+        <Outlet />
+        <Footer />
+      </S.Content>
+    </S.Container>
   )
 }
