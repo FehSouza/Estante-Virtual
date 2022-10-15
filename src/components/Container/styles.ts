@@ -9,8 +9,8 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 95px;
-  height: calc(100vh - 95px);
+  margin-top: 90px;
+  height: calc(100vh - 90px);
   overflow-y: auto;
   z-index: 1;
 

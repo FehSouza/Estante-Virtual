@@ -1,5 +1,7 @@
-import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { lighten } from 'polished'
 import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Header = styled.header`
   box-shadow: 0px 2px 10px ${({ theme }) => theme.colors.shadow};
@@ -22,9 +24,8 @@ export const Container = styled.div`
 
 export const Logo = styled(NavLink)`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 7rem;
+  width: 10rem;
 
   & svg {
     font-size: 2.5rem;
@@ -35,16 +36,23 @@ export const Logo = styled(NavLink)`
 export const Name = styled.h1`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
-  margin-top: 0.25rem;
+  margin-top: 4px;
+  margin-left: 8px;
 `
 
 export const NavBar = styled.nav`
   display: flex;
 `
 
+export const NavLinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`
+
 export const DepartmentName = styled(NavLink)`
   list-style: none;
-  color: ${({ theme}) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.textLight};
   transition-duration: 100ms;
   padding: 1rem;
   margin: auto;
@@ -54,12 +62,26 @@ export const DepartmentName = styled(NavLink)`
 
   &.active {
     color: ${({ theme }) => theme.colors.primary};
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.primary};
+    }
   }
 
   &:hover {
     cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
   }
+`
+
+export const ActiveDepartmentBar = styled(motion.div)`
+  height: 3px;
+  width: calc(100% - 16px);
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 4px;
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
 `
 
 export const Search = styled.button`
@@ -88,6 +110,10 @@ export const MiniCart = styled.div`
   height: 42px;
   border-radius: 100%;
   background-image: ${({ theme }) => `linear-gradient(100deg, ${theme.colors.primary}, ${theme.colors.secondary})`};
+
+  &:hover {
+    background-image: ${({ theme }) => `linear-gradient(100deg, ${theme.colors.secondary}, ${theme.colors.primary})`};
+  }
 `
 
 export const MiniCartInt = styled.div`
@@ -102,10 +128,15 @@ export const MiniCartInt = styled.div`
   & svg {
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.primary};
+    transition-duration: 350ms;
   }
 
   &:hover {
     cursor: pointer;
+
+    & svg {
+      color: ${({ theme }) => lighten(0.15, theme.colors.primary)};
+    }
   }
 `
 
