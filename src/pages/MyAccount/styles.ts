@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Home = styled.div`
+export const MyAccount = styled.h1`
   min-height: 1200px;
   width: 100%;
   max-width: 1200px;

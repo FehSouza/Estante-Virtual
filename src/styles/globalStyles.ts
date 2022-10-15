@@ -11,6 +11,7 @@ export const GlobalStyles = css`
     width: 100vw;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.white};
+    overflow-x: hidden;
   }
 
   h1,

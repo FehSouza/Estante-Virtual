@@ -1,6 +1,6 @@
 import { BsHandbag, BsPerson, BsSearch } from 'react-icons/bs'
-import { GiBookshelf } from 'react-icons/gi'
 import { useMatch } from 'react-router-dom'
+import { Logo } from '../Logo'
 import * as S from './styles'
 
 const NavBarLink = ({ to, children }: { to: string; children: string }) => {
@@ -18,10 +18,7 @@ export const Header = () => {
   return (
     <S.Header>
       <S.Container>
-        <S.Logo to="/">
-          <GiBookshelf />
-          <S.Name>Estante Virtual</S.Name>
-        </S.Logo>
+        <Logo />
 
         <S.NavBar>
           <NavBarLink to="/livros/ficcao-cientifica">Ficção Científica</NavBarLink>

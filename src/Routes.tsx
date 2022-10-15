@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { Container } from './components'
-import { Department, Home } from './pages'
+import { Department, Home, Institutional, MyAccount } from './pages'
 
 export const AppRoutes = () => {
   return (
@@ -9,6 +9,12 @@ export const AppRoutes = () => {
         <Route index element={<Home />} />
         <Route path="/livros" element={<Department />}>
           <Route path=":departmentName" element={<Department />} />
+        </Route>
+        <Route path="/institucional" element={<Institutional />}>
+          <Route path=":institutionalName" element={<Institutional />} />
+        </Route>
+        <Route path="/minha-conta" element={<MyAccount />}>
+          <Route path=":myAccountName" element={<MyAccount />} />
         </Route>
       </Route>
     </Routes>

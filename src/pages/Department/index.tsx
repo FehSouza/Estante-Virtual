@@ -16,7 +16,7 @@ export const Department = () => {
 
   return (
     <S.Department>
-      Department: {params.departmentName ? dictionary[params.departmentName] ?? params.departmentName : 'livros'}
+      Departamento: {params.departmentName ? dictionary[params.departmentName] ?? params.departmentName : 'Livros'}
     </S.Department>
   )
 }
