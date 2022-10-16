@@ -14,7 +14,8 @@ export const Header = styled.header`
 
 export const Container = styled.div`
   max-width: 1200px;
-  padding: 1rem;
+  width: calc(100% - 32px);
+  padding: 16px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -29,16 +30,20 @@ export const NavLinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  @media (max-width: 1024px) {
+    max-width: 86px;
+  }
 `
 
 export const DepartmentName = styled(NavLink)`
   list-style: none;
   color: ${({ theme }) => theme.colors.textLight};
   transition-duration: 100ms;
-  padding: 1rem;
+  padding: 16px;
   margin: auto;
   text-align: center;
-  line-height: 1.25rem;
+  line-height: 20px;
   transition-duration: 350ms;
 
   &.active {
@@ -53,6 +58,10 @@ export const DepartmentName = styled(NavLink)`
     cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
   }
+
+  @media (max-width: 1024px) {
+    padding: 8px;
+  }
 `
 
 export const ActiveDepartmentBar = styled(motion.div)`
@@ -63,24 +72,39 @@ export const ActiveDepartmentBar = styled(motion.div)`
   position: absolute;
   bottom: 4px;
   left: 8px;
+
+  @media (max-width: 1024px) {
+    width: calc(100% - 8px);
+    left: 4px;
+  }
 `
 
 export const Search = styled.button`
   color: ${({ theme }) => theme.colors.textLight};
-  padding: 1rem;
+  padding: 16px;
   transition-duration: 350ms;
-  font-size: 1.25rem;
+  font-size: 20px;
 
   &:hover {
     cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+    padding: 8px;
+    padding-right: 16px;
   }
 `
 
 export const UserMenu = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 20px;
+
+  @media (max-width: 1024px) {
+    gap: 14px;
+  }
 `
 
 export const MiniCart = styled.div`
@@ -107,7 +131,7 @@ export const MiniCartInt = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 
   & svg {
-    font-size: 1.5rem;
+    font-size: 20px;
     color: ${({ theme }) => theme.colors.primary};
     transition-duration: 350ms;
   }
@@ -122,7 +146,7 @@ export const MiniCartInt = styled.div`
 `
 
 export const Login = styled.div`
-  font-size: 1.5rem;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   color: ${({ theme }) => theme.colors.textLight};

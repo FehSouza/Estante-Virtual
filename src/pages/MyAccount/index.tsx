@@ -1,17 +1,8 @@
-import { useParams } from 'react-router-dom'
+import { useScrollToTop } from '../../Hooks'
 import * as S from './styles'
 
-const dictionary = {
-  dados: 'Meus dados',
-  pedidos: 'Meus pedidos',
-}
+export const MyAccount = ({ namePage }: { namePage: string }) => {
+  useScrollToTop(false, '#content')
 
-export const MyAccount = () => {
-  const params = useParams<{ myAccountName: keyof typeof dictionary }>()
-
-  return (
-    <S.MyAccount>
-      Minha conta: {params.myAccountName ? dictionary[params.myAccountName] ?? params.myAccountName : 'Geral'}
-    </S.MyAccount>
-  )
+  return <S.MyAccount>{namePage}</S.MyAccount>
 }

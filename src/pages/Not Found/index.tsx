@@ -1,8 +1,8 @@
 import { useScrollToTop } from '../../Hooks'
 import * as S from './styles'
 
-export const Home = () => {
+export const NotFound = () => {
   useScrollToTop(false, '#content')
 
-  return <S.Home>Home</S.Home>
+  return <S.NotFound>Página não encontrada</S.NotFound>
 }

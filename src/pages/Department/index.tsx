@@ -1,22 +1,8 @@
-import { useParams } from 'react-router-dom'
+import { useScrollToTop } from '../../Hooks'
 import * as S from './styles'
 
-const dictionary = {
-  'ficcao-cientifica': 'Ficção Científica',
-  fantasia: 'Fantasia',
-  poesia: 'Poesia',
-  policial: 'Policial',
-  romance: 'Romance',
-  suspense: 'Suspense',
-  terror: 'Terror',
-}
+export const Department = ({ category }: { category: string }) => {
+  useScrollToTop(false, '#content')
 
-export const Department = () => {
-  const params = useParams<{ departmentName: keyof typeof dictionary }>()
-
-  return (
-    <S.Department>
-      Departamento: {params.departmentName ? dictionary[params.departmentName] ?? params.departmentName : 'Livros'}
-    </S.Department>
-  )
+  return <S.Department>Departamento: {category}</S.Department>
 }

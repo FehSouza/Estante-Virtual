@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Institutional = styled.h1`
+export const NotFound = styled.h1`
   min-height: 1200px;
   max-width: 1200px;
   width: calc(100% - 32px);

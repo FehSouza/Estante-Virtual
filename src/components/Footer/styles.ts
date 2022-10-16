@@ -12,7 +12,8 @@ export const BenefitsBar = styled.div`
 
 export const BenefitsBarWrapper = styled.div`
   max-width: 1200px;
-  padding: 1rem;
+  width: calc(100% - 32px);
+  padding: 16px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -25,55 +26,30 @@ export const BenefitWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
 
   & svg {
     color: ${({ theme }) => theme.colors.white};
-    font-size: 2.5rem;
+    font-size: 40px;
   }
 `
 export const TextBenefit = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `
 
-export const ButtonPrevCarousel = styled.button`
-  width: 32px;
-  height: 32px;
-
-  & svg {
-    font-size: 2rem;
-
-    & polyline {
-      stroke: ${({ theme }) => theme.colors.white};
-    }
-  }
-`
-
-export const ButtonNextCarousel = styled.button`
-  width: 32px;
-  height: 32px;
-
-  & svg {
-    font-size: 2rem;
-
-    & polyline {
-      stroke: ${({ theme }) => theme.colors.white};
-    }
-  }
-`
-
 export const InstitutionalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px;
+  padding: 48px 0;
 `
 
 export const SocialNetworks = styled.div`
   display: flex;
   gap: 24px;
   margin-top: 48px;
-
+`
+export const Link = styled.a`
   & svg {
     font-size: 32px;
     color: ${({ theme }) => theme.colors.textLight};
@@ -88,8 +64,8 @@ export const SocialNetworks = styled.div`
 
 export const InstitutionalContent = styled.div`
   max-width: 1200px;
-  width: 100%;
-  padding: 0 1rem;
+  width: calc(100% - 32px);
+  padding: 0 16px;
   margin: 0 auto;
   margin-top: 48px;
   display: flex;

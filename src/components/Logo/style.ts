@@ -4,10 +4,10 @@ import styled from 'styled-components'
 export const Logo = styled(NavLink)`
   display: flex;
   align-items: center;
-  width: 10rem;
+  width: 160px;
 
   & svg {
-    font-size: 2.5rem;
+    font-size: 40px;
     color: ${({ theme }) => theme.colors.text};
   }
 `

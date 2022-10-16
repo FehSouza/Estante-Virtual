@@ -1,13 +1,12 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { AiOutlineSafety } from 'react-icons/ai'
 import { BsClockHistory, BsFacebook, BsFillJournalBookmarkFill, BsInstagram, BsYoutube } from 'react-icons/bs'
 import { GiRibbonMedal } from 'react-icons/gi'
-import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
+import { useWindowSize } from '../../Hooks/index'
+import { CarouselBenefitsBar } from '../CarouselBenefitsBar'
 import { Logo } from '../Logo'
 import * as S from './styles'
 
-const benefitsInfo = [
+const BENEFITS_INFO = [
   {
     id: 1,
     icon: <AiOutlineSafety />,
@@ -31,45 +30,14 @@ const benefitsInfo = [
 ]
 
 export const Footer = () => {
-  const getWindowSize = () => {
-    const { innerWidth, innerHeight } = window
-    return { innerWidth, innerHeight }
-  }
-
-  const [windowSize, setWindowSize] = useState(getWindowSize())
-
-  useEffect(() => {
-    window.addEventListener('resize', () => setWindowSize(getWindowSize()))
-
-    return () => window.removeEventListener('resize', () => setWindowSize(getWindowSize()))
-  }, [])
-
-  const [carouselPosition, setCarouselPosition] = useState(0)
-  const [initialCarousel, setInitialCarousel] = useState({ x: 150, opacity: 0 })
-  const [exitCarousel, setExitCarousel] = useState({ x: -150, opacity: 0 })
-
-  const handleNextCarousel = () => {
-    carouselPosition === benefitsInfo.length - 1 ? setCarouselPosition(0) : setCarouselPosition(carouselPosition + 1)
-    setInitialCarousel({ x: 150, opacity: 0 })
-    setExitCarousel({ x: -150, opacity: 0 })
-  }
-
-  const handlePrevCarousel = () => {
-    carouselPosition === 0 ? setCarouselPosition(benefitsInfo.length - 1) : setCarouselPosition(carouselPosition - 1)
-    setInitialCarousel({ x: -150, opacity: 0 })
-    setExitCarousel({ x: 150, opacity: 0 })
-  }
-
-  const paramDragCarousel = 0
-
-  const swipeCarousel = (offset: number, velocity: number) => Math.abs(offset) * velocity
+  const windowSize = useWindowSize()
 
   return (
     <S.Footer>
       <S.BenefitsBar>
         <S.BenefitsBarWrapper>
           {windowSize.innerWidth > 768 &&
-            benefitsInfo.map((benefit) => {
+            BENEFITS_INFO.map((benefit) => {
               return (
                 <S.BenefitWrapper key={benefit.id}>
                   {benefit.icon}
@@ -78,42 +46,7 @@ export const Footer = () => {
               )
             })}
 
-          {windowSize.innerWidth <= 768 && (
-            <>
-              <S.ButtonPrevCarousel onClick={handlePrevCarousel}>
-                <GrFormPrevious />
-              </S.ButtonPrevCarousel>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={benefitsInfo[carouselPosition].id}
-                  initial={initialCarousel}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={exitCarousel}
-                  transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.15 },
-                  }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={1}
-                  onDragEnd={(e, { offset, velocity }) => {
-                    const swipe = swipeCarousel(offset.x, velocity.x)
-                    swipe < -paramDragCarousel ? handleNextCarousel() : handlePrevCarousel()
-                  }}
-                >
-                  <S.BenefitWrapper>
-                    {benefitsInfo[carouselPosition].icon}
-                    <S.TextBenefit>{benefitsInfo[carouselPosition].text}</S.TextBenefit>
-                  </S.BenefitWrapper>
-                </motion.div>
-              </AnimatePresence>
-
-              <S.ButtonNextCarousel onClick={handleNextCarousel}>
-                <GrFormNext />
-              </S.ButtonNextCarousel>
-            </>
-          )}
+          {windowSize.innerWidth <= 768 && <CarouselBenefitsBar listOfCarousel={BENEFITS_INFO} />}
         </S.BenefitsBarWrapper>
       </S.BenefitsBar>
 
@@ -121,9 +54,15 @@ export const Footer = () => {
         <Logo />
 
         <S.SocialNetworks>
-          <BsFacebook />
-          <BsInstagram />
-          <BsYoutube />
+          <S.Link href="https://pt-br.facebook.com/" target="_blank">
+            <BsFacebook />
+          </S.Link>
+          <S.Link href="https://www.instagram.com/" target="_blank">
+            <BsInstagram />
+          </S.Link>
+          <S.Link href="https://www.youtube.com/" target="_blank">
+            <BsYoutube />
+          </S.Link>
         </S.SocialNetworks>
 
         <S.InstitutionalContent>
@@ -135,8 +74,8 @@ export const Footer = () => {
 
           <S.MyAccount>
             <S.TitleInstitutional to="/minha-conta">MINHA CONTA</S.TitleInstitutional>
-            <S.TextInstitutional to="/minha-conta/dados">Meus dados</S.TextInstitutional>
-            <S.TextInstitutional to="/minha-conta/pedidos">Meus pedidos</S.TextInstitutional>
+            <S.TextInstitutional to="/minha-conta/meus-dados">Meus dados</S.TextInstitutional>
+            <S.TextInstitutional to="/minha-conta/meus-pedidos">Meus pedidos</S.TextInstitutional>
           </S.MyAccount>
 
           <S.Help>

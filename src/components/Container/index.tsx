@@ -7,7 +7,7 @@ export const Container = () => {
   return (
     <S.Container>
       <Header />
-      <S.Content>
+      <S.Content id="content">
         <Outlet />
         <Footer />
       </S.Content>
