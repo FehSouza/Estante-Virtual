@@ -59,8 +59,12 @@ export const DepartmentName = styled(NavLink)`
     color: ${({ theme }) => theme.colors.text};
   }
 
-  @media (max-width: 1024px) {
-    padding: 8px;
+  @media (max-width: 1024px) and (min-width: 901px) {
+    padding: 8px 12px;
+  }
+
+  @media (max-width: 900px) {
+    padding: 8px 7px;
   }
 `
 

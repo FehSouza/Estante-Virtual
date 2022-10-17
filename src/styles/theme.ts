@@ -6,6 +6,8 @@ const baseTheme = {
     secondary: '#0099ff80',
     white: '#ffffff',
     shadow: '#0000001A',
+    bannerPrimary: '#fbfbfb',
+    bannerSecondary: '#eaf3f7',
   },
 } as const
 
