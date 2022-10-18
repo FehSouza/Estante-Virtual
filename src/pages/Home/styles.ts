@@ -6,7 +6,7 @@ export const MainBanner = styled.div`
   display: flex;
   width: 100%;
   height: auto;
-  margin-bottom: 146px;
+  margin-bottom: 236px;
 `
 
 export const Banner = styled.div`
@@ -24,14 +24,16 @@ export const TextWrapper = styled.div`
   padding-left: 104px;
   min-width: 312px;
   max-width: 312px;
-  height: calc(100% - 66px);
+  height: calc(100% - 76px);
 
-  @media (max-width: 1350px) {
+  @media (max-width: 1350px) and (min-width: 1251px) {
     padding-left: 80px;
   }
 
   @media (max-width: 1250px) {
     padding-left: 16px;
+    min-width: 280px;
+    max-width: 280px;
   }
 `
 
@@ -39,12 +41,20 @@ export const Title = styled.h3`
   font-size: 36px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: 1250px) {
+    font-size: 32px;
+  }
 `
 
 export const Text = styled.span`
   font-size: 24px;
   color: ${({ theme }) => theme.colors.text};
   margin-top: 40px;
+
+  @media (max-width: 1250px) {
+    font-size: 20px;
+  }
 `
 
 export const Button = styled.a`
@@ -62,29 +72,25 @@ export const Button = styled.a`
 `
 
 export const ImageWrapper = styled.div`
-  max-width: 55%;
+  max-width: 50%;
   min-width: 50%;
-  
   height: auto;
   overflow: hidden;
   position: relative;
   z-index: 1;
-  
-  @media (max-width: 1250px) {
-    margin-left: -80px;
-  }
-  
+
   & img {
     max-width: 100%;
     height: auto;
     margin-top: -32px;
-    image-rendering: crisp-edges;
   }
 `
 
 export const CircleInt = styled.div`
+  margin: 0 8px;
+  max-width: calc(100% - 80px);
   width: 448px;
-  height: 448px;
+  aspect-ratio: 1/1;
   background-color: ${({ theme }) => theme.colors.bannerSecondary};
   border-radius: 100%;
   position: absolute;
@@ -95,8 +101,10 @@ export const CircleInt = styled.div`
 `
 
 export const CircleExt = styled.div`
+  margin: 0 8px;
+  max-width: calc(100% - 16px);
   width: 512px;
-  height: 512px;
+  aspect-ratio: 1/1;
   background-color: ${({ theme }) => theme.colors.bannerPrimary};
   border: 1px solid ${({ theme }) => lighten(-0.15, theme.colors.bannerSecondary)};
   border-radius: 100%;
