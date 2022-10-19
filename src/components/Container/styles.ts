@@ -24,7 +24,7 @@ export const Content = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+    border-radius: 0px;
     background-color: ${({ theme }) => lighten(0.1, theme.colors.textLight)};
     border: none;
   }

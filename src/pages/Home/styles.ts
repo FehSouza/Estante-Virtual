@@ -119,6 +119,108 @@ export const Shelf1 = styled.div`
   width: 33%;
   background-color: ${({ theme }) => theme.colors.bannerSecondary};
   z-index: 1;
+  padding-right: 0;
+  box-sizing: border-box;
+  position: relative;
+`
+
+export const ShelfTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 22px;
+  font-weight: 600;
+  padding: 56px 0 0 56px;
+`
+
+export const ShelfWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+  padding-left: 56px;
+  padding-top: 64px;
+  padding: 64px 0 16px 56px;
+  overflow: hidden;
+
+  & > div {
+    min-width: calc((100% - 30px) / 2.5);
+  }
+
+  @media (max-width: 1250px) {
+    padding: 48px 0 16px 56px;
+  }
+`
+
+export const BookWrapper = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid transparent;
+  padding: 10px;
+  border-radius: 20px;
+  transition-duration: 350ms;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0 16px #00000026;
+  }
+`
+
+export const ImagePriceWrapper = styled.div`
+  position: relative;
+  min-width: 100%;
+  max-width: 100%;
+  aspect-ratio: 6/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const BookImage = styled.img`
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  border-radius: 16px;
+`
+
+export const BookPrice = styled.span`
+  position: absolute;
+  bottom: 20px;
+  padding: 12px 16px;
+  background: #00000066;
+  box-shadow: 0 8px 32px #00000066;
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 24px;
+  border: none;
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+`
+
+export const BookName = styled.span`
+  margin-top: 48px;
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 600;
+  font-size: 22px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media (max-width: 1250px) {
+    margin-top: 32px;
+  }
+`
+
+export const BookAuthor = styled.span`
+  margin-top: 16px;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 18px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
 
 export const Shelf2 = styled.div`
@@ -139,4 +241,44 @@ export const Shelf2 = styled.div`
   @media (max-width: 1250px) {
     left: 48px;
   }
+`
+
+export const ButtonCarousel = styled.button`
+  position: absolute;
+  bottom: 42px;
+  right: 160px;
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  border: none;
+  background-image: ${({ theme }) =>
+    `linear-gradient(320deg, ${theme.colors.text}, ${lighten(0.5, theme.colors.textLight)})`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.button-prev {
+    right: 228px;
+  }
+
+  &:hover {
+    background-image: ${({ theme }) =>
+      `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${theme.colors.text})`};
+  }
+
+  & svg {
+    font-size: 32px;
+    color: ${({ theme }) => theme.colors.text};
+  }
+`
+
+export const ButtonCarouselInt = styled.div`
+  width: 46px;
+  height: 46px;
+  border-radius: 100%;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.bannerSecondary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
