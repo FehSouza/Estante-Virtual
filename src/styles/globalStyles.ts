@@ -53,6 +53,10 @@ export const GlobalStyles = css`
     list-style: none;
   }
 
+  li {
+    list-style: none;
+  }
+
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.text};

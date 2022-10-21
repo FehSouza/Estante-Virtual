@@ -3,7 +3,7 @@ const baseTheme = {
     text: '#010001',
     textLight: '#8AA1BB',
     primary: '#0099ff',
-    secondary: '#0099ff80',
+    secondary: '#56bbff',
     white: '#ffffff',
     shadow: '#0000001A',
     bannerPrimary: '#fbfbfb',

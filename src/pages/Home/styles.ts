@@ -119,9 +119,8 @@ export const Shelf1 = styled.div`
   width: 33%;
   background-color: ${({ theme }) => theme.colors.bannerSecondary};
   z-index: 1;
-  padding-right: 0;
-  box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 `
 
 export const ShelfTitle = styled.h3`
@@ -134,26 +133,21 @@ export const ShelfTitle = styled.h3`
 export const ShelfWrapper = styled.div`
   display: flex;
   gap: 16px;
-  padding-left: 56px;
-  padding-top: 64px;
   padding: 64px 0 16px 56px;
-  overflow: hidden;
 
   & > div {
-    min-width: calc((100% - 30px) / 2.5);
-  }
-
-  @media (max-width: 1250px) {
-    padding: 48px 0 16px 56px;
+    min-width: 40%;
+    height: fit-content;
   }
 `
 
-export const BookWrapper = styled.li`
+export const BookWrapperShelf1 = styled.li`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid transparent;
-  padding: 10px;
+  padding: 8px;
+  box-sizing: border-box;
   border-radius: 20px;
   transition-duration: 350ms;
 
@@ -163,26 +157,26 @@ export const BookWrapper = styled.li`
   }
 `
 
-export const ImagePriceWrapper = styled.div`
+export const ImagePriceWrapperShelf1 = styled.div`
   position: relative;
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
+  min-height: 316px;
+  max-height: 316px;
   aspect-ratio: 6/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
-export const BookImage = styled.img`
+export const BookImageShelf1 = styled.img`
   width: 100%;
   height: auto;
   max-height: 100%;
   border-radius: 16px;
 `
 
-export const BookPrice = styled.span`
+export const BookPriceShelf1 = styled.span`
   position: absolute;
   bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 12px 16px;
   background: #00000066;
   box-shadow: 0 8px 32px #00000066;
@@ -194,7 +188,7 @@ export const BookPrice = styled.span`
   font-weight: 500;
 `
 
-export const BookName = styled.span`
+export const BookNameShelf1 = styled.span`
   margin-top: 48px;
   color: ${({ theme }) => theme.colors.text};
   font-weight: 600;
@@ -205,13 +199,9 @@ export const BookName = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  @media (max-width: 1250px) {
-    margin-top: 32px;
-  }
 `
 
-export const BookAuthor = styled.span`
+export const BookAuthorShelf1 = styled.span`
   margin-top: 16px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
@@ -223,27 +213,7 @@ export const BookAuthor = styled.span`
   text-overflow: ellipsis;
 `
 
-export const Shelf2 = styled.div`
-  position: absolute;
-  bottom: -76px;
-  left: 160px;
-  width: 482px;
-  height: 140px;
-  background-color: ${({ theme }) => theme.colors.bannerPrimary};
-  border: 6px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 16px;
-  z-index: 1;
-
-  @media (max-width: 1350px) {
-    left: 144px;
-  }
-
-  @media (max-width: 1250px) {
-    left: 48px;
-  }
-`
-
-export const ButtonCarousel = styled.button`
+export const ButtonCarouselShelf1 = styled.button`
   position: absolute;
   bottom: 42px;
   right: 160px;
@@ -281,4 +251,84 @@ export const ButtonCarouselInt = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+export const Shelf2 = styled.div`
+  width: 482px;
+  height: 152px;
+  position: absolute;
+  bottom: -76px;
+  left: 160px;
+  background-color: ${({ theme }) => theme.colors.bannerPrimary};
+  border: 6px solid ${({ theme }) => theme.colors.white};
+  border-radius: 16px;
+  z-index: 1;
+  display: flex;
+  gap: 24px;
+  padding: 8px;
+  padding-right: 32px;
+  box-sizing: border-box;
+
+  @media (max-width: 1350px) {
+    left: 144px;
+  }
+
+  @media (max-width: 1250px) {
+    left: 48px;
+  }
+`
+
+export const BookWrapperShelf2 = styled.li`
+  width: calc((100% - 72px) / 4);
+  height: 100%;
+  position: relative;
+`
+
+export const BookImageShelf2 = styled.img`
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  border-radius: 8px;
+`
+
+export const BookPriceShelf2 = styled.span`
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 8px;
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 8px 32px #00000066;
+  border-radius: 16px;
+  border: none;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 12px;
+  font-weight: 600;
+`
+export const ButtonCarouselShelf2 = styled.button`
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: -19px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  transition-duration: 350ms;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
+
+  & svg {
+    font-size: 28px;
+    margin-left: 2px;
+
+    & polyline {
+      stroke: ${({ theme }) => theme.colors.white};
+    }
+  }
 `

@@ -6,10 +6,34 @@ import { useScrollToTop } from '../../Hooks'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
+export interface ImageLinks {
+  thumbnail: string
+}
+
+export interface VolumeInfo {
+  imageLinks: ImageLinks
+  title: string
+  authors: string[]
+}
+
+export interface ListPrice {
+  amount: number
+}
+
+export interface SaleInfo {
+  listPrice: ListPrice
+}
+
+export interface BooksProps {
+  id: string
+  volumeInfo: VolumeInfo
+  saleInfo: SaleInfo
+}
+
 export const Home = () => {
   useScrollToTop(false, '#content')
 
-  // const [bestSellers, setBestSellers] = useState([])
+  // const [bestSellers, setBestSellers] = useState<BooksProps[]>([])
 
   // useEffect(() => {
   //   fetch('https://www.googleapis.com/books/v1/volumes?q=best-sellers&orderBy=relevance&printType=books')
@@ -23,7 +47,7 @@ export const Home = () => {
 
   const MOCK_BEST_SELLERS = [
     {
-      id: 1,
+      id: '1',
       volumeInfo: {
         imageLinks: {
           thumbnail:
@@ -39,7 +63,7 @@ export const Home = () => {
       },
     },
     {
-      id: 2,
+      id: '2',
       volumeInfo: {
         title: 'É assim que acaba',
         authors: ['Colleen Hoover'],
@@ -51,7 +75,7 @@ export const Home = () => {
       },
     },
     {
-      id: 3,
+      id: '3',
       volumeInfo: {
         imageLinks: {
           thumbnail:
@@ -63,7 +87,7 @@ export const Home = () => {
       saleInfo: {},
     },
     {
-      id: 4,
+      id: '4',
       volumeInfo: {
         imageLinks: {
           thumbnail:
@@ -79,7 +103,7 @@ export const Home = () => {
       },
     },
     {
-      id: 5,
+      id: '5',
       volumeInfo: {
         imageLinks: {
           thumbnail:
@@ -95,11 +119,11 @@ export const Home = () => {
       },
     },
     {
-      id: 6,
+      id: '6',
       volumeInfo: {
         imageLinks: {
           thumbnail:
-            'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+            'http://books.google.com/books/content?id=MwNlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         },
         title: 'É assim que acaba',
         authors: ['Colleen Hoover'],
@@ -111,7 +135,7 @@ export const Home = () => {
       },
     },
     {
-      id: 7,
+      id: '7',
       volumeInfo: {
         title: 'É assim que acaba',
         authors: ['Colleen Hoover'],
@@ -123,7 +147,7 @@ export const Home = () => {
       },
     },
     {
-      id: 8,
+      id: '8',
       volumeInfo: {
         imageLinks: {
           thumbnail:
@@ -135,11 +159,11 @@ export const Home = () => {
       saleInfo: {},
     },
     {
-      id: 9,
+      id: '9',
       volumeInfo: {
         imageLinks: {
           thumbnail:
-            'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+            'http://books.google.com/books/content?id=99PsjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         },
         title: 'Will',
         authors: ['Will Smith', 'Mark Manson'],
@@ -151,11 +175,11 @@ export const Home = () => {
       },
     },
     {
-      id: 10,
+      id: '10',
       volumeInfo: {
         imageLinks: {
           thumbnail:
-            'http://books.google.com/books/content?id=iTz-ArpyOEEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+            'http://books.google.com/books/content?id=7sWGCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         },
         title: 'Extraordinário',
         authors: ['R.J.Palacio'],
@@ -173,30 +197,47 @@ export const Home = () => {
     return true
   })
 
+  const [countCarousel, setCountCarousel] = useState(0)
+  const [prev, setPrev] = useState(countCarousel)
   const [slide1, setSlide1] = useState(0)
   const [slide2, setSlide2] = useState(1)
   const [slide3, setSlide3] = useState(2)
-  const [initialCarousel, setInitialCarousel] = useState({ x: 56, opacity: 0 })
-  const [exitCarousel, setExitCarousel] = useState({ x: -56, opacity: 0 })
-  const lastItem = bookList.length - 1
+
+  const lastBook = bookList.length - 1
+
+  let direction = 0
+
+  if (prev === lastBook && countCarousel === 0) {
+    direction = 1
+  } else if ((prev === 0 && countCarousel === lastBook) || countCarousel < prev) {
+    direction = -1
+  } else {
+    direction = 1
+  }
 
   const handleNextCarousel = () => {
-    slide3 === lastItem ? setSlide3(0) : setSlide3(slide3 + 1)
-    slide2 === lastItem ? setSlide2(0) : setSlide2(slide2 + 1)
-    slide1 === lastItem ? setSlide1(0) : setSlide1(slide1 + 1)
-    setInitialCarousel({ x: 56, opacity: 0 })
-    setExitCarousel({ x: -56, opacity: 0 })
+    setPrev(countCarousel)
+    countCarousel === lastBook ? setCountCarousel(0) : setCountCarousel(countCarousel + 1)
+    slide3 === lastBook ? setSlide3(0) : setSlide3(slide3 + 1)
+    slide2 === lastBook ? setSlide2(0) : setSlide2(slide2 + 1)
+    slide1 === lastBook ? setSlide1(0) : setSlide1(slide1 + 1)
   }
 
   const handlePrevCarousel = () => {
-    slide1 === 0 ? setSlide1(lastItem) : setSlide1(slide1 - 1)
-    slide2 === 0 ? setSlide2(lastItem) : setSlide2(slide2 - 1)
-    slide3 === 0 ? setSlide3(lastItem) : setSlide3(slide3 - 1)
-    setInitialCarousel({ x: -56, opacity: 0 })
-    setExitCarousel({ x: 56, opacity: 0 })
+    setPrev(countCarousel)
+    countCarousel === 0 ? setCountCarousel(lastBook) : setCountCarousel(countCarousel - 1)
+    slide1 === 0 ? setSlide1(lastBook) : setSlide1(slide1 - 1)
+    slide2 === 0 ? setSlide2(lastBook) : setSlide2(slide2 - 1)
+    slide3 === 0 ? setSlide3(lastBook) : setSlide3(slide3 - 1)
   }
 
   const slidesToShow = [slide1, slide2, slide3]
+
+  const variants = {
+    enter: (direction: number) => ({ x: 220 * direction, opacity: 0, scale: 0.5 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (direction: number) => ({ x: -220 * direction, opacity: 0, scale: 0.5 }),
+  }
 
   return (
     <S.MainBanner>
@@ -217,51 +258,90 @@ export const Home = () => {
       <S.Shelf1>
         <S.ShelfTitle>Os livros mais populares</S.ShelfTitle>
 
-        <S.ButtonCarousel className="button-prev" onClick={handlePrevCarousel}>
+        <S.ButtonCarouselShelf1 className="button-prev" onClick={handlePrevCarousel}>
           <S.ButtonCarouselInt>
             <GrFormPrevious />
           </S.ButtonCarouselInt>
-        </S.ButtonCarousel>
+        </S.ButtonCarouselShelf1>
 
         <S.ShelfWrapper>
-          <AnimatePresence>
-            {slidesToShow.map((slide) => {
-              return (
-                <motion.div
-                  key={bookList[slide].id}
-                  initial={initialCarousel}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={exitCarousel}
-                  transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.3 },
-                  }}
-                >
-                  <S.BookWrapper>
-                    <S.ImagePriceWrapper>
-                      <S.BookImage
-                        alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}
-                        src={bookList[slide].volumeInfo.imageLinks?.thumbnail}
-                      />
-                      <S.BookPrice>{formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)}</S.BookPrice>
-                    </S.ImagePriceWrapper>
-                    <S.BookName>{bookList[slide].volumeInfo.title}</S.BookName>
-                    <S.BookAuthor>{bookList[slide].volumeInfo.authors.join(' e ')}</S.BookAuthor>
-                  </S.BookWrapper>
-                </motion.div>
-              )
-            })}
+          <AnimatePresence custom={direction} mode="popLayout">
+            {bookList.length &&
+              slidesToShow.map((slide) => {
+                return (
+                  <motion.div
+                    key={slide}
+                    layoutId={bookList[slide].volumeInfo.imageLinks?.thumbnail}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      x: { type: 'spring', stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.3 },
+                    }}
+                    variants={variants}
+                    custom={direction}
+                  >
+                    <S.BookWrapperShelf1>
+                      <S.ImagePriceWrapperShelf1>
+                        <S.BookImageShelf1
+                          alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}
+                          src={bookList[slide].volumeInfo.imageLinks?.thumbnail}
+                        />
+                        <S.BookPriceShelf1>
+                          {formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)}
+                        </S.BookPriceShelf1>
+                      </S.ImagePriceWrapperShelf1>
+                      <S.BookNameShelf1>{bookList[slide].volumeInfo.title}</S.BookNameShelf1>
+                      <S.BookAuthorShelf1>{bookList[slide].volumeInfo.authors.join(' e ')}</S.BookAuthorShelf1>
+                    </S.BookWrapperShelf1>
+                  </motion.div>
+                )
+              })}
           </AnimatePresence>
         </S.ShelfWrapper>
 
-        <S.ButtonCarousel onClick={handleNextCarousel}>
+        <S.ButtonCarouselShelf1 onClick={handleNextCarousel}>
           <S.ButtonCarouselInt>
             <GrFormNext />
           </S.ButtonCarouselInt>
-        </S.ButtonCarousel>
+        </S.ButtonCarouselShelf1>
       </S.Shelf1>
 
-      <S.Shelf2></S.Shelf2>
+      <S.Shelf2>
+        <S.BookWrapperShelf2>
+          <S.BookImageShelf2
+            alt={`Imagem da capa do livro "${bookList[0].volumeInfo.title}"`}
+            src={bookList[0].volumeInfo.imageLinks?.thumbnail}
+          />
+          <S.BookPriceShelf2>{formatCurrency(bookList[0].saleInfo.listPrice?.amount || 0)}</S.BookPriceShelf2>
+        </S.BookWrapperShelf2>
+        <S.BookWrapperShelf2>
+          <S.BookImageShelf2
+            alt={`Imagem da capa do livro "${bookList[1].volumeInfo.title}"`}
+            src={bookList[1].volumeInfo.imageLinks?.thumbnail}
+          />
+          <S.BookPriceShelf2>{formatCurrency(bookList[1].saleInfo.listPrice?.amount || 0)}</S.BookPriceShelf2>
+        </S.BookWrapperShelf2>
+        <S.BookWrapperShelf2>
+          <S.BookImageShelf2
+            alt={`Imagem da capa do livro "${bookList[2].volumeInfo.title}"`}
+            src={bookList[2].volumeInfo.imageLinks?.thumbnail}
+          />
+          <S.BookPriceShelf2>{formatCurrency(bookList[2].saleInfo.listPrice?.amount || 0)}</S.BookPriceShelf2>
+        </S.BookWrapperShelf2>
+        <S.BookWrapperShelf2>
+          <S.BookImageShelf2
+            alt={`Imagem da capa do livro "${bookList[3].volumeInfo.title}"`}
+            src={bookList[3].volumeInfo.imageLinks?.thumbnail}
+          />
+          <S.BookPriceShelf2>{formatCurrency(bookList[3].saleInfo.listPrice?.amount || 0)}</S.BookPriceShelf2>
+        </S.BookWrapperShelf2>
+
+        <S.ButtonCarouselShelf2>
+          <GrFormNext />
+        </S.ButtonCarouselShelf2>
+      </S.Shelf2>
     </S.MainBanner>
   )
 }
