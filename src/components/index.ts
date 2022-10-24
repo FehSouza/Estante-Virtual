@@ -1,4 +1,7 @@
 export * from './CarouselBenefitsBar/index'
+export * from './CarouselFourSlides/index'
+export * from './CarouselThreeSlides/index'
+export * from './CarouselThreeSlidesBanner/index'
 export * from './Container/index'
 export * from './Footer/index'
 export * from './Header/index'

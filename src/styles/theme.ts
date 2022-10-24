@@ -8,6 +8,7 @@ const baseTheme = {
     shadow: '#0000001A',
     bannerPrimary: '#fbfbfb',
     bannerSecondary: '#eaf3f7',
+    grey: '#d2d1d3'
   },
 } as const
 

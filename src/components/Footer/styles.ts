@@ -11,7 +11,7 @@ export const BenefitsBar = styled.div`
 `
 
 export const BenefitsBarWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1440px;
   width: calc(100% - 32px);
   padding: 16px;
   margin: 0 auto;
@@ -63,7 +63,7 @@ export const Link = styled.a`
 `
 
 export const InstitutionalContent = styled.div`
-  max-width: 1200px;
+  max-width: 1440px;
   width: calc(100% - 32px);
   padding: 0 16px;
   margin: 0 auto;
