@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
-import { BooksProps } from '../../pages'
+import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
@@ -44,9 +44,9 @@ export const CarouselThreeSlides = ({ bookList }: { bookList: BooksProps[] }) =>
   const slidesToShow = [slide1, slide2, slide3]
 
   const variants = {
-    enter: (direction: number) => ({ x: 220 * direction, opacity: 0, scale: 0.5 }),
+    enter: (direction: number) => ({ x: 400 * direction, opacity: 0, scale: 0.5 }),
     center: { x: 0, opacity: 1, scale: 1 },
-    exit: (direction: number) => ({ x: -220 * direction, opacity: 0, scale: 0.5 }),
+    exit: (direction: number) => ({ x: -400 * direction, opacity: 0, scale: 0.5 }),
   }
 
   return (
@@ -91,13 +91,13 @@ export const CarouselThreeSlides = ({ bookList }: { bookList: BooksProps[] }) =>
 
                       <S.WrapperPrice>
                         <S.BookPrice>{formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)}</S.BookPrice>
-                        <S.BookPage>
+                        <S.BookPage color={bookList[slide].color}>
                           <GrFormNext />
                         </S.BookPage>
                       </S.WrapperPrice>
 
-                      <S.MiniCart>
-                        <S.MiniCartInt>
+                      <S.MiniCart color={bookList[slide].color}>
+                        <S.MiniCartInt color={bookList[slide].color}>
                           <BsHandbag />
                         </S.MiniCartInt>
                       </S.MiniCart>

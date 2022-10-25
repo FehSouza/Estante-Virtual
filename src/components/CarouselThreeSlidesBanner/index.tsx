@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
-import { BooksProps } from '../../pages'
+import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 

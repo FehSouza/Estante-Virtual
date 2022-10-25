@@ -166,9 +166,8 @@ export const Shelf2 = styled.div`
 
 export const Shelf3 = styled.div`
   overflow: hidden;
-  max-width: calc(((100% - 1440px - 32px) / 2) + 1440px);
-  padding: 0 16px;
-  margin-left: calc((100% - 1440px - 32px) / 2);
+  max-width: calc(((100% - 1440px) / 2) + 1440px);
+  padding-left: calc((100% - 1440px - 32px + 32px) / 2);
   position: relative;
 `
 

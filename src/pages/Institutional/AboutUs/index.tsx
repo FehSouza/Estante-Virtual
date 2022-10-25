@@ -1,4 +1,4 @@
-import { useScrollToTop } from '../../../Hooks'
+import { useScrollToTop } from '../../../hooks'
 import * as S from './styles'
 
 export const AboutUs = ({ namePage }: { namePage: string }) => {

@@ -1,2 +1,2 @@
-export * from './useScrollToTop'
-export * from './useWindowSize'
+export * from './useScrollToTop/index'
+export * from './useWindowSize/index'
