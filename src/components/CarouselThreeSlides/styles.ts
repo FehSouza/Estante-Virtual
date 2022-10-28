@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const ShelfWrapper = styled.div`
   display: flex;
   gap: 24px;
-  margin-top: 60px;
+  margin-top: 48px;
 
   & > div {
     min-width: 40%;

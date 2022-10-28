@@ -3,21 +3,22 @@ import styled from 'styled-components'
 
 export const ShelfWrapper = styled.div`
   display: flex;
+  width: 100%;
   gap: 16px;
-  padding: 64px 0 16px 56px;
+  margin-top: 48px;
+  position: relative;
+  padding-bottom: 84px;
 
   & > div {
-    min-width: 40%;
-    height: fit-content;
+    width: calc((100% - (16px * 5)) / 6);
   }
 `
 
 export const BookWrapper = styled.li`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px;
+  padding: 12px;
   box-sizing: border-box;
   border-radius: 20px;
   transition-duration: 350ms;
@@ -56,13 +57,13 @@ export const BookPrice = styled.span`
 `
 
 export const BookName = styled.span`
-  margin-top: 48px;
+  margin-top: 20px;
   color: ${({ theme }) => theme.colors.text};
   font-weight: 600;
-  font-size: 22px;
+  font-size: 18px;
   display: inline-block;
   width: 100%;
-  text-align: center;
+  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -70,11 +71,12 @@ export const BookName = styled.span`
 
 export const BookAuthor = styled.span`
   margin-top: 16px;
+  padding-bottom: 4px;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
   width: 100%;
-  text-align: center;
+  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -82,8 +84,9 @@ export const BookAuthor = styled.span`
 
 export const ButtonCarousel = styled.button`
   position: absolute;
-  bottom: 42px;
-  right: 160px;
+  bottom: 0px;
+  right: calc(50% - 33px);
+  transform: translateX(50%);
   width: 48px;
   height: 48px;
   border-radius: 100%;
@@ -95,7 +98,8 @@ export const ButtonCarousel = styled.button`
   justify-content: center;
 
   &.button-prev {
-    right: 228px;
+    right: calc(50% + 33px);
+    transform: translateX(50%);
   }
 
   &:hover {
@@ -114,7 +118,7 @@ export const ButtonCarouselInt = styled.div`
   height: 46px;
   border-radius: 100%;
   border: none;
-  background-color: ${({ theme }) => theme.colors.bannerSecondary};
+  background-color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;

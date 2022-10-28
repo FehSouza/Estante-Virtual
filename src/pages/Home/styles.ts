@@ -4,6 +4,8 @@ import styled from 'styled-components'
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
+  overflow-y: visible;
+  overflow-x: clip;
 `
 
 export const MainBanner = styled.div`
@@ -83,12 +85,12 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   position: relative;
   z-index: 1;
+`
 
-  & img {
-    max-width: 100%;
-    height: auto;
-    margin-top: -32px;
-  }
+export const ImageBanner = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin-top: -32px;
 `
 
 export const CircleInt = styled.div`
@@ -165,14 +167,21 @@ export const Shelf2 = styled.div`
 `
 
 export const Shelf3 = styled.div`
-  overflow: hidden;
   max-width: calc(((100% - 1440px) / 2) + 1440px);
   padding-left: calc((100% - 1440px - 32px + 32px) / 2);
   position: relative;
 `
 
-export const ShelfTitle3 = styled.h3`
+export const ShelvesTitle = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 28px;
   font-weight: 600;
+`
+
+export const Shelf4 = styled.div`
+  max-width: 1440px;
+  width: calc(100% - 32px);
+  padding: 0 16px;
+  margin: 0 auto;
+  margin-top: 128px;
 `

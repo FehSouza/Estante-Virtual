@@ -1,3 +1,4 @@
+import { lighten } from 'polished'
 import { createGlobalStyle as css } from 'styled-components'
 
 export const GlobalStyles = css`
@@ -64,5 +65,20 @@ export const GlobalStyles = css`
 
   a:hover {
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: ${({ theme }) => theme.colors.shadow};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: ${({ theme }) => lighten(0.1, theme.colors.textLight)};
+    border: none;
   }
 `

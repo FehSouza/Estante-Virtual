@@ -1,13 +1,14 @@
 import useSWR from 'swr'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
-import { CarouselFourSlides, CarouselThreeSlides, CarouselThreeSlidesBanner } from '../../components'
+import { CarouselFourSlides, CarouselSixSlides, CarouselThreeSlides, CarouselThreeSlidesBanner } from '../../components'
 import { MOCK_OUR_SUGGESTIONS } from '../../mock'
-import { getBestSellers, getBooksChildren } from '../../services'
+import { getBestSellers, getBestSellersAction, getBooksChildren } from '../../services'
 import * as S from './styles'
 
 export const Home = () => {
   const { data: booksBestSellers } = useSWR('api/best-sellers', getBestSellers)
   const { data: booksChildren } = useSWR('api/children', getBooksChildren)
+  const { data: booksBestSellersAction } = useSWR('api/best-sellers-action', getBestSellersAction)
 
   // useScrollToTop(false, '#content')
 
@@ -22,7 +23,7 @@ export const Home = () => {
           </S.TextWrapper>
 
           <S.ImageWrapper>
-            <img src={imageMainBanner} alt="Imagem de uma menina segurando uma pilha de livros" />
+            <S.ImageBanner src={imageMainBanner} alt="Imagem de uma menina segurando uma pilha de livros" />
             <S.CircleInt />
             <S.CircleExt />
           </S.ImageWrapper>
@@ -37,9 +38,14 @@ export const Home = () => {
       </S.MainBanner>
 
       <S.Shelf3>
-        <S.ShelfTitle3>Nossas sugestões</S.ShelfTitle3>
+        <S.ShelvesTitle>Nossas sugestões</S.ShelvesTitle>
         <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} />
       </S.Shelf3>
+
+      <S.Shelf4>
+        <S.ShelvesTitle>Os Populares de Ação</S.ShelvesTitle>
+        {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
+      </S.Shelf4>
     </S.Container>
   )
 }

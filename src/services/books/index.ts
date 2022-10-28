@@ -30,3 +30,11 @@ export const getBooksChildren = async () => {
   const result = filterBooksWithoutPricesOrImages(response.data.items)
   return result
 }
+
+export const getBestSellersAction = async () => {
+  if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
+
+  const response = await api.get<{ items: BooksProps[] }>('?q=best-sellers-action&orderBy=relevance&printType=books')
+  const result = filterBooksWithoutPricesOrImages(response.data.items)
+  return result
+}

@@ -1,12 +1,20 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
+const variants = {
+  enter: (direction: number) => ({ x: 400 * direction, opacity: 0, scale: 0.5, y: 0 }),
+  center: { x: 0, opacity: 1, scale: 1, y: 0 },
+  exit: (direction: number) => ({ x: -400 * direction, opacity: 0, scale: 0.5, y: 0 }),
+}
+
 export const CarouselThreeSlides = ({ bookList }: { bookList: BooksProps[] }) => {
+  const id = useId()
+  console.log('shelf3', id)
   const [count, setCount] = useState(0)
   const [prev, setPrev] = useState(count)
   const [slide1, setSlide1] = useState(0)
@@ -43,12 +51,6 @@ export const CarouselThreeSlides = ({ bookList }: { bookList: BooksProps[] }) =>
 
   const slidesToShow = [slide1, slide2, slide3]
 
-  const variants = {
-    enter: (direction: number) => ({ x: 400 * direction, opacity: 0, scale: 0.5 }),
-    center: { x: 0, opacity: 1, scale: 1 },
-    exit: (direction: number) => ({ x: -400 * direction, opacity: 0, scale: 0.5 }),
-  }
-
   return (
     <>
       <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
@@ -58,13 +60,14 @@ export const CarouselThreeSlides = ({ bookList }: { bookList: BooksProps[] }) =>
       </S.ButtonCarousel>
 
       <S.ShelfWrapper>
-        <AnimatePresence custom={direction} mode="popLayout">
+        <AnimatePresence custom={direction} mode="popLayout" key={id}>
           {bookList.length &&
             slidesToShow.map((slide) => {
               return (
                 <motion.div
-                  key={slide}
-                  layoutId={bookList[slide].volumeInfo.imageLinks?.thumbnail}
+                  layout
+                  key={`${id}-${bookList[slide].id}`}
+                  layoutId={`${id}-${bookList[slide].id}`}
                   initial="enter"
                   animate="center"
                   exit="exit"

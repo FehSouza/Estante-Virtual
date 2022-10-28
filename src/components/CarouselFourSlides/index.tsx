@@ -1,11 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { GrFormNext } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
 export const CarouselFourSlides = ({ bookList }: { bookList: BooksProps[] }) => {
+  const id = useId()
+  console.log('shelf2', id)
+
   const [count, setCount] = useState(0)
   const [slide1, setSlide1] = useState(0)
   const [slide2, setSlide2] = useState(1)
@@ -26,16 +29,17 @@ export const CarouselFourSlides = ({ bookList }: { bookList: BooksProps[] }) => 
 
   return (
     <>
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="popLayout" key={id}>
         {bookList.length &&
           slidesToShow.map((slide) => {
             return (
               <motion.div
-                key={slide}
-                layoutId={bookList[slide].id}
-                initial={{ x: 24, opacity: 0, scale: 0.5 }}
-                animate={{ x: 0, opacity: 1, scale: 1 }}
-                exit={{ x: -24, opacity: 0, scale: 0.5 }}
+                layout
+                key={`${id}-${bookList[slide].id}`}
+                layoutId={`${id}-${bookList[slide].id}`}
+                initial={{ x: 24, opacity: 0, scale: 0.5, y: 0 }}
+                animate={{ x: 0, opacity: 1, scale: 1, y: 0 }}
+                exit={{ x: -24, opacity: 0, scale: 0.5, y: 0 }}
                 transition={{
                   x: { type: 'spring', stiffness: 300, damping: 30 },
                   opacity: { duration: 0.3 },

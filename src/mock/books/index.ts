@@ -145,6 +145,22 @@ export const MOCK_BOOKS: BooksProps[] = [
       },
     },
   },
+  {
+    id: '11',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail:
+          'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'Will',
+      authors: ['Will Smith', 'Mark Manson'],
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
 ]
 
 export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
@@ -194,7 +210,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
         thumbnail:
           'http://books.google.com/books/publisher/content?id=qDYQCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE738-JbDBeO5_Fs3geWuGlTh5juhWxPPS5nPsvBSkkgPlxe6LmqRa9YiHM_KbR0qieHiPlNScO9fN1if93lx0OL82GP9vT0xiqUV0Ij4QgwwRerU3bX65FKPXg-rRUjWrEq0u0iV&source=gbs_api',
       },
-      title: 'Harry Potter e o prisioneiro de Azkaban',
+      title: 'Harry Potter e o Prisioneiro de Azkaban',
       authors: ['J.K. Rowling'],
       description:
         "<p>Bem-vindo ao ônibus Nôitibus Andante, o transporte de emergência para bruxos e bruxas perdidos. Basta esticar a mão da varinha, subir a bordo e podemos levá-lo aonde quiser.'<br><br>Quando o ônibus Nôitibus Andante surge repentinamente da escuridão e solta um guincho de seu freio bem à sua frente, mais um ano nada normal em Hogwarts começa para Harry Potter. Sirius Black, assassino em série fugitivo e seguidor do Lorde Voldemort, está à solta - e dizem que está indo atrás de Harry. Em sua primeira aula de Adivinhação, a professora Trelawney vê um agouro de morte nas folhas do chá de Harry... Mas talvez a parte mais assustadora seja os Dementadores patrulhando os pátios da escola, com seus beijos que sugam a alma...</p>",
@@ -251,7 +267,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
         thumbnail:
           'http://books.google.com/books/publisher/content?id=yjUQCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73X6KPJJf2m28F8r6FrVqBpnXIs4qrtze3XubEiHcrYEZSjUc8mVsV4sGmSD8aa0j9ODOMw0DdXnHq7izwfuMtiXfjZbfsZ5ICf53pVd-XdPN0lA_OJqdzswJRlhItvjNW-iCNw&source=gbs_api',
       },
-      title: 'Harry Potter e o enigma do Príncipe',
+      title: 'Harry Potter e o Enigma do Príncipe',
       authors: ['J.K. Rowling'],
       description:
         '<p>Lá estava, pairando no céu sobre a escola: o crânio verde flamejante com uma língua de cobra, a marca deixada pelos Comensais da Morte sempre que entravam em um prédio... sempre que matavam...<br><br>Quando Dumbledore chega à Rua dos Alfeneiros numa certa noite de verão para buscar Harry Potter, a mão com que segura a varinha está enrugada e enegrecida, mas ele não revela o motivo. Segredos e suspeitas se espalham pelo Mundo Bruxo, e a própria Hogwarts não é mais segura. Harry está convencido de que Malfoy porta a Marca Negra: há um Comensal da Morte entre eles. Harry precisará de magia poderosa e amigos verdadeiros para explorar os segredos mais sombrios de Voldemort, e Dumbledore se prepara para encarar seu destino...</p>',
