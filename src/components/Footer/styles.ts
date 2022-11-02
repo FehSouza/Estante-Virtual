@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const Footer = styled.footer`
   box-shadow: 0px -2px 10px ${({ theme }) => theme.colors.shadow};
   background-color: ${({ theme }) => theme.colors.white};
+  margin-top: 96px;
 `
 
 export const BenefitsBar = styled.div`

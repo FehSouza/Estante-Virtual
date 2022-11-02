@@ -2,13 +2,14 @@ import useSWR from 'swr'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
 import { CarouselFourSlides, CarouselSixSlides, CarouselThreeSlides, CarouselThreeSlidesBanner } from '../../components'
 import { MOCK_OUR_SUGGESTIONS } from '../../mock'
-import { getBestSellers, getBestSellersAction, getBooksChildren } from '../../services'
+import { getBestSellers, getBestSellersAction, getBestSellersPoliceRomance, getBooksChildren } from '../../services'
 import * as S from './styles'
 
 export const Home = () => {
   const { data: booksBestSellers } = useSWR('api/best-sellers', getBestSellers)
   const { data: booksChildren } = useSWR('api/children', getBooksChildren)
   const { data: booksBestSellersAction } = useSWR('api/best-sellers-action', getBestSellersAction)
+  const { data: booksBestSellersPoliceRomance } = useSWR('api/best-sellers-police-romance', getBestSellersPoliceRomance)
 
   // useScrollToTop(false, '#content')
 
@@ -43,8 +44,19 @@ export const Home = () => {
       </S.Shelf3>
 
       <S.Shelf4>
-        <S.ShelvesTitle>Os Populares de Ação</S.ShelvesTitle>
+        <S.WrapperTitle>
+          <S.ShelvesTitle>Os Populares de Ação</S.ShelvesTitle>
+          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+        </S.WrapperTitle>
         {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
+      </S.Shelf4>
+
+      <S.Shelf4>
+        <S.WrapperTitle>
+          <S.ShelvesTitle>Os Populares de Romance Policial</S.ShelvesTitle>
+          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+        </S.WrapperTitle>
+        {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
       </S.Shelf4>
     </S.Container>
   )

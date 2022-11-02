@@ -13,7 +13,7 @@ export const MainBanner = styled.div`
   display: flex;
   width: 100%;
   height: auto;
-  margin-bottom: 236px;
+  margin-bottom: 192px;
 `
 
 export const Banner = styled.div`
@@ -130,11 +130,32 @@ export const Shelf1 = styled.div`
   overflow: hidden;
 `
 
+export const WrapperTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const ShelfTitle = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 22px;
   font-weight: 600;
   padding: 56px 0 0 56px;
+`
+
+export const ButtonSeeMore = styled.button`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 500;
+  background-image: ${({ theme }) =>
+    `linear-gradient(100deg, ${lighten(0.275, theme.colors.primary)}, ${lighten(0.275, theme.colors.secondary)})`};
+  padding: 16px 24px;
+  border-radius: 24px;
+  transition-duration: 350ms;
+
+  &:hover {
+    background-image: ${({ theme }) =>
+      `linear-gradient(100deg, ${lighten(0.275, theme.colors.secondary)}, ${lighten(0.275, theme.colors.primary)})`};
+  }
 `
 
 export const Shelf2 = styled.div`
@@ -183,5 +204,5 @@ export const Shelf4 = styled.div`
   width: calc(100% - 32px);
   padding: 0 16px;
   margin: 0 auto;
-  margin-top: 128px;
+  margin-top: 96px;
 `

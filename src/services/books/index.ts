@@ -38,3 +38,13 @@ export const getBestSellersAction = async () => {
   const result = filterBooksWithoutPricesOrImages(response.data.items)
   return result
 }
+
+export const getBestSellersPoliceRomance = async () => {
+  if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
+
+  const responde = await api.get<{ items: BooksProps[] }>(
+    '?q=best-sellers-romance-policial&orderBy=relevance&printType=books'
+  )
+  const result = filterBooksWithoutPricesOrImages(responde.data.items)
+  return result
+}
