@@ -22,7 +22,7 @@ export const BookWrapper = styled.li<{ color?: string }>`
   border-radius: 20px;
   transition-duration: 350ms;
   box-shadow: 12px 12px 24px #00000026;
-  background-color: ${({ color }) => `${color ?? '#ffffff'}`};
+  background-color: ${({ color, theme }) => `${color ?? theme.colors.white}`};
 `
 
 export const ImageWrapper = styled.div`
@@ -43,13 +43,14 @@ export const InfosWrapper = styled.div`
   min-height: 256px;
   max-height: 256px;
   max-width: calc(100% - 30% - 24px);
+  min-width: calc(100% - 30% - 24px);
   display: flex;
   flex-direction: column;
   position: relative;
 `
 
-export const BookName = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+export const BookName = styled.span<{ color?: string }>`
+  color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
   font-weight: 600;
   font-size: 22px;
   display: inline-block;
@@ -60,9 +61,9 @@ export const BookName = styled.span`
   text-overflow: ellipsis;
 `
 
-export const BookAuthor = styled.span`
+export const BookAuthor = styled.span<{ color?: string }>`
   margin-top: 16px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
   font-size: 18px;
   display: inline-block;
   width: calc(100% - 42px - 16px);
@@ -72,13 +73,21 @@ export const BookAuthor = styled.span`
   text-overflow: ellipsis;
 `
 
-export const BookDescription = styled.div`
+export const BookDescription = styled.div<{ color?: string }>`
   margin-top: 16px;
   width: 100%;
   height: 92px;
+  color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
+  font-size: 14px;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   & p {
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
     font-size: 14px;
     line-height: 24px;
     display: -webkit-box;
@@ -96,9 +105,9 @@ export const WrapperPrice = styled.div`
   justify-content: end;
 `
 
-export const BookPrice = styled.span`
+export const BookPrice = styled.span<{ color?: string }>`
   margin-right: 24px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
   font-size: 22px;
   font-weight: 600;
 `
@@ -106,7 +115,10 @@ export const BookPrice = styled.span`
 export const BookPage = styled.button<{ color?: string }>`
   width: 56px;
   height: 56px;
-  background-image: ${({ theme, color }) => `linear-gradient(155deg, ${theme.colors.white}4D, ${color})`};
+  background-image: ${({ theme, color }) =>
+    color
+      ? `linear-gradient(155deg, ${theme.colors.white}4D, ${color})`
+      : `linear-gradient(155deg, ${theme.colors.text}4D, ${theme.colors.white})`};
   border: 1.5px solid ${({ theme }) => theme.colors.white}2D;
   border-radius: 12px;
   display: flex;
@@ -114,14 +126,17 @@ export const BookPage = styled.button<{ color?: string }>`
   justify-content: center;
 
   &:hover {
-    background-image: ${({ theme, color }) => `linear-gradient(155deg, ${theme.colors.white}90, ${color})`};
+    background-image: ${({ theme, color }) =>
+      color
+        ? `linear-gradient(155deg, ${theme.colors.white}90, ${color})`
+        : `linear-gradient(155deg, ${theme.colors.text}90, ${theme.colors.white})`};
   }
 
   & svg {
     font-size: 32px;
 
     & polyline {
-      stroke: ${({ theme }) => theme.colors.white};
+      stroke: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
     }
   }
 `
@@ -137,11 +152,15 @@ export const MiniCart = styled.div<{ color?: string }>`
   height: 42px;
   border-radius: 100%;
   background-image: ${({ theme, color }) =>
-    `linear-gradient(320deg, ${color}, ${lighten(0.5, theme.colors.textLight)})`};
+    color
+      ? `linear-gradient(320deg, ${color}, ${lighten(0.5, theme.colors.textLight)})`
+      : `linear-gradient(320deg, ${theme.colors.text}, ${lighten(0.5, theme.colors.textLight)})`};
 
   &:hover {
     background-image: ${({ theme, color }) =>
-      `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${color})`};
+      color
+        ? `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${color})`
+        : `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${theme.colors.text})`};
   }
 `
 
@@ -152,11 +171,11 @@ export const MiniCartInt = styled.div<{ color?: string }>`
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background-color: ${({ color }) => `${color ?? '#ffffff'}`};
+  background-color: ${({ color, theme }) => `${color ?? theme.colors.white}`};
 
   & svg {
     font-size: 20px;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme, color }) => (color ? theme.colors.white : theme.colors.text)};
     transition-duration: 350ms;
   }
 

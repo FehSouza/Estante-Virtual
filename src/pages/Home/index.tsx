@@ -1,8 +1,17 @@
 import useSWR from 'swr'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
-import { CarouselFourSlides, CarouselSixSlides, CarouselThreeSlides, CarouselThreeSlidesBanner } from '../../components'
+import imageBanner from '../../assets/images/young-girl-student-2.png'
+import { BannerHomeCarousel1, BannerHomeCarousel2, CarouselSixSlides, CarouselThreeSlides } from '../../components'
 import { MOCK_OUR_SUGGESTIONS } from '../../mock'
-import { getBestSellers, getBestSellersAction, getBestSellersPoliceRomance, getBooksChildren } from '../../services'
+import {
+  getBestSellers,
+  getBestSellersAction,
+  getBestSellersHorror,
+  getBestSellersPoetry,
+  getBestSellersPoliceRomance,
+  getBestSellersSelfHelp,
+  getBooksChildren,
+} from '../../services'
 import * as S from './styles'
 
 export const Home = () => {
@@ -10,54 +19,89 @@ export const Home = () => {
   const { data: booksChildren } = useSWR('api/children', getBooksChildren)
   const { data: booksBestSellersAction } = useSWR('api/best-sellers-action', getBestSellersAction)
   const { data: booksBestSellersPoliceRomance } = useSWR('api/best-sellers-police-romance', getBestSellersPoliceRomance)
+  const { data: booksBestSellersHorror } = useSWR('api/best-sellers-horror', getBestSellersHorror)
+  const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
+  const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
 
   // useScrollToTop(false, '#content')
 
   return (
     <S.Container>
       <S.MainBanner>
-        <S.Banner>
-          <S.TextWrapper>
+        <S.Banner1>
+          <S.TextBannerWrapper>
             <S.Title>Grandes descontos em livros infantis</S.Title>
             <S.Text>Descontos em livros infantis para todas as idades!</S.Text>
             <S.Button>Venha conferir</S.Button>
-          </S.TextWrapper>
+          </S.TextBannerWrapper>
 
           <S.ImageWrapper>
-            <S.ImageBanner src={imageMainBanner} alt="Imagem de uma menina segurando uma pilha de livros" />
+            <S.Image src={imageMainBanner} alt="Imagem de uma menina segurando uma pilha de livros" />
             <S.CircleInt />
             <S.CircleExt />
           </S.ImageWrapper>
-        </S.Banner>
+        </S.Banner1>
 
-        <S.Shelf1>
-          <S.ShelfTitle>Os livros mais populares</S.ShelfTitle>
-          {!!booksBestSellers && <CarouselThreeSlidesBanner bookList={booksBestSellers} />}
-        </S.Shelf1>
+        <S.BannerShelf1>
+          <S.ShelfTitleBanner>Os livros mais populares</S.ShelfTitleBanner>
+          {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} />}
+        </S.BannerShelf1>
 
-        <S.Shelf2>{!!booksChildren && <CarouselFourSlides bookList={booksChildren} />}</S.Shelf2>
+        <S.BannerShelf2>{!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} />}</S.BannerShelf2>
       </S.MainBanner>
 
-      <S.Shelf3>
-        <S.ShelvesTitle>Nossas sugestões</S.ShelvesTitle>
+      <S.ShelfModel1>
+        <S.ShelfTitle>Nossas sugestões</S.ShelfTitle>
         <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} />
-      </S.Shelf3>
+      </S.ShelfModel1>
 
-      <S.Shelf4>
+      <S.ShelfModel2>
         <S.WrapperTitle>
-          <S.ShelvesTitle>Os Populares de Ação</S.ShelvesTitle>
+          <S.ShelfTitle>Os Populares de Ação</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
-      </S.Shelf4>
+      </S.ShelfModel2>
 
-      <S.Shelf4>
+      <S.ShelfModel2>
         <S.WrapperTitle>
-          <S.ShelvesTitle>Os Populares de Romance Policial</S.ShelvesTitle>
+          <S.ShelfTitle>Os Populares de Romance Policial</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
-      </S.Shelf4>
+      </S.ShelfModel2>
+
+      <S.ShelfModel1>
+        <S.ShelfTitle>Os Populares de Terror</S.ShelfTitle>
+        {!!booksBestSellersHorror && <CarouselThreeSlides bookList={booksBestSellersHorror} />}
+      </S.ShelfModel1>
+
+      <S.Banner2>
+        <S.TextBanner2Wrapper>
+          <S.Title>Comece a explorar agora para ler os clássicos mundiais!</S.Title>
+          <S.Citation>
+            “Clássica é a obra que tem dimensão universal: consegue atravessar gerações, fronteiras e nacionalidades,
+            sem perder as suas características.” - Renato Rocha
+          </S.Citation>
+          <S.Button>Ver todos</S.Button>
+        </S.TextBanner2Wrapper>
+        <S.ImageBanner2Wrapper>
+          <S.ImageBanner2 src={imageBanner} alt="Imagem de uma menina segurando uma pilha de livros"></S.ImageBanner2>
+        </S.ImageBanner2Wrapper>
+      </S.Banner2>
+
+      <S.ShelfModel2>
+        <S.WrapperTitle>
+          <S.ShelfTitle>Os Populares de Poesia</S.ShelfTitle>
+          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+        </S.WrapperTitle>
+        {!!booksBestSellersPoetry && <CarouselSixSlides bookList={booksBestSellersPoetry} />}
+      </S.ShelfModel2>
+
+      <S.ShelfModel1>
+        <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
+        {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}
+      </S.ShelfModel1>
     </S.Container>
   )
 }

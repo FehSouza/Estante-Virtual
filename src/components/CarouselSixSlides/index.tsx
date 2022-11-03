@@ -6,40 +6,27 @@ import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
 export const CarouselSixSlides = ({ bookList }: { bookList: BooksProps[] }) => {
+  const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3, fifth: 4, sixth: 5 })
   const id = useId()
-  console.log('shelf4', id)
-  const [slide1, setSlide1] = useState(0)
-  const [slide2, setSlide2] = useState(1)
-  const [slide3, setSlide3] = useState(2)
-  const [slide4, setSlide4] = useState(3)
-  const [slide5, setSlide5] = useState(4)
-  const [slide6, setSlide6] = useState(5)
-  const [count, setCount] = useState(0)
-
   const lastBook = bookList.length - 1
-
-  const slidesToShow = [slide1, slide2, slide3, slide4, slide5, slide6]
+  const slidesToShow = Object.values(slide)
 
   const handleNext = () => {
-    count === lastBook ? setCount(0) : setCount(count + 1)
-
-    slide6 === lastBook ? setSlide6(0) : setSlide6(slide6 + 1)
-    slide5 === lastBook ? setSlide5(0) : setSlide5(slide5 + 1)
-    slide4 === lastBook ? setSlide4(0) : setSlide4(slide4 + 1)
-    slide3 === lastBook ? setSlide3(0) : setSlide3(slide3 + 1)
-    slide2 === lastBook ? setSlide2(0) : setSlide2(slide2 + 1)
-    slide1 === lastBook ? setSlide1(0) : setSlide1(slide1 + 1)
+    setSlide((prev) => ({ ...prev, sixth: prev.sixth === lastBook ? 0 : prev.sixth + 1 }))
+    setSlide((prev) => ({ ...prev, fifth: prev.fifth === lastBook ? 0 : prev.fifth + 1 }))
+    setSlide((prev) => ({ ...prev, fourth: prev.fourth === lastBook ? 0 : prev.fourth + 1 }))
+    setSlide((prev) => ({ ...prev, third: prev.third === lastBook ? 0 : prev.third + 1 }))
+    setSlide((prev) => ({ ...prev, second: prev.second === lastBook ? 0 : prev.second + 1 }))
+    setSlide((prev) => ({ ...prev, first: prev.first === lastBook ? 0 : prev.first + 1 }))
   }
 
   const handlePrev = () => {
-    count === 0 ? setCount(lastBook) : setCount(count - 1)
-
-    slide1 === 0 ? setSlide1(lastBook) : setSlide1(slide1 - 1)
-    slide2 === 0 ? setSlide2(lastBook) : setSlide2(slide2 - 1)
-    slide3 === 0 ? setSlide3(lastBook) : setSlide3(slide3 - 1)
-    slide4 === 0 ? setSlide4(lastBook) : setSlide4(slide4 - 1)
-    slide5 === 0 ? setSlide5(lastBook) : setSlide5(slide5 - 1)
-    slide6 === 0 ? setSlide6(lastBook) : setSlide6(slide6 - 1)
+    setSlide((prev) => ({ ...prev, first: prev.first === 0 ? lastBook : prev.first - 1 }))
+    setSlide((prev) => ({ ...prev, second: prev.second === 0 ? lastBook : prev.second - 1 }))
+    setSlide((prev) => ({ ...prev, third: prev.third === 0 ? lastBook : prev.third - 1 }))
+    setSlide((prev) => ({ ...prev, fourth: prev.fourth === 0 ? lastBook : prev.fourth - 1 }))
+    setSlide((prev) => ({ ...prev, fifth: prev.fifth === 0 ? lastBook : prev.fifth - 1 }))
+    setSlide((prev) => ({ ...prev, sixth: prev.sixth === 0 ? lastBook : prev.sixth - 1 }))
   }
 
   return (

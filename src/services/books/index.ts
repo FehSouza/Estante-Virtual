@@ -48,3 +48,27 @@ export const getBestSellersPoliceRomance = async () => {
   const result = filterBooksWithoutPricesOrImages(responde.data.items)
   return result
 }
+
+export const getBestSellersHorror = async () => {
+  if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
+
+  const response = await api.get<{ items: BooksProps[] }>('?q=best-sellers-terror&orderBy=relevance&printType=books')
+  const result = filterBooksWithoutPricesOrImages(response.data.items)
+  return result
+}
+
+export const getBestSellersPoetry = async () => {
+  if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
+
+  const response = api.get<{ items: BooksProps[] }>('?q=best-sellers-poesia&orderBy=relevance&printType=books')
+  const result = filterBooksWithoutPricesOrImages((await response).data.items)
+  return result
+}
+
+export const getBestSellersSelfHelp = async () => {
+  if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
+
+  const response = api.get<{ items: BooksProps[] }>('?q=best-sellers-auto-ajuda&orderBy=relevance&printType=books')
+  const result = filterBooksWithoutPricesOrImages((await response).data.items)
+  return result
+}

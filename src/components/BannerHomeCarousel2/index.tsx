@@ -5,27 +5,18 @@ import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
-export const CarouselFourSlides = ({ bookList }: { bookList: BooksProps[] }) => {
+export const BannerHomeCarousel2 = ({ bookList }: { bookList: BooksProps[] }) => {
+  const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3 })
   const id = useId()
-  console.log('shelf2', id)
-
-  const [count, setCount] = useState(0)
-  const [slide1, setSlide1] = useState(0)
-  const [slide2, setSlide2] = useState(1)
-  const [slide3, setSlide3] = useState(2)
-  const [slide4, setSlide4] = useState(3)
-
   const lastBook = bookList.length - 1
+  const slidesToShow = Object.values(slide)
 
   const handleNext = () => {
-    count === lastBook ? setCount(0) : setCount(count + 1)
-    slide4 === lastBook ? setSlide4(0) : setSlide4(slide4 + 1)
-    slide3 === lastBook ? setSlide3(0) : setSlide3(slide3 + 1)
-    slide2 === lastBook ? setSlide2(0) : setSlide2(slide2 + 1)
-    slide1 === lastBook ? setSlide1(0) : setSlide1(slide1 + 1)
+    setSlide((prev) => ({ ...prev, fourth: prev.fourth === lastBook ? 0 : prev.fourth + 1 }))
+    setSlide((prev) => ({ ...prev, third: prev.third === lastBook ? 0 : prev.third + 1 }))
+    setSlide((prev) => ({ ...prev, second: prev.second === lastBook ? 0 : prev.second + 1 }))
+    setSlide((prev) => ({ ...prev, first: prev.first === lastBook ? 0 : prev.first + 1 }))
   }
-
-  const slidesToShow = [slide1, slide2, slide3, slide4]
 
   return (
     <>

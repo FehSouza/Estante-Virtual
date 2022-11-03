@@ -11,17 +11,13 @@ const variants = {
   exit: (direction: number) => ({ x: -220 * direction, opacity: 0, scale: 0.5, y: 0 }),
 }
 
-export const CarouselThreeSlidesBanner = ({ bookList }: { bookList: BooksProps[] }) => {
-  const id = useId()
-  console.log('shelf1', id)
-
+export const BannerHomeCarousel1 = ({ bookList }: { bookList: BooksProps[] }) => {
   const [count, setCount] = useState(0)
   const [prev, setPrev] = useState(count)
-  const [slide1, setSlide1] = useState(0)
-  const [slide2, setSlide2] = useState(1)
-  const [slide3, setSlide3] = useState(2)
-
+  const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
+  const id = useId()
   const lastBook = bookList.length - 1
+  const slidesToShow = Object.values(slide)
 
   let direction = 0
 
@@ -35,21 +31,19 @@ export const CarouselThreeSlidesBanner = ({ bookList }: { bookList: BooksProps[]
 
   const handleNext = () => {
     setPrev(count)
-    count === lastBook ? setCount(0) : setCount(count + 1)
-    slide3 === lastBook ? setSlide3(0) : setSlide3(slide3 + 1)
-    slide2 === lastBook ? setSlide2(0) : setSlide2(slide2 + 1)
-    slide1 === lastBook ? setSlide1(0) : setSlide1(slide1 + 1)
+    setCount((prev) => (prev === lastBook ? 0 : prev + 1))
+    setSlide((prev) => ({ ...prev, third: prev.third === lastBook ? 0 : prev.third + 1 }))
+    setSlide((prev) => ({ ...prev, second: prev.second === lastBook ? 0 : prev.second + 1 }))
+    setSlide((prev) => ({ ...prev, first: prev.first === lastBook ? 0 : prev.first + 1 }))
   }
 
   const handlePrev = () => {
     setPrev(count)
-    count === 0 ? setCount(lastBook) : setCount(count - 1)
-    slide1 === 0 ? setSlide1(lastBook) : setSlide1(slide1 - 1)
-    slide2 === 0 ? setSlide2(lastBook) : setSlide2(slide2 - 1)
-    slide3 === 0 ? setSlide3(lastBook) : setSlide3(slide3 - 1)
+    setCount((prev) => (prev === 0 ? lastBook : prev - 1))
+    setSlide((prev) => ({ ...prev, first: prev.first === 0 ? lastBook : prev.first - 1 }))
+    setSlide((prev) => ({ ...prev, second: prev.second === 0 ? lastBook : prev.second - 1 }))
+    setSlide((prev) => ({ ...prev, third: prev.third === 0 ? lastBook : prev.third - 1 }))
   }
-
-  const slidesToShow = [slide1, slide2, slide3]
 
   return (
     <>
