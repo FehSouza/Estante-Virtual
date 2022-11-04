@@ -2,7 +2,7 @@ import { useScrollToTop } from '../../../hooks'
 import * as S from './styles'
 
 export const OurStores = ({ namePage }: { namePage: string }) => {
-  useScrollToTop(false, '#content')
+  useScrollToTop(false, 'html')
 
   return <S.OurStores>{namePage}</S.OurStores>
 }

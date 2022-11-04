@@ -1,10 +1,10 @@
-import { GiBookshelf } from 'react-icons/gi'
+import { GiSpellBook } from 'react-icons/gi'
 import * as S from './style'
 
 export const Logo = () => {
   return (
     <S.Logo to="/">
-      <GiBookshelf />
+      <GiSpellBook size={40}/>
       <S.Name>Estante Virtual</S.Name>
     </S.Logo>
   )

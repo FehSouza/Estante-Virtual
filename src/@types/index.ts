@@ -23,3 +23,9 @@ export interface BooksProps {
   volumeInfo: VolumeInfo
   saleInfo: SaleInfo
 }
+
+export interface AuthorsProps {
+  name: string
+  image: string
+  description: string
+}

@@ -1,8 +1,9 @@
 import useSWR from 'swr'
-import imageMainBanner from '../../assets/images/young-girl-student.png'
 import imageBanner from '../../assets/images/young-girl-student-2.png'
+import imageMainBanner from '../../assets/images/young-girl-student.png'
 import { BannerHomeCarousel1, BannerHomeCarousel2, CarouselSixSlides, CarouselThreeSlides } from '../../components'
-import { MOCK_OUR_SUGGESTIONS } from '../../mock'
+import { useScrollToTop } from '../../hooks'
+import { MOCK_AUTHORS, MOCK_OUR_SUGGESTIONS } from '../../mock'
 import {
   getBestSellers,
   getBestSellersAction,
@@ -23,7 +24,7 @@ export const Home = () => {
   const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
   const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
 
-  // useScrollToTop(false, '#content')
+  useScrollToTop(false, 'html')
 
   return (
     <S.Container>
@@ -102,6 +103,22 @@ export const Home = () => {
         <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
         {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}
       </S.ShelfModel1>
+
+      <S.ShelfModel2>
+        <S.ShelfTitle>Autores populares</S.ShelfTitle>
+        <S.ShelfAuthors>
+          {MOCK_AUTHORS.map((author) => (
+            <S.AuthorWrapper key={author.name}>
+              <S.AuthorImageWrapper>
+                <S.AuthorImage src={author.image} alt={`Foto de ${author.name}`} />
+              </S.AuthorImageWrapper>
+              <S.AuthorName>{author.name}</S.AuthorName>
+              <S.AuthorDescription>{author.description}</S.AuthorDescription>
+              <S.ReadMoreButton>Leia mais</S.ReadMoreButton>
+            </S.AuthorWrapper>
+          ))}
+        </S.ShelfAuthors>
+      </S.ShelfModel2>
     </S.Container>
   )
 }

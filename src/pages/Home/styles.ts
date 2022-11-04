@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
@@ -281,4 +280,76 @@ export const Citation = styled.span`
   @media (max-width: 1250px) {
     font-size: 16px;
   }
+`
+
+export const ShelfAuthors = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+`
+
+export const AuthorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transition-duration: 350ms;
+  box-shadow: 12px 12px 24px #00000026;
+  background-color: ${({ theme }) => theme.colors.white};
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+
+    & button {
+      color: ${({ theme }) => theme.colors.text};
+    }
+  }
+`
+
+export const AuthorImageWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const AuthorImage = styled.img`
+  margin-top: 62px;
+  width: 100%;
+`
+
+export const AuthorName = styled.span`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+`
+
+export const AuthorDescription = styled.span`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 14px;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+`
+export const ReadMoreButton = styled.button`
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  transition-duration: 350ms;
 `

@@ -5,9 +5,9 @@ import * as S from './styles'
 
 export const Container = () => {
   return (
-    <S.Container>
+    <S.Container id="content">
       <Header />
-      <S.Content id="content">
+      <S.Content >
         <Outlet />
         <Footer />
       </S.Content>
