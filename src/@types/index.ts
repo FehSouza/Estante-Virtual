@@ -7,6 +7,8 @@ export interface VolumeInfo {
   title: string
   authors: string[]
   description?: string
+  pageCount: number
+  averageRating?: number
 }
 
 export interface ListPrice {

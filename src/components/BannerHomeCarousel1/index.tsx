@@ -11,7 +11,13 @@ const variants = {
   exit: (direction: number) => ({ x: -220 * direction, opacity: 0, scale: 0.5, y: 0 }),
 }
 
-export const BannerHomeCarousel1 = ({ bookList }: { bookList: BooksProps[] }) => {
+export const BannerHomeCarousel1 = ({
+  bookList,
+  selectBook,
+}: {
+  bookList: BooksProps[]
+  selectBook: (id: string) => void
+}) => {
   const [count, setCount] = useState(0)
   const [prev, setPrev] = useState(count)
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
@@ -72,7 +78,7 @@ export const BannerHomeCarousel1 = ({ bookList }: { bookList: BooksProps[] }) =>
                   variants={variants}
                   custom={direction}
                 >
-                  <S.BookWrapper>
+                  <S.BookWrapper onClick={() => selectBook(bookList[slide].id)}>
                     <S.ImagePriceWrapper>
                       <S.BookImage
                         alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}

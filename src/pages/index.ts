@@ -12,3 +12,6 @@ export * from './Institutional/PaymentPolicy/index'
 export * from './MyAccount/index'
 export * from './MyAccount/MyData/index'
 export * from './MyAccount/MyRequests/index'
+
+export * from './Product/index'
+export * from './ProductDetails/index'

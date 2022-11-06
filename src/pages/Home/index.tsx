@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from 'react-router-dom'
 import useSWR from 'swr'
 import imageBanner from '../../assets/images/young-girl-student-2.png'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
@@ -26,6 +27,11 @@ export const Home = () => {
 
   useScrollToTop(false, 'html')
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+
   return (
     <S.Container>
       <S.MainBanner>
@@ -45,7 +51,7 @@ export const Home = () => {
 
         <S.BannerShelf1>
           <S.ShelfTitleBanner>Os livros mais populares</S.ShelfTitleBanner>
-          {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} />}
+          {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} selectBook={handleSelectBook} />}
         </S.BannerShelf1>
 
         <S.BannerShelf2>{!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} />}</S.BannerShelf2>

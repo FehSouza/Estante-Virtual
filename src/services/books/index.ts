@@ -60,15 +60,25 @@ export const getBestSellersHorror = async () => {
 export const getBestSellersPoetry = async () => {
   if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
 
-  const response = api.get<{ items: BooksProps[] }>('?q=best-sellers-poesia&orderBy=relevance&printType=books')
-  const result = filterBooksWithoutPricesOrImages((await response).data.items)
+  const response = await api.get<{ items: BooksProps[] }>('?q=best-sellers-poesia&orderBy=relevance&printType=books')
+  const result = filterBooksWithoutPricesOrImages(response.data.items)
   return result
 }
 
 export const getBestSellersSelfHelp = async () => {
   if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
 
-  const response = api.get<{ items: BooksProps[] }>('?q=best-sellers-auto-ajuda&orderBy=relevance&printType=books')
-  const result = filterBooksWithoutPricesOrImages((await response).data.items)
+  const response = await api.get<{ items: BooksProps[] }>(
+    '?q=best-sellers-auto-ajuda&orderBy=relevance&printType=books'
+  )
+  const result = filterBooksWithoutPricesOrImages(response.data.items)
+  return result
+}
+
+export const getBook = async (id: string) => {
+  if (ENABLE_MOCK) return MOCK_BOOKS.find((book) => book.id === id)
+
+  const response = await api.get<BooksProps>(`/${id}`)
+  const result = response.data
   return result
 }
