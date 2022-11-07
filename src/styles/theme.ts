@@ -11,6 +11,7 @@ const baseTheme = {
     grey: '#d2d1d3',
     modalDetails: '#151e29',
     modalDetailsShadow: '#0000005A',
+    modalDetailsText: '#929096',
   },
 } as const
 

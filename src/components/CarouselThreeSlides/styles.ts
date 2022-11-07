@@ -23,6 +23,10 @@ export const BookWrapper = styled.li<{ color?: string }>`
   transition-duration: 350ms;
   box-shadow: 12px 12px 24px #00000026;
   background-color: ${({ color, theme }) => `${color ?? theme.colors.white}`};
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const ImageWrapper = styled.div`

@@ -5,7 +5,13 @@ import { BooksProps } from '../../@types'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
-export const CarouselSixSlides = ({ bookList }: { bookList: BooksProps[] }) => {
+export const CarouselSixSlides = ({
+  bookList,
+  selectBook,
+}: {
+  bookList: BooksProps[]
+  selectBook: (id: string) => void
+}) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3, fifth: 4, sixth: 5 })
   const id = useId()
   const lastBook = bookList.length - 1
@@ -46,7 +52,7 @@ export const CarouselSixSlides = ({ bookList }: { bookList: BooksProps[] }) => {
                 opacity: { duration: 0.3 },
               }}
             >
-              <S.BookWrapper>
+              <S.BookWrapper onClick={() => selectBook(bookList[slide].id)}>
                 <S.ImagePriceWrapper>
                   <S.BookImage
                     alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}

@@ -1,8 +1,8 @@
 import { lighten } from 'polished'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,8 @@ export const Modal = styled.div`
   width: 585px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.modalDetails};
-  padding: 36px;
+  padding: 32px 74px;
+  padding-right: 84px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -28,13 +29,13 @@ export const Modal = styled.div`
 
 export const ButtonClose = styled.button`
   position: absolute;
-  top: 36px;
-  left: 36px;
-  width: 56px;
-  height: 56px;
+  top: 32px;
+  left: 32px;
+  width: 40px;
+  height: 40px;
   background-image: ${({ theme }) =>
     `linear-gradient(155deg, ${theme.colors.modalDetails}4D, ${theme.colors.white}4D)`};
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.white}4D;
   display: flex;
   align-items: center;
@@ -50,44 +51,295 @@ export const ButtonClose = styled.button`
   }
 `
 
-export const TitleModal = styled.h1``
+export const TitleModal = styled.h1`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+`
 
-export const BookImage = styled.img``
+export const BookImage = styled.img`
+  margin-top: 32px;
+  width: auto;
+  height: 224px;
+  border-radius: 16px;
+`
 
-export const BookName = styled.h2``
+export const BookName = styled.h2`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 16px;
+`
 
-export const BookAuthor = styled.span``
+export const BookAuthor = styled.span`
+  color: ${({ theme }) => theme.colors.modalDetailsText};
+  line-height: 20px;
+  margin-top: 12px;
+`
 
-export const PriceBook = styled.span``
+export const InfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 32px;
+`
 
-export const InfoWrapper = styled.div``
+export const PriceWrapper = styled.div<{ width: string }>`
+  width: ${({ width }) => width};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
-export const PageWrapper = styled.div``
+export const PriceBook = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+  line-height: 20px;
+`
 
-export const PageBook = styled.span``
+export const PriceTitle = styled.span`
+  color: ${({ theme }) => theme.colors.modalDetailsText};
+  line-height: 20px;
+  margin-top: 8px;
+`
 
-export const PageTitle = styled.span``
+export const PageWrapper = styled.div<{ width: string }>`
+  width: ${({ width }) => width};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 48px;
 
-export const RatingWrapper = styled.div``
+  &::before {
+    content: '';
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: ${({ theme }) =>
+      `linear-gradient(to top, ${theme.colors.modalDetails}, ${theme.colors.modalDetailsText}, ${theme.colors.modalDetails})`};
+  }
+`
+export const PageBook = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+  line-height: 20px;
+`
 
-export const RatingBook = styled.span``
+export const PageTitle = styled.span`
+  color: ${({ theme }) => theme.colors.modalDetailsText};
+  line-height: 20px;
+  margin-top: 8px;
+`
 
-export const RatingTitle = styled.span``
+export const RatingWrapper = styled.div<{ width: string }>`
+  width: ${({ width }) => width};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 48px;
 
-export const DescriptionWrapper = styled.div``
+  &::before {
+    content: '';
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: ${({ theme }) =>
+      `linear-gradient(to top, ${theme.colors.modalDetails}, ${theme.colors.modalDetailsText}, ${theme.colors.modalDetails})`};
+  }
+`
 
-export const DescriptionTitle = styled.span``
+export const RatingBook = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+  line-height: 20px;
+`
 
-export const Description = styled.p``
+export const RatingTitle = styled.span`
+  color: ${({ theme }) => theme.colors.modalDetailsText};
+  line-height: 20px;
+  margin-top: 8px;
+`
 
-export const ButtonSeeMore = styled.button``
+export const DescriptionWrapper = styled.div`
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`
 
-export const ButtonSeeDetails = styled.button``
+export const DescriptionTitle = styled.span`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+`
 
-export const ButtonsWrapper = styled.div``
+export const Description = styled.p<{ showDescription: boolean }>`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 16px;
+  padding-right: ${({ showDescription }) => (showDescription ? '10px' : '0')};
+  height: ${({ showDescription }) => (showDescription ? '100px' : '60px')};
+  overflow-y: ${({ showDescription }) => (showDescription ? 'auto' : 'hidden')};
 
-export const ButtonAddFavorites = styled.button``
+  & b {
+    font-weight: 400;
+  }
 
-export const ButtonAddBag = styled.button``
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
 
-export const ButtonAddWishlist = styled.button``
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: ${({ theme }) => theme.colors.modalDetails};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background-color: ${({ theme }) => lighten(0.1, theme.colors.textLight)};
+    border: none;
+  }
+`
+
+export const DescriptionOverlay = styled.div<{ showDescription: boolean }>`
+  display: ${({ showDescription }) => (showDescription ? 'none' : 'block')};
+  position: absolute;
+  top: 38px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: ${({ theme }) => `linear-gradient(to bottom, transparent, ${theme.colors.modalDetails})`};
+`
+
+export const ButtonSeeMore = styled.button<{ showDescription: boolean }>`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 auto;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 350ms;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  & svg {
+    margin-left: 10px;
+    transform: ${({ showDescription }) => (showDescription ? 'rotate(90deg)' : 'rotate(270deg)')};
+
+    & polyline {
+      stroke: ${({ theme }) => theme.colors.white};
+    }
+  }
+`
+
+export const ButtonSeeDetails = styled.button`
+  min-height: 60px;
+  width: 100%;
+  border-radius: 16px;
+  margin-top: auto;
+  background-image: ${({ theme }) => `linear-gradient(45deg, ${theme.colors.white}4D, ${theme.colors.modalDetails}4D)`};
+  border: 1px solid ${({ theme }) => theme.colors.white}4D;
+  color: ${({ theme }) => theme.colors.white};
+  transition-duration: 350ms;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  margin-top: 16px;
+`
+
+export const ButtonAddFavorites = styled.button`
+  height: 60px;
+  width: calc((100% - 16px) / 2);
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.modalDetails};
+  transition-duration: 350ms;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  & svg {
+    color: ${({ theme }) => theme.colors.modalDetails};
+  }
+`
+
+export const ButtonAddBag = styled.button`
+  height: 60px;
+  width: calc((100% - 16px) / 2);
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.modalDetails};
+  transition-duration: 350ms;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  & svg {
+    color: ${({ theme }) => theme.colors.modalDetails};
+  }
+`
+
+export const ButtonAddWishlist = styled.button`
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 500;
+  line-height: 20px;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 20px;
+  text-decoration: underline;
+  position: relative;
+  transition-duration: 350ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: ${({ theme }) =>
+      `linear-gradient(to left, ${theme.colors.modalDetails}, ${theme.colors.modalDetailsText}, ${theme.colors.modalDetails})`};
+  }
+`

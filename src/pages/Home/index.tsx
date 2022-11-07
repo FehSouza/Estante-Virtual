@@ -30,7 +30,9 @@ export const Home = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  const handleSelectBook = (id: string) => {
+    navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  }
 
   return (
     <S.Container>
@@ -54,12 +56,14 @@ export const Home = () => {
           {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} selectBook={handleSelectBook} />}
         </S.BannerShelf1>
 
-        <S.BannerShelf2>{!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} />}</S.BannerShelf2>
+        <S.BannerShelf2>
+          {!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} selectBook={handleSelectBook} />}
+        </S.BannerShelf2>
       </S.MainBanner>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Nossas sugestões</S.ShelfTitle>
-        <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} />
+        <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} selectBook={handleSelectBook} />
       </S.ShelfModel1>
 
       <S.ShelfModel2>
@@ -67,7 +71,9 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Ação</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
+        {!!booksBestSellersAction && (
+          <CarouselSixSlides bookList={booksBestSellersAction} selectBook={handleSelectBook} />
+        )}
       </S.ShelfModel2>
 
       <S.ShelfModel2>
@@ -75,12 +81,16 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Romance Policial</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
+        {!!booksBestSellersPoliceRomance && (
+          <CarouselSixSlides bookList={booksBestSellersPoliceRomance} selectBook={handleSelectBook} />
+        )}
       </S.ShelfModel2>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Os Populares de Terror</S.ShelfTitle>
-        {!!booksBestSellersHorror && <CarouselThreeSlides bookList={booksBestSellersHorror} />}
+        {!!booksBestSellersHorror && (
+          <CarouselThreeSlides bookList={booksBestSellersHorror} selectBook={handleSelectBook} />
+        )}
       </S.ShelfModel1>
 
       <S.Banner2>
@@ -102,12 +112,16 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Poesia</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersPoetry && <CarouselSixSlides bookList={booksBestSellersPoetry} />}
+        {!!booksBestSellersPoetry && (
+          <CarouselSixSlides bookList={booksBestSellersPoetry} selectBook={handleSelectBook} />
+        )}
       </S.ShelfModel2>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
-        {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}
+        {!!booksBestSellersSelfHelp && (
+          <CarouselThreeSlides bookList={booksBestSellersSelfHelp} selectBook={handleSelectBook} />
+        )}
       </S.ShelfModel1>
 
       <S.ShelfModel2>

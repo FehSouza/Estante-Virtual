@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import styled, { css } from 'styled-components'
+
+export const Card = styled(motion.div)<{ selected?: boolean }>`
+  ${(props) =>
+    props.selected &&
+    css`
+      border: 1px solid red;
+    `}
+`
 
 export const BookWrapper = styled.li`
   height: 100%;
