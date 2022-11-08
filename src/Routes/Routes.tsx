@@ -26,8 +26,6 @@ export const AppRoutes = () => {
   const location = useLocation()
   const state = location.state as LocationState
 
-  console.log(location, state)
-
   return (
     <>
       <AnimatePresence>

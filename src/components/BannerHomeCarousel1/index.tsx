@@ -6,49 +6,42 @@ import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
 const variants = {
-  enter: (direction: number) => ({ x: 220 * direction, opacity: 0, scale: 0.5, y: 0 }),
-  center: { x: 0, opacity: 1, scale: 1, y: 0 },
+  initial: (direction: number) => ({ x: 220 * direction, opacity: 0, scale: 0.5, y: 0 }),
+  animate: { x: 0, opacity: 1, scale: 1, y: 0 },
   exit: (direction: number) => ({ x: -220 * direction, opacity: 0, scale: 0.5, y: 0 }),
-}
+} as const
 
-export const BannerHomeCarousel1 = ({
-  bookList,
-  selectBook,
-}: {
+const transition = { x: { type: 'just', duration: 0.35 } } as const
+
+interface BannerHomeCarousel1Props {
   bookList: BooksProps[]
   selectBook: (id: string) => void
-}) => {
-  const [count, setCount] = useState(0)
-  const [prev, setPrev] = useState(count)
+}
+
+export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel1Props) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
+  const [direction, setDirection] = useState(1)
   const id = useId()
+
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
 
-  let direction = 0
-
-  if (prev === lastBook && count === 0) {
-    direction = 1
-  } else if ((prev === 0 && count === lastBook) || count < prev) {
-    direction = -1
-  } else {
-    direction = 1
-  }
-
   const handleNext = () => {
-    setPrev(count)
-    setCount((prev) => (prev === lastBook ? 0 : prev + 1))
-    setSlide((prev) => ({ ...prev, third: prev.third === lastBook ? 0 : prev.third + 1 }))
-    setSlide((prev) => ({ ...prev, second: prev.second === lastBook ? 0 : prev.second + 1 }))
-    setSlide((prev) => ({ ...prev, first: prev.first === lastBook ? 0 : prev.first + 1 }))
+    setDirection(1)
+    setSlide((prev) => ({
+      first: prev.first === lastBook ? 0 : prev.first + 1,
+      second: prev.second === lastBook ? 0 : prev.second + 1,
+      third: prev.third === lastBook ? 0 : prev.third + 1,
+    }))
   }
 
   const handlePrev = () => {
-    setPrev(count)
-    setCount((prev) => (prev === 0 ? lastBook : prev - 1))
-    setSlide((prev) => ({ ...prev, first: prev.first === 0 ? lastBook : prev.first - 1 }))
-    setSlide((prev) => ({ ...prev, second: prev.second === 0 ? lastBook : prev.second - 1 }))
-    setSlide((prev) => ({ ...prev, third: prev.third === 0 ? lastBook : prev.third - 1 }))
+    setDirection(-1)
+    setSlide((prev) => ({
+      first: prev.first === 0 ? lastBook : prev.first - 1,
+      second: prev.second === 0 ? lastBook : prev.second - 1,
+      third: prev.third === 0 ? lastBook : prev.third - 1,
+    }))
   }
 
   return (
@@ -63,31 +56,32 @@ export const BannerHomeCarousel1 = ({
         <AnimatePresence custom={direction} mode="popLayout" key={id}>
           {bookList.length &&
             slidesToShow.map((slide) => {
+              const book = bookList[slide]
+              const bookId = book.id
+              const bookName = book.volumeInfo.title
+              const bookImage = book.volumeInfo.imageLinks?.thumbnail
+              const bookAuthor = book.volumeInfo.authors.join(' e ')
+              const bookPrice = formatCurrency(book.saleInfo.listPrice?.amount || 0)
+
               return (
                 <motion.div
+                  key={`${id}-${bookId}`}
                   layout
-                  key={`${id}-${bookList[slide].id}`}
-                  layoutId={`${id}-${bookList[slide].id}`}
-                  initial="enter"
-                  animate="center"
+                  layoutId={`${id}-${bookId}`}
+                  initial="initial"
+                  animate="animate"
                   exit="exit"
-                  transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.3 },
-                  }}
                   variants={variants}
+                  transition={transition}
                   custom={direction}
                 >
-                  <S.BookWrapper onClick={() => selectBook(bookList[slide].id)}>
+                  <S.BookWrapper onClick={() => selectBook(bookId)}>
                     <S.ImagePriceWrapper>
-                      <S.BookImage
-                        alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}
-                        src={bookList[slide].volumeInfo.imageLinks?.thumbnail}
-                      />
-                      <S.BookPrice>{formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)}</S.BookPrice>
+                      <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
+                      <S.BookPrice>{bookPrice}</S.BookPrice>
                     </S.ImagePriceWrapper>
-                    <S.BookName>{bookList[slide].volumeInfo.title}</S.BookName>
-                    <S.BookAuthor>{bookList[slide].volumeInfo.authors.join(' e ')}</S.BookAuthor>
+                    <S.BookName>{bookName}</S.BookName>
+                    <S.BookAuthor>{bookAuthor}</S.BookAuthor>
                   </S.BookWrapper>
                 </motion.div>
               )

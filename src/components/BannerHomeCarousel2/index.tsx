@@ -10,23 +10,20 @@ const variants = {
   initial: { x: 24, opacity: 0, scale: 0.5, y: 0 },
   animate: { x: 0, opacity: 1, scale: 1, y: 0 },
   exit: { x: -24, opacity: 0, scale: 0.5, y: 0 },
-}
-
-const transition = {
-  x: { type: 'spring', stiffness: 300, damping: 30 },
-  opacity: { duration: 0.3 },
 } as const
 
-export const BannerHomeCarousel2 = ({
-  bookList,
-  selectBook,
-}: {
+const transition = { x: { type: 'just', duration: 0.35 } } as const
+
+interface BannerHomeCarousel2Props {
   bookList: BooksProps[]
   selectBook: (id: string) => void
-}) => {
-  const idBook = useSelectedBookSelect()
+}
+
+export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel2Props) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3 })
+  const idBook = useSelectedBookSelect()
   const id = useId()
+
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
 
@@ -38,30 +35,32 @@ export const BannerHomeCarousel2 = ({
       fourth: prev.fourth === lastBook ? 0 : prev.fourth + 1,
     }))
   }
+
   return (
     <>
       <AnimatePresence mode="popLayout" key={id}>
         {bookList.length &&
           slidesToShow.map((slide) => {
-            const slideId = bookList[slide].id
+            const bookId = bookList[slide].id
+            const bookName = bookList[slide].volumeInfo.title
+            const bookImage = bookList[slide].volumeInfo.imageLinks?.thumbnail
+            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)
+
             return (
               <S.Card
+                key={`${id}-${bookId}`}
                 layout
-                key={`${id}-${slideId}`}
-                layoutId={`${id}-${slideId}`}
-                variants={variants}
+                layoutId={`${id}-${bookId}`}
                 initial="initial"
                 animate="animate"
                 exit="exit"
+                variants={variants}
                 transition={transition}
-                selected={slideId === idBook}
+                selected={bookId === idBook}
               >
-                <S.BookWrapper onClick={() => selectBook(slideId)}>
-                  <S.BookImage
-                    alt={`Imagem da capa do livro "${bookList[slide].volumeInfo.title}"`}
-                    src={bookList[slide].volumeInfo.imageLinks?.thumbnail}
-                  />
-                  <S.BookPrice>{formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)}</S.BookPrice>
+                <S.BookWrapper onClick={() => selectBook(bookId)}>
+                  <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
+                  <S.BookPrice>{bookPrice}</S.BookPrice>
                 </S.BookWrapper>
               </S.Card>
             )

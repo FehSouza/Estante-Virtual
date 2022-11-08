@@ -1,9 +1,23 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, Point } from 'framer-motion'
 import { useState } from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import * as S from './styles'
 
-interface CarouselProps {
+const variants = {
+  initial: { x: 150, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -150, opacity: 0 },
+} as const
+
+const transition = { x: { type: 'just', duration: 0.35 } } as const
+
+const dragConstraints = { left: 0, right: 0 }
+
+const paramDragCarousel = 0
+
+const swipeCarousel = (offset: number, velocity: number) => Math.abs(offset) * velocity
+
+interface CarouselBenefitsBarProps {
   listOfCarousel: {
     id: number
     icon: JSX.Element
@@ -11,26 +25,23 @@ interface CarouselProps {
   }[]
 }
 
-export const CarouselBenefitsBar = ({ listOfCarousel }: CarouselProps) => {
-  const [carouselPosition, setCarouselPosition] = useState(0)
-  const [initialCarousel, setInitialCarousel] = useState({ x: 150, opacity: 0 })
-  const [exitCarousel, setExitCarousel] = useState({ x: -150, opacity: 0 })
+export const CarouselBenefitsBar = ({ listOfCarousel }: CarouselBenefitsBarProps) => {
+  const [slide, setSlide] = useState(0)
 
-  const handleNextCarousel = () => {
-    carouselPosition === listOfCarousel.length - 1 ? setCarouselPosition(0) : setCarouselPosition(carouselPosition + 1)
-    setInitialCarousel({ x: 150, opacity: 0 })
-    setExitCarousel({ x: -150, opacity: 0 })
+  const lastSlide = listOfCarousel.length - 1
+  const benefit = listOfCarousel[slide]
+  const benefitId = benefit.id
+  const benefitIcon = benefit.icon
+  const benefitText = benefit.text
+
+  const handleNextCarousel = () => setSlide((prev) => (prev === lastSlide ? 0 : prev + 1))
+
+  const handlePrevCarousel = () => setSlide((prev) => (prev === 0 ? lastSlide : prev - 1))
+
+  const handleOnDragEnd = (e: any, { offset, velocity }: { offset: Point; velocity: Point }) => {
+    const swipe = swipeCarousel(offset.x, velocity.x)
+    swipe < -paramDragCarousel ? handleNextCarousel() : handlePrevCarousel()
   }
-
-  const handlePrevCarousel = () => {
-    carouselPosition === 0 ? setCarouselPosition(listOfCarousel.length - 1) : setCarouselPosition(carouselPosition - 1)
-    setInitialCarousel({ x: -150, opacity: 0 })
-    setExitCarousel({ x: 150, opacity: 0 })
-  }
-
-  const paramDragCarousel = 0
-
-  const swipeCarousel = (offset: number, velocity: number) => Math.abs(offset) * velocity
 
   return (
     <>
@@ -38,27 +49,22 @@ export const CarouselBenefitsBar = ({ listOfCarousel }: CarouselProps) => {
         <GrFormPrevious />
       </S.ButtonPrevCarousel>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" key={benefitId}>
         <motion.div
-          key={listOfCarousel[carouselPosition].id}
-          initial={initialCarousel}
-          animate={{ x: 0, opacity: 1 }}
-          exit={exitCarousel}
-          transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
-            opacity: { duration: 0.15 },
-          }}
+          key={benefitId}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={variants}
+          transition={transition}
           drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
+          dragConstraints={dragConstraints}
           dragElastic={1}
-          onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipeCarousel(offset.x, velocity.x)
-            swipe < -paramDragCarousel ? handleNextCarousel() : handlePrevCarousel()
-          }}
+          onDragEnd={handleOnDragEnd}
         >
           <S.Wrapper>
-            {listOfCarousel[carouselPosition].icon}
-            <S.Text>{listOfCarousel[carouselPosition].text}</S.Text>
+            {benefitIcon}
+            <S.Text>{benefitText}</S.Text>
           </S.Wrapper>
         </motion.div>
       </AnimatePresence>
