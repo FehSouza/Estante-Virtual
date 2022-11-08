@@ -1,6 +1,6 @@
-import { BooksProps } from '../../@types'
+import { BooksProps, BooksResponseProps } from '../../@types'
 
-export const MOCK_BOOKS: BooksProps[] = [
+export const MOCK_BOOKS: BooksResponseProps[] = [
   {
     id: '1',
     volumeInfo: {

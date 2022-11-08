@@ -59,9 +59,9 @@ export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel
               const book = bookList[slide]
               const bookId = book.id
               const bookName = book.volumeInfo.title
-              const bookImage = book.volumeInfo.imageLinks?.thumbnail
+              const bookImage = book.volumeInfo.imageLinks.thumbnail
               const bookAuthor = book.volumeInfo.authors.join(' e ')
-              const bookPrice = formatCurrency(book.saleInfo.listPrice?.amount || 0)
+              const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
 
               return (
                 <motion.div

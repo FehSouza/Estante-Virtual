@@ -43,8 +43,8 @@ export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel
           slidesToShow.map((slide) => {
             const bookId = bookList[slide].id
             const bookName = bookList[slide].volumeInfo.title
-            const bookImage = bookList[slide].volumeInfo.imageLinks?.thumbnail
-            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)
+            const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
+            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
 
             return (
               <S.Card

@@ -52,9 +52,9 @@ export const CarouselSixSlides = ({ bookList, selectBook }: CarouselSixSlidesPro
           {slidesToShow.map((slide) => {
             const bookId = bookList[slide].id
             const bookName = bookList[slide].volumeInfo.title
-            const bookImage = bookList[slide].volumeInfo.imageLinks?.thumbnail
+            const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
             const bookAuthor = bookList[slide].volumeInfo.authors.join(' e ')
-            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice?.amount || 0)
+            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
 
             return (
               <motion.div
