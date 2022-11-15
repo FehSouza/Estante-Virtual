@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
+import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
@@ -22,6 +23,7 @@ export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
   const [direction, setDirection] = useState(1)
   const id = useId()
+  const idBookSelected = useSelectedBookSelect()
 
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
@@ -64,7 +66,7 @@ export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel
               const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
 
               return (
-                <motion.div
+                <S.Card
                   key={`${id}-${bookId}`}
                   layout
                   layoutId={`${id}-${bookId}`}
@@ -74,6 +76,7 @@ export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel
                   variants={variants}
                   transition={transition}
                   custom={direction}
+                  selected={bookId === idBookSelected}
                 >
                   <S.BookWrapper onClick={() => selectBook(bookId)}>
                     <S.ImagePriceWrapper>
@@ -83,7 +86,7 @@ export const BannerHomeCarousel1 = ({ bookList, selectBook }: BannerHomeCarousel
                     <S.BookName>{bookName}</S.BookName>
                     <S.BookAuthor>{bookAuthor}</S.BookAuthor>
                   </S.BookWrapper>
-                </motion.div>
+                </S.Card>
               )
             })}
         </AnimatePresence>

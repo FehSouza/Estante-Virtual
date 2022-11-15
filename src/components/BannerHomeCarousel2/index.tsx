@@ -21,7 +21,7 @@ interface BannerHomeCarousel2Props {
 
 export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel2Props) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3 })
-  const idBook = useSelectedBookSelect()
+  const idBookSelected = useSelectedBookSelect()
   const id = useId()
 
   const lastBook = bookList.length - 1
@@ -56,7 +56,7 @@ export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel
                 exit="exit"
                 variants={variants}
                 transition={transition}
-                selected={bookId === idBook}
+                selected={bookId === idBookSelected}
               >
                 <S.BookWrapper onClick={() => selectBook(bookId)}>
                   <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />

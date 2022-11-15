@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
@@ -10,6 +11,11 @@ export const ShelfWrapper = styled.div`
     min-width: 40%;
     height: fit-content;
   }
+`
+
+export const Card = styled(motion.div)<{ selected?: boolean }>`
+  border: 2px solid ${({ selected, theme }) => (selected ? theme.colors.primary : 'transparent')};
+  border-radius: 20px;
 `
 
 export const BookWrapper = styled.li<{ color?: string }>`
@@ -46,8 +52,8 @@ export const BookImage = styled.img`
 export const InfosWrapper = styled.div`
   min-height: 256px;
   max-height: 256px;
-  max-width: calc(100% - 30% - 24px);
-  min-width: calc(100% - 30% - 24px);
+  max-width: calc(100% - 30% - 32px);
+  min-width: calc(100% - 30% - 32px);
   display: flex;
   flex-direction: column;
   position: relative;

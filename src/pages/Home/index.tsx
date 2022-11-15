@@ -3,7 +3,6 @@ import useSWR from 'swr'
 import imageBanner from '../../assets/images/young-girl-student-2.png'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
 import { BannerHomeCarousel1, BannerHomeCarousel2, CarouselSixSlides, CarouselThreeSlides } from '../../components'
-import { useScrollToTop } from '../../hooks'
 import { MOCK_AUTHORS, MOCK_OUR_SUGGESTIONS } from '../../mock'
 import {
   getBestSellers,
@@ -25,7 +24,7 @@ export const Home = () => {
   const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
   const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
 
-  useScrollToTop(false, 'html')
+  // useScrollToTop(false, 'html')
 
   const navigate = useNavigate()
   const location = useLocation()

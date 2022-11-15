@@ -1,8 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
+import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
@@ -23,6 +24,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
   const [direction, setDirection] = useState(1)
   const id = useId()
+  const bookIdSelected = useSelectedBookSelect()
 
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
@@ -66,7 +68,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
               const bookDescription = bookList[slide].volumeInfo.description
 
               return (
-                <motion.div
+                <S.Card
                   key={`${id}-${bookId}`}
                   layout
                   layoutId={`${id}-${bookId}`}
@@ -76,6 +78,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
                   variants={variants}
                   transition={transition}
                   custom={direction}
+                  selected={bookIdSelected === bookId}
                 >
                   <S.BookWrapper onClick={() => selectBook(bookId)} color={bookColor}>
                     <S.ImageWrapper>
@@ -103,7 +106,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
                       </S.MiniCart>
                     </S.InfosWrapper>
                   </S.BookWrapper>
-                </motion.div>
+                </S.Card>
               )
             })}
         </AnimatePresence>

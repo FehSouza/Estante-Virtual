@@ -59,7 +59,7 @@ export const TitleModal = styled.h1`
 `
 
 export const BookImage = styled.img`
-  margin-top: 32px;
+  margin-top: 28px;
   width: auto;
   height: 224px;
   border-radius: 16px;
@@ -84,7 +84,7 @@ export const InfoWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-top: 32px;
+  margin-top: 28px;
 `
 
 export const PriceWrapper = styled.div<{ width: string }>`
@@ -183,16 +183,19 @@ export const DescriptionTitle = styled.span`
   line-height: 22px;
 `
 
-export const Description = styled.p<{ showDescription: boolean }>`
+export const Description = styled(motion.p)<{ showDescription: boolean }>`
   color: ${({ theme }) => theme.colors.white};
   font-size: 14px;
   line-height: 20px;
   margin-top: 16px;
-  padding-right: ${({ showDescription }) => (showDescription ? '10px' : '0')};
-  height: ${({ showDescription }) => (showDescription ? '100px' : '60px')};
+  padding-right: 10px;
+  height: 100px;
   overflow-y: ${({ showDescription }) => (showDescription ? 'auto' : 'hidden')};
-
-  & b {
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ showDescription }) => (showDescription ? 'unset' : '3')};
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  user & b {
     font-weight: 400;
   }
 

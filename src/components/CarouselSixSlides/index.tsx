@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
+import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils/formatCurrency'
 import * as S from './styles'
 
@@ -21,6 +22,7 @@ interface CarouselSixSlidesProps {
 export const CarouselSixSlides = ({ bookList, selectBook }: CarouselSixSlidesProps) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3, fifth: 4, sixth: 5 })
   const id = useId()
+  const bookIdSelected = useSelectedBookSelect()
 
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
@@ -57,7 +59,7 @@ export const CarouselSixSlides = ({ bookList, selectBook }: CarouselSixSlidesPro
             const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
 
             return (
-              <motion.div
+              <S.Card
                 key={`${id}-${bookId}`}
                 layout
                 layoutId={`${id}-${bookId}`}
@@ -66,6 +68,7 @@ export const CarouselSixSlides = ({ bookList, selectBook }: CarouselSixSlidesPro
                 exit="exit"
                 variants={variants}
                 transition={transition}
+                selected={bookIdSelected === bookId}
               >
                 <S.BookWrapper onClick={() => selectBook(bookId)}>
                   <S.ImagePriceWrapper>
@@ -75,7 +78,7 @@ export const CarouselSixSlides = ({ bookList, selectBook }: CarouselSixSlidesPro
                   <S.BookName>{bookName}</S.BookName>
                   <S.BookAuthor>{bookAuthor}</S.BookAuthor>
                 </S.BookWrapper>
-              </motion.div>
+              </S.Card>
             )
           })}
         </AnimatePresence>

@@ -30,7 +30,14 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatchSelectedBook(param.idBook)
-    return resetSelectedBook
+    document.querySelector('html')?.setAttribute('style', `position: fixed; top: -${window.scrollY}px`)
+    const scrollY = document.querySelector('html')!.style.top
+
+    return () => {
+      resetSelectedBook()
+      document.querySelector('html')?.removeAttribute('style')
+      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+    }
   }, [param.idBook])
 
   return (
@@ -71,6 +78,9 @@ export const ProductDetails = () => {
             <S.DescriptionWrapper>
               <S.DescriptionTitle>Descrição</S.DescriptionTitle>
               <S.Description
+                layout
+                variants={{ opened: { height: 118 }, closed: { height: 60 } }}
+                animate={showDescription ? 'opened' : 'closed'}
                 showDescription={showDescription}
                 dangerouslySetInnerHTML={{ __html: bookDetails.volumeInfo.description ?? '' }}
               ></S.Description>

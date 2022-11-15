@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
@@ -11,6 +12,35 @@ export const ShelfWrapper = styled.div`
 
   & > div {
     width: calc((100% - (16px * 5)) / 6);
+  }
+`
+
+export const Card = styled(motion.div)<{ selected?: boolean }>`
+  position: relative;
+  
+  &::before {
+    content: '';
+    width: calc(100% - 24px);
+    height: 3px;
+    position: absolute;
+    bottom: -9px;
+    left: 12px;
+    background-color: ${({ theme, selected }) => (selected ? theme.colors.primary : 'transparent')};
+    transition-duration: 350ms;
+  }
+  
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid ${({ theme, selected }) => (selected ? theme.colors.primary : 'transparent')};
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translate(-50%);
+    transition-duration: 350ms;
   }
 `
 

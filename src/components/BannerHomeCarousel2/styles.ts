@@ -1,12 +1,33 @@
 import { motion } from 'framer-motion'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const Card = styled(motion.div)<{ selected?: boolean }>`
-  ${(props) =>
-    props.selected &&
-    css`
-      border: 1px solid red;
-    `}
+  position: relative;
+
+  &::before {
+    content: '';
+    width: calc(100% - 12px);
+    height: 3px;
+    position: absolute;
+    bottom: -9px;
+    left: 6px;
+    background-color: ${({ theme, selected }) => (selected ? theme.colors.primary : 'transparent')};
+    transition-duration: 350ms;
+  }
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid ${({ theme, selected }) => (selected ? theme.colors.primary : 'transparent')};
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translate(-50%);
+    transition-duration: 350ms;
+  }
 `
 
 export const BookWrapper = styled.li`
