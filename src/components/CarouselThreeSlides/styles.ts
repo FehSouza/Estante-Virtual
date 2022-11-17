@@ -15,7 +15,7 @@ export const ShelfWrapper = styled.div`
 
 export const Card = styled(motion.div)<{ selected?: boolean }>`
   border: 2px solid ${({ selected, theme }) => (selected ? theme.colors.primary : 'transparent')};
-  border-radius: 20px;
+  border-radius: 22px;
 `
 
 export const BookWrapper = styled.li<{ color?: string }>`

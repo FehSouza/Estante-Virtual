@@ -40,6 +40,17 @@ export const ProductDetails = () => {
     }
   }, [param.idBook])
 
+  const handleSeeDetails = (id: string) => navigate(`/product/${id}`)
+
+  const bookId = bookDetails?.id
+  const bookImage = bookDetails?.volumeInfo.imageLinks?.thumbnail
+  const bookName = bookDetails?.volumeInfo.title
+  const bookAuthor = bookDetails?.volumeInfo.authors.join(' e ')
+  const bookPrice = formatCurrency(bookDetails?.saleInfo.listPrice?.amount || 0)
+  const bookPages = bookDetails?.volumeInfo.pageCount
+  const bookAverage = bookDetails?.volumeInfo.averageRating
+  const bookDescription = bookDetails?.volumeInfo.description
+
   return (
     <S.Container onClick={handleClose}>
       {bookDetails && (
@@ -54,22 +65,22 @@ export const ProductDetails = () => {
               <GrFormPrevious size={24} />
             </S.ButtonClose>
             <S.TitleModal>Sobre o livro</S.TitleModal>
-            <S.BookImage src={bookDetails.volumeInfo.imageLinks?.thumbnail} />
-            <S.BookName>{bookDetails.volumeInfo.title}</S.BookName>
-            <S.BookAuthor>{bookDetails.volumeInfo.authors.join(' e ')}</S.BookAuthor>
+            <S.BookImage src={bookImage} />
+            <S.BookName>{bookName}</S.BookName>
+            <S.BookAuthor>{bookAuthor}</S.BookAuthor>
 
             <S.InfoWrapper>
               <S.PriceWrapper width={spaceInfo}>
-                <S.PriceBook>{formatCurrency(bookDetails.saleInfo.listPrice?.amount || 0)}</S.PriceBook>
+                <S.PriceBook>{bookPrice}</S.PriceBook>
                 <S.PriceTitle>Preço</S.PriceTitle>
               </S.PriceWrapper>
               <S.PageWrapper width={spaceInfo}>
-                <S.PageBook>{bookDetails.volumeInfo.pageCount}</S.PageBook>
+                <S.PageBook>{bookPages}</S.PageBook>
                 <S.PageTitle>Páginas</S.PageTitle>
               </S.PageWrapper>
-              {bookDetails.volumeInfo.averageRating && (
+              {bookAverage && (
                 <S.RatingWrapper width={spaceInfo}>
-                  <S.RatingBook>{bookDetails.volumeInfo.averageRating}</S.RatingBook>
+                  <S.RatingBook>{bookAverage}</S.RatingBook>
                   <S.RatingTitle>Avaliações</S.RatingTitle>
                 </S.RatingWrapper>
               )}
@@ -82,18 +93,16 @@ export const ProductDetails = () => {
                 variants={{ opened: { height: 118 }, closed: { height: 60 } }}
                 animate={showDescription ? 'opened' : 'closed'}
                 showDescription={showDescription}
-                dangerouslySetInnerHTML={{ __html: bookDetails.volumeInfo.description ?? '' }}
+                dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
               ></S.Description>
-
               <S.DescriptionOverlay showDescription={showDescription} />
-
               <S.ButtonSeeMore showDescription={showDescription} onClick={handleShowDescription}>
                 {buttonSeeMore}
                 <GrFormPrevious size={20} />
               </S.ButtonSeeMore>
             </S.DescriptionWrapper>
 
-            <S.ButtonSeeDetails>Ver mais detalhes</S.ButtonSeeDetails>
+            <S.ButtonSeeDetails onClick={() => handleSeeDetails(bookId || '')}>Ver mais detalhes</S.ButtonSeeDetails>
 
             <S.ButtonsWrapper>
               <S.ButtonAddFavorites>

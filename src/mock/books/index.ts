@@ -10,6 +10,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Editora Record',
+      publishedDate: '2018-02-05',
       pageCount: 368,
       averageRating: 5,
       description:
@@ -26,6 +28,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     volumeInfo: {
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 368,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -45,6 +49,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 368,
       averageRating: 5,
       description:
@@ -61,6 +67,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 476,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -80,6 +88,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'Extraordinário',
       authors: ['R.J.Palacio'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 476,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -99,6 +109,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 368,
       averageRating: 5,
       description:
@@ -115,6 +127,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     volumeInfo: {
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 368,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -134,6 +148,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 368,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -149,6 +165,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 476,
       averageRating: 5,
       description:
@@ -169,6 +187,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'Extraordinário',
       authors: ['R.J.Palacio'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 476,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -188,6 +208,8 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
       pageCount: 476,
       averageRating: 5,
       description:
@@ -212,6 +234,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e a Pedra Filosofal',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2000-01-01',
       pageCount: 254,
       averageRating: 4.5,
       description:
@@ -233,6 +257,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e a Câmara Secreta',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2000-08-01',
       pageCount: 252,
       averageRating: 5,
       description:
@@ -254,6 +280,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e o Prisioneiro de Azkaban',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2000-12-01',
       pageCount: 318,
       averageRating: 5,
       description:
@@ -275,6 +303,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e o Cálice de Fogo',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2001-06-01',
       pageCount: 535,
       averageRating: 4,
       description:
@@ -296,6 +326,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e a Ordem da Fênix',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2003-11-29',
       pageCount: 703,
       averageRating: 4,
       description:
@@ -317,6 +349,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e o Enigma do Príncipe',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2005-11-26',
       pageCount: 471,
       averageRating: 5,
       description:
@@ -338,6 +372,8 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       },
       title: 'Harry Potter e as Relíquias da Morte',
       authors: ['J.K. Rowling'],
+      publisher: 'Editora Rocco',
+      publishedDate: '2007-11-08',
       pageCount: 551,
       averageRating: 5,
       description:

@@ -29,9 +29,7 @@ export const Home = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const handleSelectBook = (id: string) => {
-    navigate(`/product/${id}`, { state: { backgroundLocation: location } })
-  }
+  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
 
   return (
     <S.Container>
