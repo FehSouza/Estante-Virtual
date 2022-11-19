@@ -1,14 +1,22 @@
+import { useState } from 'react'
 import { GrFormNext } from 'react-icons/gr'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
+import { useScrollToTop } from '../../hooks'
 import { getBook } from '../../services'
-import { formatCurrency } from '../../utils/formatCurrency'
+import { formatCurrency, formatDate } from '../../utils'
 import * as S from './styles'
+
+const variants = { opened: { height: 152 }, closed: { height: 66 } }
+const transition = { x: { type: 'just' }, duration: 0.35 } as const
 
 export const Product = () => {
   const params = useParams()
-
   const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
+
+  useScrollToTop(true, 'html')
+
+  const [showDescription, setShowDescription] = useState(false)
 
   const bookName = bookDetails?.volumeInfo.title
   const bookAuthors = bookDetails?.volumeInfo.authors.join(' e ')
@@ -17,16 +25,13 @@ export const Product = () => {
   const bookAverage = bookDetails?.volumeInfo.averageRating
   const bookPages = bookDetails?.volumeInfo.pageCount
   const bookPublisher = bookDetails?.volumeInfo.publisher
-  const bookPublisherDate = bookDetails?.volumeInfo.publishedDate
+  const bookPublisherDate = formatDate(bookDetails?.volumeInfo.publishedDate || '2022-11-21')
   const bookImagem = bookDetails?.volumeInfo.imageLinks?.thumbnail
 
+  const handleShowDescription = () => setShowDescription((prev) => !prev)
+
   return (
-    <S.Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ x: { type: 'just' }, duration: 0.5 }}
-    >
+    <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transition}>
       <S.ProductInfo>
         <S.ProductLeft>
           <S.BookName>{bookName}</S.BookName>
@@ -34,8 +39,14 @@ export const Product = () => {
           <S.BookPrice>{bookPrice}</S.BookPrice>
 
           <S.DescriptionWrapper>
-            <S.BookDescription>{bookDescription}</S.BookDescription>
-            <S.ButtonSeeMore>
+            <S.BookDescription
+              variants={variants}
+              transition={transition}
+              animate={showDescription ? 'opened' : 'closed'}
+              showDescription={showDescription}
+              dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
+            />
+            <S.ButtonSeeMore showDescription={showDescription} onClick={handleShowDescription}>
               <GrFormNext size={32} />
             </S.ButtonSeeMore>
           </S.DescriptionWrapper>

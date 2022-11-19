@@ -3,7 +3,7 @@ import { useId, useState } from 'react'
 import { GrFormNext } from 'react-icons/gr'
 import { BooksProps } from '../../@types'
 import { useSelectedBookSelect } from '../../states'
-import { formatCurrency } from '../../utils/formatCurrency'
+import { formatCurrency } from '../../utils'
 import * as S from './styles'
 
 const variants = {

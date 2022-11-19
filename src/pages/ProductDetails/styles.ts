@@ -188,14 +188,10 @@ export const Description = styled(motion.p)<{ showDescription: boolean }>`
   font-size: 14px;
   line-height: 20px;
   margin-top: 16px;
-  padding-right: 10px;
-  height: 100px;
+  padding-right: 8px;
   overflow-y: ${({ showDescription }) => (showDescription ? 'auto' : 'hidden')};
-  display: -webkit-box;
-  -webkit-line-clamp: ${({ showDescription }) => (showDescription ? 'unset' : '3')};
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  user & b {
+
+  & b {
     font-weight: 400;
   }
 

@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { getBook } from '../../services'
 import { dispatchSelectedBook, resetSelectedBook } from '../../states'
-import { formatCurrency } from '../../utils/formatCurrency'
+import { formatCurrency } from '../../utils'
 import * as S from './styles'
 
 export const ProductDetails = () => {
@@ -94,7 +94,7 @@ export const ProductDetails = () => {
                 animate={showDescription ? 'opened' : 'closed'}
                 showDescription={showDescription}
                 dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
-              ></S.Description>
+              />
               <S.DescriptionOverlay showDescription={showDescription} />
               <S.ButtonSeeMore showDescription={showDescription} onClick={handleShowDescription}>
                 {buttonSeeMore}
