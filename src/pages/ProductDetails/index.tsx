@@ -9,6 +9,8 @@ import { dispatchSelectedBook, resetSelectedBook } from '../../states'
 import { formatCurrency } from '../../utils'
 import * as S from './styles'
 
+const variants = { opened: { height: 118, overflow: 'auto' }, closed: { height: 60, overflow: 'hidden' } } as const
+
 export const ProductDetails = () => {
   const param = useParams()
 
@@ -30,17 +32,11 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatchSelectedBook(param.idBook)
-    document.querySelector('html')?.setAttribute('style', `position: fixed; top: -${window.scrollY}px`)
-    const scrollY = document.querySelector('html')!.style.top
 
-    return () => {
-      resetSelectedBook()
-      document.querySelector('html')?.removeAttribute('style')
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
-    }
+    return () => resetSelectedBook()
   }, [param.idBook])
 
-  const handleSeeDetails = (id: string) => navigate(`/product/${id}`)
+  const handleSeeDetails = (id?: string) => navigate(`/product/${id}`)
 
   const bookId = bookDetails?.id
   const bookImage = bookDetails?.volumeInfo.imageLinks?.thumbnail
@@ -90,9 +86,8 @@ export const ProductDetails = () => {
               <S.DescriptionTitle>Descrição</S.DescriptionTitle>
               <S.Description
                 layout
-                variants={{ opened: { height: 118 }, closed: { height: 60 } }}
+                variants={variants}
                 animate={showDescription ? 'opened' : 'closed'}
-                showDescription={showDescription}
                 dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
               />
               <S.DescriptionOverlay showDescription={showDescription} />
@@ -102,7 +97,7 @@ export const ProductDetails = () => {
               </S.ButtonSeeMore>
             </S.DescriptionWrapper>
 
-            <S.ButtonSeeDetails onClick={() => handleSeeDetails(bookId || '')}>Ver mais detalhes</S.ButtonSeeDetails>
+            <S.ButtonSeeDetails onClick={() => handleSeeDetails(bookId)}>Ver mais detalhes</S.ButtonSeeDetails>
 
             <S.ButtonsWrapper>
               <S.ButtonAddFavorites>

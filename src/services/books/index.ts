@@ -1,6 +1,6 @@
 import { BooksProps, BooksResponseProps } from '../../@types'
 import { api, ENABLE_MOCK } from '../../api'
-import { MOCK_BOOKS } from '../../mock'
+import { MOCK_BOOKS, MOCK_OUR_SUGGESTIONS } from '../../mock'
 
 // const getBestSellers2 = async () => {
 //   const result = await fetch(
@@ -84,7 +84,7 @@ export const getBestSellersSelfHelp = async () => {
 }
 
 export const getBook = async (id: string) => {
-  if (ENABLE_MOCK) return MOCK_BOOKS.find((book) => book.id === id)
+  if (ENABLE_MOCK) return [...MOCK_BOOKS, ...MOCK_OUR_SUGGESTIONS].find((book) => book.id === id)
 
   const response = await api.get<BooksResponseProps>(`/${id}`)
   const result = response.data

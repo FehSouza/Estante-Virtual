@@ -8,7 +8,7 @@ const baseTheme = {
     shadow: '#0000001A',
     bannerPrimary: '#fbfbfb',
     bannerSecondary: '#eaf3f7',
-    grey: '#d2d1d3',
+    grey: '#f7f7f7',
     modalDetails: '#151e29',
     modalDetailsShadow: '#0000005A',
     modalDetailsText: '#929096',

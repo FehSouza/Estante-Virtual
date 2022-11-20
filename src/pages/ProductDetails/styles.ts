@@ -1,5 +1,5 @@
-import { lighten } from 'polished'
 import { motion } from 'framer-motion'
+import { lighten } from 'polished'
 import styled from 'styled-components'
 
 export const Container = styled(motion.div)`
@@ -10,7 +10,7 @@ export const Container = styled(motion.div)`
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.modalDetailsShadow};
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   z-index: 3;
 `
 
@@ -183,16 +183,18 @@ export const DescriptionTitle = styled.span`
   line-height: 22px;
 `
 
-export const Description = styled(motion.p)<{ showDescription: boolean }>`
+export const Description = styled(motion.p)`
   color: ${({ theme }) => theme.colors.white};
   font-size: 14px;
   line-height: 20px;
   margin-top: 16px;
   padding-right: 8px;
-  overflow-y: ${({ showDescription }) => (showDescription ? 'auto' : 'hidden')};
 
   & b {
+    font-size: 14px;
     font-weight: 400;
+    line-height: 20px;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   &::-webkit-scrollbar {

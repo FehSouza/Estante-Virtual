@@ -24,8 +24,6 @@ export const Home = () => {
   const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
   const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
 
-  // useScrollToTop(false, 'html')
-
   const navigate = useNavigate()
   const location = useLocation()
 

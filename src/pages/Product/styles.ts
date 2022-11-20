@@ -5,26 +5,26 @@ import styled from 'styled-components'
 export const Container = styled(motion.div)``
 
 export const ProductInfo = styled.div`
+  margin: 0 auto;
+  margin-top: 68px;
   display: flex;
   max-width: 1440px;
   width: calc(100% - 32px);
   padding: 0 16px;
-  margin: 0 auto;
-  margin-top: 68px;
 `
 
 export const ProductLeft = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 36%;
   padding-right: 48px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
 `
 
 export const BookName = styled.h2`
   font-size: 34px;
-  line-height: 34px;
   font-weight: 600;
+  line-height: 34px;
   color: ${({ theme }) => theme.colors.text};
 `
 
@@ -50,8 +50,8 @@ export const BookAuthors = styled.span`
 export const BookPrice = styled.span`
   margin-top: 32px;
   font-size: 34px;
-  line-height: 34px;
   font-weight: 600;
+  line-height: 34px;
   color: ${({ theme }) => theme.colors.text};
 `
 
@@ -62,15 +62,17 @@ export const DescriptionWrapper = styled.div`
   align-items: center;
 `
 
-export const BookDescription = styled(motion.p)<{ showDescription: boolean }>`
-  color: ${({ theme }) => theme.colors.text};
+export const BookDescription = styled(motion.p)`
   font-size: 16px;
   line-height: 22px;
-  overflow-y: ${({ showDescription }) => (showDescription ? 'auto' : 'hidden')};
+  color: ${({ theme }) => theme.colors.text};
   padding-right: 8px;
 
   & b {
+    font-size: 16px;
     font-weight: 400;
+    line-height: 22px;
+    color: ${({ theme }) => theme.colors.text};
   }
 
   &::-webkit-scrollbar {
@@ -89,11 +91,10 @@ export const BookDescription = styled(motion.p)<{ showDescription: boolean }>`
   }
 `
 
-export const ButtonSeeMore = styled.button<{ showDescription: boolean }>`
-  transform: ${({ showDescription }) => (showDescription ? 'rotate(270deg)' : 'rotate(90deg)')};
+export const ButtonSeeMore = styled(motion.button)`
+  margin-top: 6px;
   width: 28px;
   height: 28px;
-  margin-top: 6px;
 
   & svg > polyline {
     stroke: ${({ theme }) => theme.colors.text};
@@ -118,10 +119,10 @@ export const InfoBookWrapper = styled.div`
 `
 
 export const InfoWrapper = styled.div`
-  height: 42px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: 42px;
 
   & + div {
     border-top: 1px solid ${({ theme }) => theme.colors.shadow};
@@ -129,23 +130,23 @@ export const InfoWrapper = styled.div`
 `
 
 export const InfoTitle = styled.span`
-  color: ${({ theme }) => theme.colors.text};
   font-size: 14px;
   line-height: 14px;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const Info = styled.span`
-  color: ${({ theme }) => theme.colors.text};
   font-size: 14px;
   line-height: 14px;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const ButtonSeeDetails = styled.button`
   margin: 0 auto;
   margin-top: 12px;
-  color: ${({ theme }) => theme.colors.textLight};
   font-size: 14px;
   line-height: 14px;
+  color: ${({ theme }) => theme.colors.textLight};
   position: relative;
   width: fit-content;
   transition-duration: 350ms;
@@ -183,7 +184,220 @@ export const BookImage = styled.img`
 `
 
 export const ProductRight = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 36%;
   padding-left: 48px;
   box-sizing: border-box;
+`
+
+export const ReadTitle = styled.span`
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 30px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const ButtonOptions = styled.div`
+  margin-top: 32px;
+  display: flex;
+  gap: 8px;
+  width: 100%;
+`
+
+export const ButtonRead = styled.button`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 52px;
+  padding: 0 16px;
+  background-color: ${({ theme }) => theme.colors.grey};
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 14px;
+  color: ${({ theme }) => theme.colors.text};
+  transition-duration: 350ms;
+
+  & svg {
+    margin-top: -3px;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.shadow};
+  }
+`
+
+export const ListPriceWrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-top: auto;
+`
+export const DiscountWrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+`
+
+export const BestPriceWrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  padding-top: 40px;
+  border-top: 1px dashed ${({ theme }) => theme.colors.shadow};
+`
+
+export const PriceWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+`
+
+export const PriceTitle = styled.span`
+  font-size: 14px;
+  line-height: 14px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const ListPrice = styled.span`
+  font-size: 16px;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const Discount = styled.span`
+  font-size: 16px;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.primary};
+`
+
+export const BestPrice = styled.span`
+  margin-top: 16px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 30px;
+  color: ${({ theme }) => theme.colors.primary};
+`
+
+export const QuantityWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const QuantityButton = styled.button`
+  transform: rotate(90deg);
+  width: 32px;
+  height: 32px;
+  padding-top: 16px;
+
+  & svg > polyline {
+    stroke: ${({ theme }) => theme.colors.text};
+    transition-duration: 350ms;
+  }
+
+  &:hover {
+    & svg {
+      transform: translateX(2px);
+
+      polyline {
+        stroke: ${({ theme }) => theme.colors.textLight};
+      }
+    }
+  }
+
+  &.button-plus {
+    transform: rotate(270deg);
+  }
+`
+
+export const QuantityInput = styled.input`
+  width: 100px;
+  height: 24px;
+  border-left: 1px solid ${({ theme }) => theme.colors.grey};
+  border-right: 1px solid ${({ theme }) => theme.colors.grey};
+  text-align: center;
+  font-size: 16px;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const ButtonsWrapper = styled.section`
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+`
+
+export const ButtonAddFavorites = styled.button`
+  width: 72px;
+  height: 72px;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.colors.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 350ms;
+
+  & svg {
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+`
+
+export const ButtonAddBag = styled.button`
+  height: 72px;
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.white};
+  transition-duration: 350ms;
+
+  & svg {
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+`
+
+export const ButtonAddWishlist = styled.button`
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  color: ${({ theme }) => theme.colors.text};
+  line-height: 16px;
+  text-decoration: underline;
+  position: relative;
+  transition-duration: 350ms;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: ${({ theme }) =>
+      `linear-gradient(to left, ${theme.colors.grey}, ${theme.colors.shadow}, ${theme.colors.grey})`};
+  }
 `
