@@ -6,6 +6,8 @@ import { IoReaderOutline } from 'react-icons/io5'
 import { TbClock2 } from 'react-icons/tb'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
+import { CarouselThreeSlides } from '../../components'
+import { MOCK_OUR_SUGGESTIONS } from '../../mock'
 import { getBook } from '../../services'
 import { formatCurrency, formatDate } from '../../utils'
 import * as S from './styles'
@@ -32,6 +34,14 @@ export const Product = () => {
   const bookImagem = bookDetails?.volumeInfo.imageLinks?.thumbnail
 
   const handleShowDescription = () => setShowDescription((prev) => !prev)
+
+  const bestPrice = bookDetails?.saleInfo.listPrice?.amount ? bookDetails?.saleInfo.listPrice?.amount * 0.75 : 0
+  const bestPriceFormatted = formatCurrency(bestPrice)
+
+  const [quantity, setQuantity] = useState(1)
+
+  const handleAddProduct = () => setQuantity((prev) => prev + 1)
+  const handleRemoveProduct = () => setQuantity((prev) => prev - 1)
 
   return (
     <S.Container
@@ -108,30 +118,38 @@ export const Product = () => {
             </S.ButtonRead>
           </S.ButtonOptions>
 
-          <S.ListPriceWrapper>
-            <S.PriceTitle>Preço original</S.PriceTitle>
-            <S.ListPrice>{bookPrice}</S.ListPrice>
-          </S.ListPriceWrapper>
+          {bookPrice && (
+            <>
+              <S.ListPriceWrapper>
+                <S.PriceTitle>Preço original</S.PriceTitle>
+                <S.ListPrice>{bookPrice}</S.ListPrice>
+              </S.ListPriceWrapper>
 
-          <S.DiscountWrapper>
-            <S.PriceTitle>Taxa de desconto</S.PriceTitle>
-            <S.Discount>25% de desconto</S.Discount>
-          </S.DiscountWrapper>
+              <S.DiscountWrapper>
+                <S.PriceTitle>Taxa de desconto</S.PriceTitle>
+                <S.Discount>25% de desconto</S.Discount>
+              </S.DiscountWrapper>
+            </>
+          )}
 
           <S.BestPriceWrapper>
             <S.PriceWrapper>
-              <S.PriceTitle>Preço com desconto</S.PriceTitle>
-              <S.BestPrice>{bookPrice}</S.BestPrice>
+              {bookPrice && <S.PriceTitle>Preço com desconto</S.PriceTitle>}
+              <S.BestPrice>{bestPriceFormatted}</S.BestPrice>
             </S.PriceWrapper>
 
             <S.QuantityWrapper>
-              <S.QuantityButton className="button-minus">
+              <S.QuantityButton
+                disabled={quantity === 1 ? true : false}
+                className="button-minus"
+                onClick={handleRemoveProduct}
+              >
                 <GrFormNext size={32} />
               </S.QuantityButton>
 
-              <S.QuantityInput value={`01 unid.`} />
+              <S.QuantityInput value={`${quantity} unid.`} />
 
-              <S.QuantityButton className="button-plus">
+              <S.QuantityButton className="button-plus" onClick={handleAddProduct}>
                 <GrFormNext size={32} />
               </S.QuantityButton>
             </S.QuantityWrapper>
@@ -154,6 +172,13 @@ export const Product = () => {
           </S.ButtonAddWishlist>
         </S.ProductRight>
       </S.ProductInfo>
+
+      <S.Hr />
+
+      <S.ShelfModel1>
+        <S.ShelfTitle>Veja outros livros deste autor</S.ShelfTitle>
+        {/* <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} /> */}
+      </S.ShelfModel1>
     </S.Container>
   )
 }

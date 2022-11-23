@@ -308,6 +308,20 @@ export const QuantityButton = styled.button`
     }
   }
 
+  &.button-minus:disabled {
+    polyline {
+      stroke: ${({ theme }) => theme.colors.textLight};
+    }
+
+    &:hover {
+      cursor: not-allowed;
+
+      & svg {
+        transform: translateX(0px);
+      }
+    }
+  }
+
   &.button-plus {
     transform: rotate(270deg);
   }
@@ -400,4 +414,26 @@ export const ButtonAddWishlist = styled.button`
     background: ${({ theme }) =>
       `linear-gradient(to left, ${theme.colors.grey}, ${theme.colors.shadow}, ${theme.colors.grey})`};
   }
+`
+
+export const Hr = styled.hr`
+  height: 1px;
+  width: 99vw;
+  background-color: ${({ theme }) => theme.colors.shadow};
+  border: none;
+  margin: 0 auto;
+  margin-top: 80px;
+`
+
+export const ShelfModel1 = styled.div`
+  max-width: calc(((100% - 1440px) / 2) + 1440px);
+  padding-left: calc((100% - 1440px - 32px + 32px) / 2);
+  position: relative;
+  margin-top: 184px;
+`
+
+export const ShelfTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 28px;
+  font-weight: 600;
 `
