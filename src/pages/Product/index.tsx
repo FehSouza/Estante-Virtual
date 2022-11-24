@@ -7,8 +7,7 @@ import { TbClock2 } from 'react-icons/tb'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { CarouselThreeSlides } from '../../components'
-import { MOCK_OUR_SUGGESTIONS } from '../../mock'
-import { getBook } from '../../services'
+import { getBook, getBooksAuthor } from '../../services'
 import { formatCurrency, formatDate } from '../../utils'
 import * as S from './styles'
 
@@ -18,14 +17,16 @@ const transitionDescription = { x: { type: 'just' }, duration: 0.35 } as const
 
 export const Product = () => {
   const params = useParams()
-  const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
 
-  const [showDescription, setShowDescription] = useState(false)
-  const animate = showDescription ? 'opened' : 'closed'
+  const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
+  const { data: booksAuthor } = useSWR('api/get-books-author', () =>
+    getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-'))
+  )
 
   const bookName = bookDetails?.volumeInfo.title
   const bookAuthors = bookDetails?.volumeInfo.authors.join(' e ')
-  const bookPrice = formatCurrency(bookDetails?.saleInfo.listPrice?.amount || 0)
+  const bookPrice = bookDetails?.saleInfo.listPrice?.amount
+  const bookPriceFormatted = formatCurrency(bookPrice || 0)
   const bookDescription = bookDetails?.volumeInfo.description
   const bookAverage = bookDetails?.volumeInfo.averageRating
   const bookPages = bookDetails?.volumeInfo.pageCount
@@ -33,15 +34,33 @@ export const Product = () => {
   const bookPublisherDate = formatDate(bookDetails?.volumeInfo.publishedDate || '2022-11-21')
   const bookImagem = bookDetails?.volumeInfo.imageLinks?.thumbnail
 
+  const [showDescription, setShowDescription] = useState(false)
+  const animate = showDescription ? 'opened' : 'closed'
   const handleShowDescription = () => setShowDescription((prev) => !prev)
 
-  const bestPrice = bookDetails?.saleInfo.listPrice?.amount ? bookDetails?.saleInfo.listPrice?.amount * 0.75 : 0
+  const [quantity, setQuantity] = useState<number | string>(1)
+
+  const bestPrice = bookPrice ? Math.abs(bookPrice * 0.75 * Number(quantity)) : 0
   const bestPriceFormatted = formatCurrency(bestPrice)
 
-  const [quantity, setQuantity] = useState(1)
+  const handleAddProduct = () => setQuantity((prev) => Number(prev) + 1)
+  const handleRemoveProduct = () => setQuantity((prev) => Number(prev) - 1)
 
-  const handleAddProduct = () => setQuantity((prev) => prev + 1)
-  const handleRemoveProduct = () => setQuantity((prev) => prev - 1)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === ',' || e.key === '.') e.preventDefault()
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const characterLimit = 2
+    const number = Number(e.target.value.slice(0, characterLimit))
+    setQuantity(number === 0 ? '' : number)
+  }
+
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const number = Number(e.target.value)
+    if (number > 0) return
+    setQuantity(number === 0 ? 1 : number * -1)
+  }
 
   return (
     <S.Container
@@ -54,7 +73,7 @@ export const Product = () => {
         <S.ProductLeft>
           <S.BookName>{bookName}</S.BookName>
           <S.BookAuthors>{bookAuthors}</S.BookAuthors>
-          <S.BookPrice>{bookPrice}</S.BookPrice>
+          <S.BookPrice>{bookPriceFormatted}</S.BookPrice>
 
           <S.DescriptionWrapper>
             <S.BookDescription
@@ -118,11 +137,11 @@ export const Product = () => {
             </S.ButtonRead>
           </S.ButtonOptions>
 
-          {bookPrice && (
+          {bookPriceFormatted && (
             <>
               <S.ListPriceWrapper>
                 <S.PriceTitle>Preço original</S.PriceTitle>
-                <S.ListPrice>{bookPrice}</S.ListPrice>
+                <S.ListPrice>{bookPriceFormatted}</S.ListPrice>
               </S.ListPriceWrapper>
 
               <S.DiscountWrapper>
@@ -134,7 +153,7 @@ export const Product = () => {
 
           <S.BestPriceWrapper>
             <S.PriceWrapper>
-              {bookPrice && <S.PriceTitle>Preço com desconto</S.PriceTitle>}
+              {bookPriceFormatted && <S.PriceTitle>Preço com desconto</S.PriceTitle>}
               <S.BestPrice>{bestPriceFormatted}</S.BestPrice>
             </S.PriceWrapper>
 
@@ -147,9 +166,23 @@ export const Product = () => {
                 <GrFormNext size={32} />
               </S.QuantityButton>
 
-              <S.QuantityInput value={`${quantity} unid.`} />
+              <S.InputWrapper>
+                <S.QuantityInput
+                  type="number"
+                  maxLength={3}
+                  value={quantity}
+                  onKeyDown={(e) => handleKeyDown(e)}
+                  onChange={(e) => handleChange(e)}
+                  onBlur={(e) => handleBlur(e)}
+                />
+                <S.TextInput>Unid.</S.TextInput>
+              </S.InputWrapper>
 
-              <S.QuantityButton className="button-plus" onClick={handleAddProduct}>
+              <S.QuantityButton
+                disabled={quantity === 99 ? true : false}
+                className="button-plus"
+                onClick={handleAddProduct}
+              >
                 <GrFormNext size={32} />
               </S.QuantityButton>
             </S.QuantityWrapper>
@@ -177,7 +210,7 @@ export const Product = () => {
 
       <S.ShelfModel1>
         <S.ShelfTitle>Veja outros livros deste autor</S.ShelfTitle>
-        {/* <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} /> */}
+        {!!booksAuthor && <CarouselThreeSlides bookList={booksAuthor} />}
       </S.ShelfModel1>
     </S.Container>
   )

@@ -44,6 +44,15 @@ export const GlobalStyles = css`
     font-weight: 400;
   }
 
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
   button:hover {
     cursor: pointer;
   }

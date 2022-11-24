@@ -40,6 +40,7 @@ export const ImageWrapper = styled.div`
   min-height: 256px;
   max-height: 256px;
   aspect-ratio: 6/9;
+  display: flex;
 `
 
 export const BookImage = styled.img`

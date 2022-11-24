@@ -1,4 +1,3 @@
-import { useLocation, useNavigate } from 'react-router-dom'
 import useSWR from 'swr'
 import imageBanner from '../../assets/images/young-girl-student-2.png'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
@@ -24,11 +23,6 @@ export const Home = () => {
   const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
   const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
 
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
-
   return (
     <S.Container>
       <S.MainBanner>
@@ -48,17 +42,15 @@ export const Home = () => {
 
         <S.BannerShelf1>
           <S.ShelfTitleBanner>Os livros mais populares</S.ShelfTitleBanner>
-          {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} selectBook={handleSelectBook} />}
+          {!!booksBestSellers && <BannerHomeCarousel1 bookList={booksBestSellers} />}
         </S.BannerShelf1>
 
-        <S.BannerShelf2>
-          {!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} selectBook={handleSelectBook} />}
-        </S.BannerShelf2>
+        <S.BannerShelf2>{!!booksChildren && <BannerHomeCarousel2 bookList={booksChildren} />}</S.BannerShelf2>
       </S.MainBanner>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Nossas sugestões</S.ShelfTitle>
-        <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} selectBook={handleSelectBook} />
+        <CarouselThreeSlides bookList={MOCK_OUR_SUGGESTIONS} />
       </S.ShelfModel1>
 
       <S.ShelfModel2>
@@ -66,9 +58,7 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Ação</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersAction && (
-          <CarouselSixSlides bookList={booksBestSellersAction} selectBook={handleSelectBook} />
-        )}
+        {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
       </S.ShelfModel2>
 
       <S.ShelfModel2>
@@ -76,16 +66,12 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Romance Policial</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersPoliceRomance && (
-          <CarouselSixSlides bookList={booksBestSellersPoliceRomance} selectBook={handleSelectBook} />
-        )}
+        {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
       </S.ShelfModel2>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Os Populares de Terror</S.ShelfTitle>
-        {!!booksBestSellersHorror && (
-          <CarouselThreeSlides bookList={booksBestSellersHorror} selectBook={handleSelectBook} />
-        )}
+        {!!booksBestSellersHorror && <CarouselThreeSlides bookList={booksBestSellersHorror} />}
       </S.ShelfModel1>
 
       <S.Banner2>
@@ -107,16 +93,12 @@ export const Home = () => {
           <S.ShelfTitle>Os Populares de Poesia</S.ShelfTitle>
           <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
-        {!!booksBestSellersPoetry && (
-          <CarouselSixSlides bookList={booksBestSellersPoetry} selectBook={handleSelectBook} />
-        )}
+        {!!booksBestSellersPoetry && <CarouselSixSlides bookList={booksBestSellersPoetry} />}
       </S.ShelfModel2>
 
       <S.ShelfModel1>
         <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
-        {!!booksBestSellersSelfHelp && (
-          <CarouselThreeSlides bookList={booksBestSellersSelfHelp} selectBook={handleSelectBook} />
-        )}
+        {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}
       </S.ShelfModel1>
 
       <S.ShelfModel2>

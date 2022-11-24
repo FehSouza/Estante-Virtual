@@ -2,15 +2,16 @@ import { motion } from 'framer-motion'
 import { lighten } from 'polished'
 import styled from 'styled-components'
 
-export const Container = styled(motion.div)``
-
-export const ProductInfo = styled.div`
+export const Container = styled(motion.div)`
   margin: 0 auto;
-  margin-top: 68px;
-  display: flex;
   max-width: 1440px;
   width: calc(100% - 32px);
   padding: 0 16px;
+`
+
+export const ProductInfo = styled.div`
+  margin-top: 68px;
+  display: flex;
 `
 
 export const ProductLeft = styled.div`
@@ -308,7 +309,7 @@ export const QuantityButton = styled.button`
     }
   }
 
-  &.button-minus:disabled {
+  &:disabled {
     polyline {
       stroke: ${({ theme }) => theme.colors.textLight};
     }
@@ -327,15 +328,32 @@ export const QuantityButton = styled.button`
   }
 `
 
-export const QuantityInput = styled.input`
+export const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100px;
   height: 24px;
   border-left: 1px solid ${({ theme }) => theme.colors.grey};
   border-right: 1px solid ${({ theme }) => theme.colors.grey};
-  text-align: center;
+`
+
+export const QuantityInput = styled.input`
+  width: 51px;
   font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.text};
+  text-align: right;
+  padding-right: 10px;
+  box-sizing: border-box;
+`
+
+export const TextInput = styled.span`
+  width: 51px;
+  font-size: 16px;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.text};
+  margin-top: 2px;
 `
 
 export const ButtonsWrapper = styled.section`

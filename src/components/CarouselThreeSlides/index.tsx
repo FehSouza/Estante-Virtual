@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { BooksProps } from '../../@types'
 import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils'
@@ -17,14 +18,15 @@ const transition = { x: { type: 'just', duration: 0.35 } } as const
 
 interface CarouselThreeSlidesProps {
   bookList: BooksProps[]
-  selectBook: (id: string) => void
 }
 
-export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlidesProps) => {
+export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2 })
   const [direction, setDirection] = useState(1)
   const id = useId()
   const bookIdSelected = useSelectedBookSelect()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
@@ -47,6 +49,8 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
     }))
   }
 
+  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+
   return (
     <>
       <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
@@ -58,7 +62,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
       <S.ShelfWrapper>
         <AnimatePresence custom={direction} mode="popLayout" key={id}>
           {bookList.length &&
-            slidesToShow.map((slide) => {
+            slidesToShow.slice(0, lastBook).map((slide) => {
               const bookId = bookList[slide].id
               const bookName = bookList[slide].volumeInfo.title
               const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
@@ -80,7 +84,7 @@ export const CarouselThreeSlides = ({ bookList, selectBook }: CarouselThreeSlide
                   custom={direction}
                   selected={bookIdSelected === bookId}
                 >
-                  <S.BookWrapper onClick={() => selectBook(bookId)} color={bookColor}>
+                  <S.BookWrapper onClick={() => handleSelectBook(bookId)} color={bookColor}>
                     <S.ImageWrapper>
                       <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
                     </S.ImageWrapper>

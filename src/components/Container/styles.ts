@@ -12,4 +12,5 @@ export const Content = styled.div`
   margin-top: 90px;
   height: calc(100vh - 90px);
   overflow-y: auto;
+  overflow-x: hidden;
 `

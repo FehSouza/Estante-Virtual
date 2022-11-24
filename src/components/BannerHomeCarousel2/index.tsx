@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { GrFormNext } from 'react-icons/gr'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { BooksProps } from '../../@types'
 import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils'
@@ -16,13 +17,14 @@ const transition = { x: { type: 'just', duration: 0.35 } } as const
 
 interface BannerHomeCarousel2Props {
   bookList: BooksProps[]
-  selectBook: (id: string) => void
 }
 
-export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel2Props) => {
+export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
   const [slide, setSlide] = useState({ first: 0, second: 1, third: 2, fourth: 3 })
   const idBookSelected = useSelectedBookSelect()
   const id = useId()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
@@ -36,11 +38,13 @@ export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel
     }))
   }
 
+  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+
   return (
     <>
       <AnimatePresence mode="popLayout" key={id}>
         {bookList.length &&
-          slidesToShow.map((slide) => {
+          slidesToShow.slice(0, lastBook).map((slide) => {
             const bookId = bookList[slide].id
             const bookName = bookList[slide].volumeInfo.title
             const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
@@ -58,7 +62,7 @@ export const BannerHomeCarousel2 = ({ bookList, selectBook }: BannerHomeCarousel
                 transition={transition}
                 selected={bookId === idBookSelected}
               >
-                <S.BookWrapper onClick={() => selectBook(bookId)}>
+                <S.BookWrapper onClick={() => handleSelectBook(bookId)}>
                   <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
                   <S.BookPrice>{bookPrice}</S.BookPrice>
                 </S.BookWrapper>
