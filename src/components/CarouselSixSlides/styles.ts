@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 export const ShelfWrapper = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
   gap: 16px;
   margin-top: 48px;

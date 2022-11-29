@@ -117,35 +117,6 @@ export const ButtonSeeMore = styled(motion.button)`
   }
 `
 
-export const InfoBookWrapper = styled.div`
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-`
-
-export const InfoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 42px;
-
-  & + div {
-    border-top: 1px solid ${({ theme }) => theme.colors.shadow};
-  }
-`
-
-export const InfoTitle = styled.span`
-  font-size: 14px;
-  line-height: 14px;
-  color: ${({ theme }) => theme.colors.text};
-`
-
-export const Info = styled.span`
-  font-size: 14px;
-  line-height: 14px;
-  color: ${({ theme }) => theme.colors.text};
-`
-
 export const ButtonSeeDetails = styled.button`
   margin: 0 auto;
   margin-top: 12px;
@@ -439,21 +410,34 @@ export const ButtonAddWishlist = styled.button`
 
 export const Hr = styled.hr`
   height: 1px;
-  width: 99vw;
+  width: calc(100% + 64px);
   background-color: ${({ theme }) => theme.colors.shadow};
   border: none;
-  margin: 0 auto;
+  margin: 0;
   margin-top: 80px;
+  margin-left: -32px;
 `
 
 export const ShelfModel1 = styled.div`
   max-width: calc(((100% - 1440px) / 2) + 1440px);
   padding-left: calc((100% - 1440px - 32px + 32px) / 2);
   position: relative;
-  margin-top: 184px;
+  margin-top: 96px;
 `
 
 export const ShelfTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 28px;
+  font-weight: 600;
+`
+
+export const DetailsWrapper = styled.div`
+  margin-top: 96px;
+`
+
+export const DetailsTitle = styled.div`
+  margin-top: 80px;
+  margin-bottom: 24px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 28px;
   font-weight: 600;

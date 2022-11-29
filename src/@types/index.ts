@@ -11,6 +11,11 @@ export interface BooksResponseProps {
     description?: string
     pageCount: number
     averageRating?: number
+    industryIdentifiers: {
+      type: string
+      identifier: string
+    }[]
+    language: string
   }
   saleInfo: {
     listPrice?: {
@@ -33,6 +38,11 @@ export interface BooksProps {
     description: string
     pageCount: number
     averageRating?: number
+    industryIdentifiers: {
+      type: string
+      identifier: string
+    }[]
+    language: string
   }
   saleInfo: {
     listPrice: {

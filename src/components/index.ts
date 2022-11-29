@@ -1,5 +1,6 @@
 export * from './BannerHomeCarousel1/index'
 export * from './BannerHomeCarousel2/index'
+export * from './BookInformation/index'
 export * from './CarouselBenefitsBar/index'
 export * from './CarouselSixSlides/index'
 export * from './CarouselThreeSlides/index'

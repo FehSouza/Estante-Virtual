@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { BsHandbag, BsHeart, BsListTask } from 'react-icons/bs'
 import { FiCheckSquare } from 'react-icons/fi'
 import { GrFormNext } from 'react-icons/gr'
@@ -6,7 +6,7 @@ import { IoReaderOutline } from 'react-icons/io5'
 import { TbClock2 } from 'react-icons/tb'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
-import { CarouselThreeSlides } from '../../components'
+import { BookInformation, CarouselSixSlides } from '../../components'
 import { getBook, getBooksAuthor } from '../../services'
 import { formatCurrency, formatDate } from '../../utils'
 import * as S from './styles'
@@ -18,19 +18,24 @@ const transitionDescription = { x: { type: 'just' }, duration: 0.35 } as const
 export const Product = () => {
   const params = useParams()
 
-  const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
   const { data: booksAuthor } = useSWR('api/get-books-author', () => getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-')))
+  const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
 
+  const bookId = String(bookDetails?.id)
   const bookName = bookDetails?.volumeInfo.title
   const authors = bookDetails?.volumeInfo.authors
   const bookAuthors = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
   const bookPrice = bookDetails?.saleInfo.listPrice?.amount
   const bookPriceFormatted = formatCurrency(bookPrice || 0)
   const bookDescription = bookDetails?.volumeInfo.description
-  const bookAverage = bookDetails?.volumeInfo.averageRating
-  const bookPages = bookDetails?.volumeInfo.pageCount
-  const bookPublisher = bookDetails?.volumeInfo.publisher
+  const bookAverage = String(bookDetails?.volumeInfo.averageRating)
+  const bookPages = String(bookDetails?.volumeInfo.pageCount)
+  const bookPublisher = String(bookDetails?.volumeInfo.publisher)
   const bookPublisherDate = formatDate(bookDetails?.volumeInfo.publishedDate || '2022-11-21')
+  const bookRefs = bookDetails?.volumeInfo.industryIdentifiers
+  const bookISBN = bookRefs?.filter((item) => item.type === 'ISBN_13')
+  const bookISBNFormatted = String(bookISBN ? bookISBN[0].identifier : '')
+  const bookLanguage = String(bookDetails?.volumeInfo.language)
   const bookImagem = bookDetails?.volumeInfo.imageLinks?.thumbnail
 
   const [showDescription, setShowDescription] = useState(false)
@@ -65,6 +70,9 @@ export const Product = () => {
     setQuantity(number === 0 ? 1 : number * -1)
   }
 
+  const refHR = useRef<HTMLHRElement | null>(null)
+  const handleSeeDetails = () => refHR.current?.scrollIntoView({ behavior: 'smooth' })
+
   return (
     <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
       <S.ProductInfo>
@@ -88,28 +96,13 @@ export const Product = () => {
             </S.ButtonSeeMore>
           </S.DescriptionWrapper>
 
-          <S.InfoBookWrapper>
-            {bookAverage && (
-              <S.InfoWrapper>
-                <S.InfoTitle>Avaliações:</S.InfoTitle>
-                <S.Info>{bookAverage}</S.Info>
-              </S.InfoWrapper>
-            )}
-            <S.InfoWrapper>
-              <S.InfoTitle>Páginas:</S.InfoTitle>
-              <S.Info>{bookPages}</S.Info>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.InfoTitle>Editora:</S.InfoTitle>
-              <S.Info>{bookPublisher}</S.Info>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.InfoTitle>Data de lançamento:</S.InfoTitle>
-              <S.Info>{bookPublisherDate}</S.Info>
-            </S.InfoWrapper>
-          </S.InfoBookWrapper>
+          <BookInformation
+            titles={['Avaliações:', 'Páginas:', 'Editora:', 'Data de lançamento:']}
+            values={[bookAverage, bookPages, bookPublisher, bookPublisherDate]}
+            fontSize={14}
+          />
 
-          <S.ButtonSeeDetails>Veja detalhes</S.ButtonSeeDetails>
+          <S.ButtonSeeDetails onClick={handleSeeDetails}>Veja detalhes</S.ButtonSeeDetails>
         </S.ProductLeft>
 
         <S.ProductCenter>
@@ -201,8 +194,24 @@ export const Product = () => {
 
       <S.ShelfModel1>
         <S.ShelfTitle>Veja outros livros deste autor</S.ShelfTitle>
-        {!!booksAuthor && <CarouselThreeSlides bookList={booksAuthor} />}
+        {!!booksAuthor && <CarouselSixSlides bookList={booksAuthor} />}
       </S.ShelfModel1>
+
+      <S.Hr ref={refHR} />
+
+      <S.DetailsWrapper>
+        <S.DetailsTitle>Descrição do produto</S.DetailsTitle>
+
+        <S.BookDescription dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }} />
+
+        <S.DetailsTitle>Detalhes do produto</S.DetailsTitle>
+
+        <BookInformation
+          titles={['Código de referência:', 'ISBN:', 'Idioma:', 'Editora:', 'Páginas:', 'Data de lançamento:', 'Avaliações:']}
+          values={[bookId, bookISBNFormatted, bookLanguage, bookPublisher, bookPages, bookPublisherDate, bookAverage]}
+          fontSize={16}
+        />
+      </S.DetailsWrapper>
     </S.Container>
   )
 }
