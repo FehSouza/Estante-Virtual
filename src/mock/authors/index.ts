@@ -15,8 +15,7 @@ export const MOCK_AUTHORS: AuthorsProps[] = [
   },
   {
     name: 'Rick Riordan',
-    image:
-      'https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRZrV1DjusUo4RKK4xgP3X0SGMSLtrwAFFAgsPJhUJ7qOsh4A0VHnLZfrHbkGPrzahS',
+    image: 'https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRZrV1DjusUo4RKK4xgP3X0SGMSLtrwAFFAgsPJhUJ7qOsh4A0VHnLZfrHbkGPrzahS',
     description:
       'Richard Russell Riordan Jr. conhecido como Rick Riordan, é um escritor norte-americano, mais conhecido por escrever a série Percy Jackson e Os Olimpianos. Ele também escreveu a série adulta de mistérios Tres Navarre em 1997. Ajudou a desenvolver os dez livros da série The 39 Clues em 2008 e escreveu o primeiro livro da série: O Labirinto dos Ossos. Em 2012 ele completou uma trilogia focada em mitologia egípcia: As Crônicas dos Kane. Em 2014 ele completou a série: Os Heróis do Olimpo, a continuação da série Percy Jackson e os Olimpianos, que foca na mitologia romana e grega. Em 2017 ele completou a série Magnus Chase e os Deuses de Asgard, baseada na mitologia nórdica. Em 06 de outubro de 2015, Riordan anunciou uma sequência para Os Heróis do Olimpo, uma série de cinco livros chamada As Provações de Apolo.',
   },
@@ -28,8 +27,7 @@ export const MOCK_AUTHORS: AuthorsProps[] = [
   },
   {
     name: 'Jobie Hughes',
-    image:
-      'https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSM_b2Ge7NowSwRPmsTbiFCYKsJ9bvh5fojsV0PI7InfRJwRadbWFr7tzZlJzkkyWXQ',
+    image: 'https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcSM_b2Ge7NowSwRPmsTbiFCYKsJ9bvh5fojsV0PI7InfRJwRadbWFr7tzZlJzkkyWXQ',
     description:
       'Jobie Hughes é o coautor pseudônimo dos romances "I am Number Four" e "The Power of Six", ambos publicados pela HarperCollins. Juntos, eles passaram dez semanas em primeiro lugar na lista de best-sellers do New York Times e venderam mais de um milhão de cópias em todo o mundo. "I am Number Four" foi transformado em longa-metragem pela DreamWorks Studios e lançado em fevereiro de 2011, arrecadando US$ 146 milhões nas bilheterias mundiais.',
   },

@@ -45,10 +45,11 @@ export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
       <AnimatePresence mode="popLayout" key={id}>
         {bookList.length &&
           slidesToShow.slice(0, lastBook).map((slide) => {
-            const bookId = bookList[slide].id
-            const bookName = bookList[slide].volumeInfo.title
-            const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
-            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
+            const book = bookList[slide]
+            const bookId = book.id
+            const bookName = book.volumeInfo.title
+            const bookImage = book.volumeInfo.imageLinks.thumbnail
+            const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
 
             return (
               <S.Card

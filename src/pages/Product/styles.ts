@@ -25,27 +25,29 @@ export const ProductLeft = styled.div`
 export const BookName = styled.h2`
   font-size: 34px;
   font-weight: 600;
-  line-height: 34px;
+  line-height: 36px;
   color: ${({ theme }) => theme.colors.text};
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const BookAuthors = styled.span`
-  margin-top: 26px;
+  margin-top: 24px;
   font-size: 22px;
-  line-height: 22px;
+  line-height: 30px;
   color: ${({ theme }) => theme.colors.textLight};
   position: relative;
   width: fit-content;
-
-  &::before {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background-color: ${({ theme }) => theme.colors.textLight};
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-  }
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 `
 
 export const BookPrice = styled.span`
@@ -61,6 +63,7 @@ export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 186px;
 `
 
 export const BookDescription = styled(motion.p)`
@@ -69,7 +72,8 @@ export const BookDescription = styled(motion.p)`
   color: ${({ theme }) => theme.colors.text};
   padding-right: 8px;
 
-  & b {
+  & b,
+  p {
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
@@ -429,8 +433,7 @@ export const ButtonAddWishlist = styled.button`
     position: absolute;
     top: 0;
     left: 0;
-    background: ${({ theme }) =>
-      `linear-gradient(to left, ${theme.colors.grey}, ${theme.colors.shadow}, ${theme.colors.grey})`};
+    background: ${({ theme }) => `linear-gradient(to left, ${theme.colors.grey}, ${theme.colors.shadow}, ${theme.colors.grey})`};
   }
 `
 

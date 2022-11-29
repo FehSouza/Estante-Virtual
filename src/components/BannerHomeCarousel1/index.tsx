@@ -66,7 +66,8 @@ export const BannerHomeCarousel1 = ({ bookList }: BannerHomeCarousel1Props) => {
               const bookId = book.id
               const bookName = book.volumeInfo.title
               const bookImage = book.volumeInfo.imageLinks.thumbnail
-              const bookAuthor = book.volumeInfo.authors.join(' e ')
+              const authors = book.volumeInfo.authors
+              const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
               const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
 
               return (

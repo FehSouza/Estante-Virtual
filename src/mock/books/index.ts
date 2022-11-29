@@ -5,11 +5,10 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '1',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'É assim que acaba',
-      authors: ['Colleen Hoover'],
+      authors: ['Ed Warren', 'Lorraine Warren', 'Carmen Reed', 'Al Snedeker', 'Ray Garton'],
       publisher: 'Editora Record',
       publishedDate: '2018-02-05',
       pageCount: 368,
@@ -44,8 +43,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '3',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
@@ -62,8 +60,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '4',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],
@@ -83,8 +80,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '5',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=iTz-ArpyOEEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=iTz-ArpyOEEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'Extraordinário',
       authors: ['R.J.Palacio'],
@@ -104,8 +100,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '6',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=MwNlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=MwNlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
@@ -143,8 +138,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '8',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'É assim que acaba',
       authors: ['Colleen Hoover'],
@@ -160,8 +154,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '9',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=99PsjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=99PsjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],
@@ -182,8 +175,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '10',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=7sWGCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=7sWGCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'Extraordinário',
       authors: ['R.J.Palacio'],
@@ -203,8 +195,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     id: '11',
     volumeInfo: {
       imageLinks: {
-        thumbnail:
-          'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        thumbnail: 'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       },
       title: 'Will',
       authors: ['Will Smith', 'Mark Manson'],

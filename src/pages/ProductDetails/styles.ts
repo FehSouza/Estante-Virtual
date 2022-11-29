@@ -33,8 +33,7 @@ export const ButtonClose = styled.button`
   left: 32px;
   width: 40px;
   height: 40px;
-  background-image: ${({ theme }) =>
-    `linear-gradient(155deg, ${theme.colors.modalDetails}4D, ${theme.colors.white}4D)`};
+  background-image: ${({ theme }) => `linear-gradient(155deg, ${theme.colors.modalDetails}4D, ${theme.colors.white}4D)`};
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.white}4D;
   display: flex;
@@ -71,12 +70,23 @@ export const BookName = styled.h2`
   font-size: 18px;
   line-height: 22px;
   margin-top: 16px;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const BookAuthor = styled.span`
   color: ${({ theme }) => theme.colors.modalDetailsText};
   line-height: 20px;
   margin-top: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const InfoWrapper = styled.div`
@@ -190,7 +200,8 @@ export const Description = styled(motion.p)`
   margin-top: 16px;
   padding-right: 8px;
 
-  & b {
+  & b,
+  p {
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -251,7 +262,7 @@ export const ButtonSeeMore = styled.button<{ showDescription: boolean }>`
 `
 
 export const ButtonSeeDetails = styled.button`
-  min-height: 60px;
+  min-height: 56px;
   width: 100%;
   border-radius: 16px;
   margin-top: auto;
@@ -273,7 +284,7 @@ export const ButtonsWrapper = styled.div`
 `
 
 export const ButtonAddFavorites = styled.button`
-  height: 60px;
+  height: 56px;
   width: calc((100% - 16px) / 2);
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -294,7 +305,7 @@ export const ButtonAddFavorites = styled.button`
 `
 
 export const ButtonAddBag = styled.button`
-  height: 60px;
+  height: 56px;
   width: calc((100% - 16px) / 2);
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.primary};

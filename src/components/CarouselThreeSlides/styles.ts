@@ -203,8 +203,7 @@ export const ButtonCarousel = styled.button`
   height: 48px;
   border-radius: 100%;
   border: none;
-  background-image: ${({ theme }) =>
-    `linear-gradient(320deg, ${theme.colors.text}, ${lighten(0.5, theme.colors.textLight)})`};
+  background-image: ${({ theme }) => `linear-gradient(320deg, ${theme.colors.text}, ${lighten(0.5, theme.colors.textLight)})`};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,8 +213,7 @@ export const ButtonCarousel = styled.button`
   }
 
   &:hover {
-    background-image: ${({ theme }) =>
-      `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${theme.colors.text})`};
+    background-image: ${({ theme }) => `linear-gradient(320deg, ${lighten(0.5, theme.colors.textLight)}, ${theme.colors.text})`};
   }
 
   & svg {

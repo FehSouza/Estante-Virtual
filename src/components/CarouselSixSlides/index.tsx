@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksProps } from '../../@types'
 import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils'
@@ -56,11 +56,13 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
       <S.ShelfWrapper>
         <AnimatePresence mode="popLayout" key={id}>
           {slidesToShow.slice(0, lastBook).map((slide) => {
-            const bookId = bookList[slide].id
-            const bookName = bookList[slide].volumeInfo.title
-            const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
-            const bookAuthor = bookList[slide].volumeInfo.authors.join(' e ')
-            const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
+            const book = bookList[slide]
+            const bookId = book.id
+            const bookName = book.volumeInfo.title
+            const bookImage = book.volumeInfo.imageLinks.thumbnail
+            const authors = book.volumeInfo.authors
+            const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
+            const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
 
             return (
               <S.Card

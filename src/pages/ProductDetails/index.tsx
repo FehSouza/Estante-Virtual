@@ -28,6 +28,7 @@ export const ProductDetails = () => {
   const handleShowDescription = () => {
     setShowDescription((prev) => !prev)
     setButtonSeeMore((prev) => (prev === 'Mostrar mais' ? 'Mostrar menos' : 'Mostrar mais'))
+    document.querySelector('.book-description')?.scrollTo({ top: 0 })
   }
 
   useEffect(() => {
@@ -41,7 +42,8 @@ export const ProductDetails = () => {
   const bookId = bookDetails?.id
   const bookImage = bookDetails?.volumeInfo.imageLinks?.thumbnail
   const bookName = bookDetails?.volumeInfo.title
-  const bookAuthor = bookDetails?.volumeInfo.authors.join(' e ')
+  const authors = bookDetails?.volumeInfo.authors
+  const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
   const bookPrice = formatCurrency(bookDetails?.saleInfo.listPrice?.amount || 0)
   const bookPages = bookDetails?.volumeInfo.pageCount
   const bookAverage = bookDetails?.volumeInfo.averageRating
@@ -85,9 +87,11 @@ export const ProductDetails = () => {
             <S.DescriptionWrapper>
               <S.DescriptionTitle>Descrição</S.DescriptionTitle>
               <S.Description
+                className="book-description"
                 layout
                 variants={variants}
                 animate={showDescription ? 'opened' : 'closed'}
+                initial={false}
                 dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
               />
               <S.DescriptionOverlay showDescription={showDescription} />

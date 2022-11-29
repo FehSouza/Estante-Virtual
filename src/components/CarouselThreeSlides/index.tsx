@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useId, useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksProps } from '../../@types'
 import { useSelectedBookSelect } from '../../states'
 import { formatCurrency } from '../../utils'
@@ -63,13 +63,15 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
         <AnimatePresence custom={direction} mode="popLayout" key={id}>
           {bookList.length &&
             slidesToShow.slice(0, lastBook).map((slide) => {
-              const bookId = bookList[slide].id
-              const bookName = bookList[slide].volumeInfo.title
-              const bookImage = bookList[slide].volumeInfo.imageLinks.thumbnail
-              const bookAuthor = bookList[slide].volumeInfo.authors.join(' e ')
-              const bookPrice = formatCurrency(bookList[slide].saleInfo.listPrice.amount)
-              const bookColor = bookList[slide].color
-              const bookDescription = bookList[slide].volumeInfo.description
+              const book = bookList[slide]
+              const bookId = book.id
+              const bookName = book.volumeInfo.title
+              const bookImage = book.volumeInfo.imageLinks.thumbnail
+              const authors = book.volumeInfo.authors
+              const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
+              const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
+              const bookColor = book.color
+              const bookDescription = book.volumeInfo.description
 
               return (
                 <S.Card
@@ -91,10 +93,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
                     <S.InfosWrapper>
                       <S.BookName color={bookColor}>{bookName}</S.BookName>
                       <S.BookAuthor color={bookColor}>{bookAuthor}</S.BookAuthor>
-                      <S.BookDescription
-                        dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
-                        color={bookColor}
-                      />
+                      <S.BookDescription dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }} color={bookColor} />
 
                       <S.WrapperPrice>
                         <S.BookPrice color={bookColor}>{bookPrice}</S.BookPrice>

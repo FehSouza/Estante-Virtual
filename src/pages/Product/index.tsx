@@ -19,12 +19,11 @@ export const Product = () => {
   const params = useParams()
 
   const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
-  const { data: booksAuthor } = useSWR('api/get-books-author', () =>
-    getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-'))
-  )
+  const { data: booksAuthor } = useSWR('api/get-books-author', () => getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-')))
 
   const bookName = bookDetails?.volumeInfo.title
-  const bookAuthors = bookDetails?.volumeInfo.authors.join(' e ')
+  const authors = bookDetails?.volumeInfo.authors
+  const bookAuthors = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
   const bookPrice = bookDetails?.saleInfo.listPrice?.amount
   const bookPriceFormatted = formatCurrency(bookPrice || 0)
   const bookDescription = bookDetails?.volumeInfo.description
@@ -36,7 +35,11 @@ export const Product = () => {
 
   const [showDescription, setShowDescription] = useState(false)
   const animate = showDescription ? 'opened' : 'closed'
-  const handleShowDescription = () => setShowDescription((prev) => !prev)
+
+  const handleShowDescription = () => {
+    setShowDescription((prev) => !prev)
+    document.querySelector('.book-description-page')?.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   const [quantity, setQuantity] = useState<number | string>(1)
 
@@ -63,12 +66,7 @@ export const Product = () => {
   }
 
   return (
-    <S.Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={transitionDescription}
-    >
+    <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
       <S.ProductInfo>
         <S.ProductLeft>
           <S.BookName>{bookName}</S.BookName>
@@ -77,6 +75,7 @@ export const Product = () => {
 
           <S.DescriptionWrapper>
             <S.BookDescription
+              className="book-description-page"
               variants={variantsDesc}
               transition={transitionDescription}
               animate={animate}
@@ -158,11 +157,7 @@ export const Product = () => {
             </S.PriceWrapper>
 
             <S.QuantityWrapper>
-              <S.QuantityButton
-                disabled={quantity === 1 ? true : false}
-                className="button-minus"
-                onClick={handleRemoveProduct}
-              >
+              <S.QuantityButton disabled={quantity === 1 ? true : false} className="button-minus" onClick={handleRemoveProduct}>
                 <GrFormNext size={32} />
               </S.QuantityButton>
 
@@ -178,11 +173,7 @@ export const Product = () => {
                 <S.TextInput>Unid.</S.TextInput>
               </S.InputWrapper>
 
-              <S.QuantityButton
-                disabled={quantity === 99 ? true : false}
-                className="button-plus"
-                onClick={handleAddProduct}
-              >
+              <S.QuantityButton disabled={quantity === 99 ? true : false} className="button-plus" onClick={handleAddProduct}>
                 <GrFormNext size={32} />
               </S.QuantityButton>
             </S.QuantityWrapper>

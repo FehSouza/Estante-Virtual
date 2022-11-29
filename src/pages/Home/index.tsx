@@ -78,8 +78,8 @@ export const Home = () => {
         <S.TextBanner2Wrapper>
           <S.Title>Comece a explorar agora para ler os clássicos mundiais!</S.Title>
           <S.Citation>
-            “Clássica é a obra que tem dimensão universal: consegue atravessar gerações, fronteiras e nacionalidades,
-            sem perder as suas características.” - Renato Rocha
+            “Clássica é a obra que tem dimensão universal: consegue atravessar gerações, fronteiras e nacionalidades, sem perder as suas
+            características.” - Renato Rocha
           </S.Citation>
           <S.Button>Ver todos</S.Button>
         </S.TextBanner2Wrapper>
