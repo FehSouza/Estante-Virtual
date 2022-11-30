@@ -25,6 +25,7 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 0px 16px #00000060;
 `
 
 export const ButtonClose = styled.button`

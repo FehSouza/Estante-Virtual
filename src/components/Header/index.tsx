@@ -1,5 +1,6 @@
 import { BsHandbag, BsPerson, BsSearch } from 'react-icons/bs'
 import { useMatch } from 'react-router-dom'
+import { dispatchShowMiniCart } from '../../states'
 import { Logo } from '../Logo'
 import * as S from './styles'
 
@@ -15,6 +16,8 @@ const NavBarLink = ({ to, children }: { to: string; children: string }) => {
 }
 
 export const Header = () => {
+  const handleOpenMiniCart = () => dispatchShowMiniCart(true)
+
   return (
     <S.Header>
       <S.Container>
@@ -34,7 +37,7 @@ export const Header = () => {
         </S.NavBar>
 
         <S.UserMenu>
-          <S.MiniCart>
+          <S.MiniCart onClick={handleOpenMiniCart}>
             <S.MiniCartInt>
               <BsHandbag />
             </S.MiniCartInt>
