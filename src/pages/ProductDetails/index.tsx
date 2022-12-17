@@ -39,6 +39,10 @@ export const ProductDetails = () => {
 
   const handleSeeDetails = (id?: string) => navigate(`/product/${id}`)
 
+  const handleOpenMiniCart = () => {
+    handleClose()
+  }
+
   const bookId = bookDetails?.id
   const bookImage = bookDetails?.volumeInfo.imageLinks?.thumbnail
   const bookName = bookDetails?.volumeInfo.title
@@ -108,7 +112,7 @@ export const ProductDetails = () => {
                 <BsHeart size={20} />
                 Favoritar
               </S.ButtonAddFavorites>
-              <S.ButtonAddBag>
+              <S.ButtonAddBag onClick={handleOpenMiniCart}>
                 <BsHandbag size={20} />
                 Adicionar na sacola
               </S.ButtonAddBag>

@@ -4,7 +4,7 @@ import { FiCheckSquare } from 'react-icons/fi'
 import { GrFormNext } from 'react-icons/gr'
 import { IoReaderOutline } from 'react-icons/io5'
 import { TbClock2 } from 'react-icons/tb'
-import { useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { BookInformation, CarouselSixSlides } from '../../components'
 import { getBook, getBooksAuthor } from '../../services'
@@ -72,6 +72,11 @@ export const Product = () => {
 
   const refHR = useRef<HTMLHRElement | null>(null)
   const handleSeeDetails = () => refHR.current?.scrollIntoView({ behavior: 'smooth' })
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
 
   return (
     <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
@@ -159,9 +164,9 @@ export const Product = () => {
                   type="number"
                   maxLength={3}
                   value={quantity}
-                  onKeyDown={(e) => handleKeyDown(e)}
-                  onChange={(e) => handleChange(e)}
-                  onBlur={(e) => handleBlur(e)}
+                  onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
                 <S.TextInput>Unid.</S.TextInput>
               </S.InputWrapper>
@@ -177,7 +182,7 @@ export const Product = () => {
               <BsHeart size={28} />
             </S.ButtonAddFavorites>
 
-            <S.ButtonAddBag>
+            <S.ButtonAddBag onClick={handleOpenMiniCart}>
               <BsHandbag size={28} />
               Adicionar na sacola
             </S.ButtonAddBag>

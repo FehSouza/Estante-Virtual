@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { Container } from '../components'
 import {
   AboutUs,
+  Checkout,
   ContactUs,
   Department,
   ExchangesAndReturns,
@@ -17,6 +18,7 @@ import {
   Product,
   ProductDetails,
 } from '../pages'
+import { MiniCart } from '../pages/MiniCart'
 
 interface LocationState {
   backgroundLocation?: Location
@@ -32,6 +34,11 @@ export const AppRoutes = () => {
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
+
+            <Route path="/mini-cart" element={<Checkout />} />
+
+            <Route path="/checkout" element={<Checkout />} />
+
             <Route path="/livros">
               <Route index element={<Department category="todos" />} />
               <Route path="ficcao-cientifica" element={<Department category="Ficção científica" />} />
@@ -69,6 +76,8 @@ export const AppRoutes = () => {
 
         {state?.backgroundLocation && (
           <Routes key={location.pathname} location={location}>
+            <Route path="/mini-cart" element={<MiniCart />} />
+
             <Route path="/product">
               <Route path=":idBook" element={<ProductDetails />} />
             </Route>

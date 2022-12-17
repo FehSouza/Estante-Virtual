@@ -89,17 +89,21 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
           })}
         </AnimatePresence>
 
-        <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
-          <S.ButtonCarouselInt>
-            <GrFormPrevious />
-          </S.ButtonCarouselInt>
-        </S.ButtonCarousel>
+        {bookList.length >= 7 && (
+          <>
+            <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
+              <S.ButtonCarouselInt>
+                <GrFormPrevious />
+              </S.ButtonCarouselInt>
+            </S.ButtonCarousel>
 
-        <S.ButtonCarousel onClick={handleNext}>
-          <S.ButtonCarouselInt>
-            <GrFormNext />
-          </S.ButtonCarouselInt>
-        </S.ButtonCarousel>
+            <S.ButtonCarousel onClick={handleNext}>
+              <S.ButtonCarouselInt>
+                <GrFormNext />
+              </S.ButtonCarouselInt>
+            </S.ButtonCarousel>
+          </>
+        )}
       </S.ShelfWrapper>
     </>
   )

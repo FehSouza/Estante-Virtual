@@ -51,6 +51,11 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
 
   const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
 
+  const handleOpenMiniCart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation()
+    navigate('/mini-cart', { state: { backgroundLocation: location } })
+  }
+
   return (
     <>
       <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
@@ -102,7 +107,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
                         </S.BookPage>
                       </S.WrapperPrice>
 
-                      <S.MiniCart color={bookColor}>
+                      <S.MiniCart onClick={handleOpenMiniCart} color={bookColor}>
                         <S.MiniCartInt color={bookColor}>
                           <BsHandbag />
                         </S.MiniCartInt>

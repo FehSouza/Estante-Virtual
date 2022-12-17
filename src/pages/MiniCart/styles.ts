@@ -1,3 +1,4 @@
+import { lighten } from 'polished'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -9,7 +10,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.modalDetailsShadow};
   display: flex;
   justify-content: flex-end;
-  z-index: 3;
+  z-index: 4;
 `
 
 export const MiniCart = styled.div`
@@ -23,7 +24,7 @@ export const MiniCart = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  height: 52px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +36,7 @@ export const Header = styled.div`
 
 export const BackButton = styled.button`
   position: absolute;
-  top: 14.5px;
+  top: 18.5px;
   left: 16px;
   display: flex;
   align-items: center;
@@ -72,7 +73,7 @@ export const BackButton = styled.button`
 export const Title = styled.h2`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-weight: 500;
   font-size: 18px;
   line-height: 18px;
@@ -84,6 +85,40 @@ export const Title = styled.h2`
   }
 `
 
-export const Content = styled.div``
+export const Content = styled.div`
+  margin: auto;
+`
+
+export const EmptyBag = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const EmptyBagText = styled.span`
+  font-size: 20px;
+  line-height: 20px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const EmptyBagButton = styled.button`
+  margin-top: 40px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary};
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    100deg,
+    ${({ theme }) => `${lighten(0.275, theme.colors.white)}, ${lighten(0.275, theme.colors.secondary)}`}
+  );
+  padding: 16px;
+  border-radius: 24px;
+
+  &:hover {
+    background-image: linear-gradient(
+      100deg,
+      ${({ theme }) => `${lighten(0.255, theme.colors.white)}, ${lighten(0.255, theme.colors.secondary)}`}
+    );
+  }
+`
 
 export const Footer = styled.div``

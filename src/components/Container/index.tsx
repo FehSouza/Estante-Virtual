@@ -1,5 +1,4 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import { MiniCart } from '../../pages/MiniCart'
 import { Footer } from '../Footer'
 import { Header } from '../Header'
 import * as S from './styles'
@@ -13,7 +12,6 @@ export const Container = () => {
       <S.Content key={pathname}>
         <Outlet />
         <Footer />
-        <MiniCart />
       </S.Content>
     </S.Container>
   )

@@ -1,4 +1,5 @@
 export * from './Department/index'
+export * from './Checkout/index'
 export * from './Home/index'
 export * from './Not Found/index'
 
