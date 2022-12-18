@@ -8,7 +8,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { BookInformation, CarouselSixSlides } from '../../components'
 import { getBook, getBooksAuthor } from '../../services'
-import { formatCurrency, formatDate } from '../../utils'
+import { getOrderForm } from '../../states'
+import { miniCartAddItem, customStorage, formatCurrency, formatDate } from '../../utils'
 import * as S from './styles'
 
 const variantsDesc = { opened: { height: 152, overflow: 'auto' }, closed: { height: 66, overflow: 'hidden' } } as const
@@ -17,6 +18,9 @@ const transitionDescription = { x: { type: 'just' }, duration: 0.35 } as const
 
 export const Product = () => {
   const params = useParams()
+
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const { data: booksAuthor } = useSWR('api/get-books-author', () => getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-')))
   const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
@@ -73,10 +77,13 @@ export const Product = () => {
   const refHR = useRef<HTMLHRElement | null>(null)
   const handleSeeDetails = () => refHR.current?.scrollIntoView({ behavior: 'smooth' })
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const handleAddItemMiniCart = () => {
+    miniCartAddItem({ bookDetails, quantity })
+    const orderForm = getOrderForm()
+    customStorage.setItem('orderForm', orderForm)
 
-  const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
+    navigate('/mini-cart', { state: { backgroundLocation: location } })
+  }
 
   return (
     <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
@@ -182,7 +189,7 @@ export const Product = () => {
               <BsHeart size={28} />
             </S.ButtonAddFavorites>
 
-            <S.ButtonAddBag onClick={handleOpenMiniCart}>
+            <S.ButtonAddBag onClick={handleAddItemMiniCart}>
               <BsHandbag size={28} />
               Adicionar na sacola
             </S.ButtonAddBag>

@@ -5,8 +5,8 @@ import { GrFormPrevious } from 'react-icons/gr'
 import { useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { getBook } from '../../services'
-import { dispatchSelectedBook, resetSelectedBook } from '../../states'
-import { formatCurrency } from '../../utils'
+import { dispatchSelectedBook, getOrderForm, resetSelectedBook } from '../../states'
+import { miniCartAddItem, customStorage, formatCurrency } from '../../utils'
 import * as S from './styles'
 
 const variants = { opened: { height: 118, overflow: 'auto' }, closed: { height: 60, overflow: 'hidden' } } as const
@@ -39,7 +39,11 @@ export const ProductDetails = () => {
 
   const handleSeeDetails = (id?: string) => navigate(`/product/${id}`)
 
-  const handleOpenMiniCart = () => {
+  const handleAddItemMiniCart = () => {
+    miniCartAddItem({ bookDetails, quantity: 1 })
+    const orderForm = getOrderForm()
+    customStorage.setItem('orderForm', orderForm)
+
     handleClose()
   }
 
@@ -112,7 +116,7 @@ export const ProductDetails = () => {
                 <BsHeart size={20} />
                 Favoritar
               </S.ButtonAddFavorites>
-              <S.ButtonAddBag onClick={handleOpenMiniCart}>
+              <S.ButtonAddBag onClick={handleAddItemMiniCart}>
                 <BsHandbag size={20} />
                 Adicionar na sacola
               </S.ButtonAddBag>

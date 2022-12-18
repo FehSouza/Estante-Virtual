@@ -4,8 +4,8 @@ import { BsHandbag } from 'react-icons/bs'
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksProps } from '../../@types'
-import { useSelectedBookSelect } from '../../states'
-import { formatCurrency } from '../../utils'
+import { getOrderForm, useSelectedBookSelect } from '../../states'
+import { miniCartAddItem, customStorage, formatCurrency } from '../../utils'
 import * as S from './styles'
 
 const variants = {
@@ -51,11 +51,6 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
 
   const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
 
-  const handleOpenMiniCart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation()
-    navigate('/mini-cart', { state: { backgroundLocation: location } })
-  }
-
   return (
     <>
       <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
@@ -77,6 +72,16 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
               const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
               const bookColor = book.color
               const bookDescription = book.volumeInfo.description
+
+              const handleAddItemMiniCart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+                e.stopPropagation()
+
+                miniCartAddItem({ bookDetails: book, quantity: 1 })
+                const orderForm = getOrderForm()
+                customStorage.setItem('orderForm', orderForm)
+
+                navigate('/mini-cart', { state: { backgroundLocation: location } })
+              }
 
               return (
                 <S.Card
@@ -107,7 +112,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
                         </S.BookPage>
                       </S.WrapperPrice>
 
-                      <S.MiniCart onClick={handleOpenMiniCart} color={bookColor}>
+                      <S.MiniCart onClick={handleAddItemMiniCart} color={bookColor}>
                         <S.MiniCartInt color={bookColor}>
                           <BsHandbag />
                         </S.MiniCartInt>

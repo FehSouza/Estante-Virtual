@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const MiniCart = styled.div`
   width: 512px;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 0px 16px #00000060;
   display: flex;
   flex-direction: column;
@@ -25,6 +25,7 @@ export const MiniCart = styled.div`
 export const Header = styled.div`
   width: 100%;
   height: 60px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +87,12 @@ export const Title = styled.h2`
 `
 
 export const Content = styled.div`
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 export const EmptyBag = styled.div`
@@ -121,4 +127,17 @@ export const EmptyBagButton = styled.button`
   }
 `
 
-export const Footer = styled.div``
+export const Body = styled.div`
+  width: 100%;
+  flex: 1;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+`
+
+export const Footer = styled.div`
+  width: 100%;
+  height: 300px;
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0px 0px 16px #00000060;
+`

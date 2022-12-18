@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Container } from '../components'
 import {
   AboutUs,
@@ -35,7 +35,7 @@ export const AppRoutes = () => {
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
 
-            <Route path="/mini-cart" element={<Checkout />} />
+            <Route path="/mini-cart" element={<Navigate to="/checkout" replace />} />
 
             <Route path="/checkout" element={<Checkout />} />
 

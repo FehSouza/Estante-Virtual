@@ -1,5 +1,6 @@
 export interface BooksResponseProps {
   id: string
+  quantity?: number | string
   volumeInfo: {
     imageLinks?: {
       thumbnail: string
