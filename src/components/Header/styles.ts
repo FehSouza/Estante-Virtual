@@ -119,10 +119,29 @@ export const MiniCart = styled.div`
   height: 42px;
   border-radius: 100%;
   background-image: ${({ theme }) => `linear-gradient(100deg, ${theme.colors.primary}, ${theme.colors.secondary})`};
+  position: relative;
 
   &:hover {
     background-image: ${({ theme }) => `linear-gradient(100deg, ${theme.colors.secondary}, ${theme.colors.primary})`};
   }
+`
+
+export const QuantityMiniCart = styled.div`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  font-size: 13px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `
 
 export const MiniCartInt = styled.div`

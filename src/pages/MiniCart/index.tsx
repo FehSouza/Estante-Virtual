@@ -1,24 +1,17 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { BsHandbag } from 'react-icons/bs'
 import { GrFormPrevious } from 'react-icons/gr'
 import { useNavigate } from 'react-router-dom'
 import { BooksResponseProps } from '../../@types'
 import { CardMiniCart } from '../../components'
-import { useOrderFormSelect } from '../../states'
+import { useOrderFormSelect, useQuantityMiniCart } from '../../states'
 import * as S from './styles'
 
 export const MiniCart = () => {
   const navigate = useNavigate()
-  const [quantityMiniCart, setQuantityMiniCart] = useState(0)
 
   const orderForm = useOrderFormSelect()
-
-  const totalProducts = orderForm.reduce((acc: number, item: BooksResponseProps) => {
-    return acc + Number(item.quantity)
-  }, 0)
-
-  useEffect(() => setQuantityMiniCart(totalProducts), [totalProducts])
+  const [quantityMiniCart] = useQuantityMiniCart()
 
   const handleCloseMiniCart = () => navigate(-1)
 
@@ -59,7 +52,24 @@ export const MiniCart = () => {
                   })}
                 </S.Body>
 
-                <S.Footer></S.Footer>
+                <S.Footer>
+                  <S.PriceFooter>
+                    <S.PriceTitle>Subtotal</S.PriceTitle>
+                    <S.SubTotal>Subtotal</S.SubTotal>
+                  </S.PriceFooter>
+
+                  <S.PriceFooter>
+                    <S.PriceTitle>Descontos</S.PriceTitle>
+                    <S.Discounts>Descontos</S.Discounts>
+                  </S.PriceFooter>
+
+                  <S.PriceFooter>
+                    <S.PriceTitle className="price-title-total">Total</S.PriceTitle>
+                    <S.Total>Total</S.Total>
+                  </S.PriceFooter>
+                  <S.KeepBuyingButton onClick={handleCloseMiniCart}>Continuar comprando</S.KeepBuyingButton>
+                  <S.CheckoutButton to="/checkout">Finalizar compra</S.CheckoutButton>
+                </S.Footer>
               </>
             )}
           </S.Content>

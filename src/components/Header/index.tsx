@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
 import { BsHandbag, BsPerson, BsSearch } from 'react-icons/bs'
 import { useLocation, useMatch, useNavigate } from 'react-router-dom'
+import { BooksResponseProps } from '../../@types'
+import { dispatchQuantityMiniCart, useOrderFormSelect, useQuantityMiniCart } from '../../states'
 import { Logo } from '../Logo'
 import * as S from './styles'
 
@@ -18,7 +21,14 @@ export const Header = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
+  const orderForm = useOrderFormSelect()
+  const [quantityMiniCart] = useQuantityMiniCart()
+
   const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
+
+  const totalProducts = orderForm.reduce((acc: number, item: BooksResponseProps) => acc + Number(item.quantity), 0)
+
+  useEffect(() => dispatchQuantityMiniCart(totalProducts), [totalProducts])
 
   return (
     <S.Header>
@@ -43,6 +53,7 @@ export const Header = () => {
             <S.MiniCartInt>
               <BsHandbag />
             </S.MiniCartInt>
+            {quantityMiniCart !== 0 && <S.QuantityMiniCart>{quantityMiniCart}</S.QuantityMiniCart>}
           </S.MiniCart>
 
           <S.Login>

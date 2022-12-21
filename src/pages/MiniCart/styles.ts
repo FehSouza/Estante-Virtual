@@ -1,4 +1,5 @@
 import { lighten } from 'polished'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -88,7 +89,7 @@ export const Title = styled.h2`
 
 export const Content = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,6 +130,7 @@ export const EmptyBagButton = styled.button`
 
 export const Body = styled.div`
   width: 100%;
+  max-height: calc(100% - 256px);
   flex: 1;
   padding: 0 16px;
   box-sizing: border-box;
@@ -137,7 +139,90 @@ export const Body = styled.div`
 
 export const Footer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 256px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 0px 16px #00000060;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+`
+
+export const PriceFooter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & + div {
+    margin-top: 12px;
+  }
+`
+
+export const PriceTitle = styled.span`
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: 14px;
+
+  &.price-title-total {
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 18px;
+    font-weight: 500;
+  }
+`
+
+export const SubTotal = styled.span`
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: 14px;
+`
+
+export const Discounts = styled.span`
+  color: ${({ theme }) => theme.colors.textLight};
+  font-size: 14px;
+`
+
+export const Total = styled.span`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 18px;
+  font-weight: 500;
+`
+
+export const KeepBuyingButton = styled.button`
+  margin-top: auto;
+  height: 48px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.text};
+  border-radius: 20px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 350ms;
+
+  &:hover {
+    background-image: linear-gradient(
+      100deg,
+      ${({ theme }) => `${lighten(0.255, theme.colors.white)}, ${lighten(0.255, theme.colors.secondary)}`}
+    );
+    border: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
+`
+export const CheckoutButton = styled(NavLink)`
+  margin-top: 16px;
+  height: 48px;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 20px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 350ms;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
 `
