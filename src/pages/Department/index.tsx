@@ -1,48 +1,82 @@
+import { useState } from 'react'
+import { MdOutlineNoPhotography } from 'react-icons/md'
+import { useLocation, useNavigate } from 'react-router-dom'
 import useSWR from 'swr'
 import { BooksResponseProps } from '../../@types'
-import { ENABLE_MOCK } from '../../api'
+import { OrderBy } from '../../components/OrderBy'
 import { getBooksDepartment } from '../../services'
+import { getOrderForm } from '../../states'
+import { customStorage, formatCurrency, miniCartAddItem } from '../../utils'
 import * as S from './styles'
-import { useState } from 'react'
 
 export const Department = ({ category }: { category: string }) => {
-  const { data: booksDepartment } = useSWR('api/books-department', () =>
-    getBooksDepartment({ nameDepartment: category, initialElement: 0, finalElement: 16 })
+  const { data: booksDepartment, mutate } = useSWR('api/books-department', () =>
+    getBooksDepartment({ nameDepartment: category, orderBySelected: orderSelected[0], initialElement: 0, finalElement: 15 })
   )
 
-  const [currentPage, setCurrentPage] = useState(2)
+  const [orderSelected, setOrderSelected] = useState(['relevance', 'Mais vendidos'])
 
-  const [showOrderBy, setShowOrderBy] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  const booksList = ENABLE_MOCK ? booksDepartment : booksDepartment.items
-  const totalProducts = ENABLE_MOCK ? 22 : booksDepartment.totalItems
-  const totalProductsPerPage = 16
+  const booksList = booksDepartment?.items
+  const totalProducts = booksDepartment?.totalItems
+  const totalProductsPerPage = 15
   const totalPages = Math.ceil(totalProducts / totalProductsPerPage)
+  console.log(totalPages)
 
-  console.log(totalProducts % totalProductsPerPage)
   return (
     <S.Department>
       <S.DepartmentName>{category}</S.DepartmentName>
 
       <S.DepartmentFilters>
-        <S.TotalProducts>{totalProducts > 1 ? `${totalProducts} produtos` : `${totalProducts} produto`}</S.TotalProducts>
+        {booksDepartment && (
+          <S.TotalProducts>{totalProducts > 1 ? `${totalProducts} produtos` : `${totalProducts} produto`}</S.TotalProducts>
+        )}
 
-        <S.OrderWrapper>
-          <S.OrderTitle>Ordenar por:</S.OrderTitle>
-          <S.OrderSelector onClick={() => setShowOrderBy((prev) => !prev)} />
-          {showOrderBy && (
-            <S.OrderOptions>
-              <S.OrderOption>Mais vendidos</S.OrderOption>
-              <S.OrderOption>Mais recentes</S.OrderOption>
-            </S.OrderOptions>
-          )}
-        </S.OrderWrapper>
+        <OrderBy orderSelected={orderSelected} setOrderSelected={setOrderSelected} mutate={mutate} />
       </S.DepartmentFilters>
 
-      {/* {booksDepartment &&
-        booksList.map((book: BooksResponseProps) => {
-          return <div>{book.volumeInfo.title}</div>
-        })} */}
+      {booksDepartment && (
+        <S.BooksContainer>
+          {booksList.map((book: BooksResponseProps) => {
+            const id = book.id
+            const image = book.volumeInfo.imageLinks?.thumbnail
+            const bookName = book.volumeInfo.title
+            const authors = book.volumeInfo.authors
+            const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
+            const bookPrice = book.saleInfo.listPrice?.amount
+            const bookPriceFormatted = bookPrice && formatCurrency(bookPrice)
+            const bestPrice = bookPrice && Math.abs(bookPrice * 0.75)
+            const bestPriceFormatted = bestPrice ? formatCurrency(bestPrice) : 'GRÁTIS'
+
+            const handleAddItemMiniCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              e.preventDefault()
+
+              miniCartAddItem({ bookDetails: book, quantity: 1 })
+              const orderForm = getOrderForm()
+              customStorage.setItem('orderForm', orderForm)
+
+              navigate('/mini-cart', { state: { backgroundLocation: location } })
+            }
+
+            return (
+              <S.BookWrapper key={id} to={`/product/${id}`}>
+                <S.ImageWrapper>
+                  {image ? <S.Image src={book.volumeInfo.imageLinks?.thumbnail} /> : <MdOutlineNoPhotography size={32} />}
+                </S.ImageWrapper>
+                <S.BookName>{bookName}</S.BookName>
+                <S.BookAuthor>{bookAuthor}</S.BookAuthor>
+                <S.BookPrice>{bookPriceFormatted}</S.BookPrice>
+                <S.BookBestPrice>{bestPriceFormatted}</S.BookBestPrice>
+                <S.ButtonBuy className="button-buy" onClick={(e) => handleAddItemMiniCart(e)}>
+                  Adicionar ao carrinho
+                </S.ButtonBuy>
+              </S.BookWrapper>
+            )
+          })}
+        </S.BooksContainer>
+      )}
     </S.Department>
   )
 }

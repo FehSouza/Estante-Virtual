@@ -93,15 +93,19 @@ export const getBooksAuthor = async (nameAuthor?: string) => {
 
 interface PropsGetBooksDepartment {
   nameDepartment: string
+  orderBySelected: string
   initialElement: number
   finalElement: number
 }
 
-export const getBooksDepartment = async ({ nameDepartment, initialElement, finalElement }: PropsGetBooksDepartment) => {
-  if (ENABLE_MOCK) return MOCK_BOOKS
+export const getBooksDepartment = async ({ nameDepartment, orderBySelected, initialElement, finalElement }: PropsGetBooksDepartment) => {
+  if (ENABLE_MOCK) return {
+    items: MOCK_BOOKS,
+    totalItems: 22
+  }
 
   const response = await api.get(
-    `?q=livros-de-${nameDepartment}&orderBy=relevance&printType=books&startIndex=${initialElement}&maxResults=${finalElement}`
+    `?q=livros-de-${nameDepartment}&orderBy=${orderBySelected}&printType=books&startIndex=${initialElement}&maxResults=${finalElement}`
   )
 
   const result = response.data
