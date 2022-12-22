@@ -17,13 +17,13 @@ export const CardMiniCart = ({ item }: PropsCardMiniCart) => {
 
   return (
     <S.ItemWrapper key={item.id}>
-      <S.ImageWrapper>
+      <S.ImageWrapper to={`/product/${item.id}`}>
         <S.Image src={imageBook} />
       </S.ImageWrapper>
 
       <S.InfoWrapper>
         <S.NameAndDelete>
-          <S.Name>{nameBook}</S.Name>
+          <S.Name to={`/product/${item.id}`} >{nameBook}</S.Name>
           <S.ButtonDelete onClick={() => miniCartDelete(item.id)}>
             <MdDeleteForever size={24} />
           </S.ButtonDelete>

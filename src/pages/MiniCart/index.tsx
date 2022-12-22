@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { BooksResponseProps } from '../../@types'
 import { CardMiniCart } from '../../components'
 import { useOrderFormSelect, useQuantityMiniCart } from '../../states'
+import { formatCurrency } from '../../utils'
 import * as S from './styles'
 
 export const MiniCart = () => {
@@ -16,6 +17,15 @@ export const MiniCart = () => {
   const handleCloseMiniCart = () => navigate(-1)
 
   const stopCloseMiniCart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e.stopPropagation()
+
+  const subTotal = orderForm.reduce((acc: number, item: BooksResponseProps) => {
+    if (!item.saleInfo.listPrice?.amount) return acc
+    return acc + item.saleInfo.listPrice?.amount * Number(item.quantity)
+  }, 0)
+
+  const discounts = subTotal * 0.25
+
+  const total = subTotal - discounts
 
   return (
     <S.Container onClick={handleCloseMiniCart}>
@@ -55,17 +65,17 @@ export const MiniCart = () => {
                 <S.Footer>
                   <S.PriceFooter>
                     <S.PriceTitle>Subtotal</S.PriceTitle>
-                    <S.SubTotal>Subtotal</S.SubTotal>
+                    <S.SubTotal>{formatCurrency(subTotal)}</S.SubTotal>
                   </S.PriceFooter>
 
                   <S.PriceFooter>
                     <S.PriceTitle>Descontos</S.PriceTitle>
-                    <S.Discounts>Descontos</S.Discounts>
+                    <S.Discounts>{`- ${formatCurrency(discounts)}`}</S.Discounts>
                   </S.PriceFooter>
 
                   <S.PriceFooter>
                     <S.PriceTitle className="price-title-total">Total</S.PriceTitle>
-                    <S.Total>Total</S.Total>
+                    <S.Total>{formatCurrency(total)}</S.Total>
                   </S.PriceFooter>
                   <S.KeepBuyingButton onClick={handleCloseMiniCart}>Continuar comprando</S.KeepBuyingButton>
                   <S.CheckoutButton to="/checkout">Finalizar compra</S.CheckoutButton>

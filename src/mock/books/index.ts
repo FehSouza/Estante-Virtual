@@ -333,6 +333,338 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
       },
     },
   },
+  {
+    id: '12',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'É assim que acaba',
+      authors: ['Ed Warren', 'Lorraine Warren', 'Carmen Reed', 'Al Snedeker', 'Ray Garton'],
+      publisher: 'Editora Record',
+      publishedDate: '2018-02-05',
+      pageCount: 368,
+      averageRating: 5,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 37.9,
+      },
+    },
+  },
+  {
+    id: '13',
+    volumeInfo: {
+      title: 'É assim que acaba',
+      authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 368,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 37.9,
+      },
+    },
+  },
+  {
+    id: '14',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'É assim que acaba',
+      authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 368,
+      averageRating: 5,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {},
+  },
+  {
+    id: '15',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'Will',
+      authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 476,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
+  {
+    id: '16',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=iTz-ArpyOEEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'Extraordinário',
+      authors: ['R.J.Palacio'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 476,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
+  {
+    id: '17',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=MwNlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'É assim que acaba',
+      authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 368,
+      averageRating: 5,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 37.9,
+      },
+    },
+  },
+  {
+    id: '18',
+    volumeInfo: {
+      title: 'É assim que acaba',
+      authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 368,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 37.9,
+      },
+    },
+  },
+  {
+    id: '19',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=AKJGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'É assim que acaba',
+      authors: ['Colleen Hoover'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 368,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {},
+  },
+  {
+    id: '20',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=99PsjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+      },
+      title: 'Will',
+      authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 476,
+      averageRating: 5,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
+  {
+    id: '21',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=7sWGCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'Extraordinário',
+      authors: ['R.J.Palacio'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 476,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
+  {
+    id: '22',
+    volumeInfo: {
+      imageLinks: {
+        thumbnail: 'http://books.google.com/books/content?id=_5lEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      title: 'Will',
+      authors: ['Will Smith', 'Mark Manson'],
+      publisher: 'Best Seller',
+      publishedDate: '2021-11-09',
+      pageCount: 476,
+      averageRating: 5,
+      industryIdentifiers: [
+        {
+          type: 'ISBN_10',
+          identifier: '8599296019',
+        },
+        {
+          type: 'ISBN_13',
+          identifier: '9788599296011',
+        },
+      ],
+      language: 'pt-BR',
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },
+    saleInfo: {
+      listPrice: {
+        amount: 39.9,
+      },
+    },
+  },
 ]
 
 export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [

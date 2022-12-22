@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ItemWrapper = styled.div`
@@ -7,7 +8,7 @@ export const ItemWrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.shadow};
 `
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled(NavLink)`
   width: 80px;
   height: 100px;
   display: flex;
@@ -33,11 +34,11 @@ export const NameAndDelete = styled.div`
   align-items: flex-start;
 `
 
-export const Name = styled.span`
+export const Name = styled(NavLink)`
   font-weight: 500;
   line-height: 22px;
   color: ${({ theme }) => theme.colors.text};
-  height: 44px;
+  max-height: 44px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -90,3 +90,20 @@ export const getBooksAuthor = async (nameAuthor?: string) => {
   const result = filterBooksWithoutPricesOrImages(response.data.items)
   return result
 }
+
+interface PropsGetBooksDepartment {
+  nameDepartment: string
+  initialElement: number
+  finalElement: number
+}
+
+export const getBooksDepartment = async ({ nameDepartment, initialElement, finalElement }: PropsGetBooksDepartment) => {
+  if (ENABLE_MOCK) return MOCK_BOOKS
+
+  const response = await api.get(
+    `?q=livros-de-${nameDepartment}&orderBy=relevance&printType=books&startIndex=${initialElement}&maxResults=${finalElement}`
+  )
+
+  const result = response.data
+  return result
+}
