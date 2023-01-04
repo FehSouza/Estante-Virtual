@@ -96,18 +96,29 @@ interface PropsGetBooksDepartment {
   orderBySelected: string
   initialElement: number
   finalElement: number
+  author: string | null
 }
 
-export const getBooksDepartment = async ({ nameDepartment, orderBySelected, initialElement, finalElement }: PropsGetBooksDepartment) => {
-  if (ENABLE_MOCK) return {
-    items: MOCK_BOOKS,
-    totalItems: 22
-  }
+export const getBooksDepartment = async ({
+  nameDepartment,
+  orderBySelected,
+  initialElement,
+  finalElement,
+  author,
+}: PropsGetBooksDepartment) => {
+  if (ENABLE_MOCK) return { items: MOCK_BOOKS, totalItems: 22 }
 
-  const response = await api.get(
-    `?q=livros-de-${nameDepartment}&orderBy=${orderBySelected}&printType=books&startIndex=${initialElement}&maxResults=${finalElement}`
-  )
+  const authorName = author ? ` por ${author}` : ''
 
+  const params = new URLSearchParams({
+    q: `livros de ${nameDepartment}${authorName}`,
+    orderBy: orderBySelected,
+    printType: 'books',
+    startIndex: String(initialElement),
+    maxResults: String(finalElement),
+  })
+
+  const response = await api.get<{ items: BooksResponseProps[]; totalItems: number }>(`?${params.toString()}`)
   const result = response.data
   return result
 }
