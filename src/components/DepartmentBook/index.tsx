@@ -36,7 +36,7 @@ export const DepartmentBook = ({ book }: DepartmentBookProps) => {
   return (
     <S.BookWrapper key={id} to={`/product/${id}`}>
       <S.ImageWrapper>
-        {image ? <S.Image src={book.volumeInfo.imageLinks?.thumbnail} /> : <MdOutlineNoPhotography size={32} />}
+        {image ? <S.Image src={image} /> : <MdOutlineNoPhotography size={32} />}
       </S.ImageWrapper>
       <S.BookName>{bookName}</S.BookName>
       <S.BookAuthor>{bookAuthor}</S.BookAuthor>

@@ -9,17 +9,19 @@ export const ItemWrapper = styled.div`
 `
 
 export const ImageWrapper = styled(NavLink)`
-  width: 80px;
-  height: 100px;
+  width: 68px;
+  height: 98px;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
+  border: 1px solid ${({ theme }) => theme.colors.shadow};
+  border-radius: 8px;
 `
 
 export const Image = styled.img`
-  width: auto;
-  height: 100%;
-  border-radius: 8px;
+  width: 100%;
+  height: auto;
 `
 
 export const InfoWrapper = styled.div`
@@ -86,6 +88,7 @@ export const BestPrice = styled.span`
   font-weight: 500;
   line-height: 20px;
   color: ${({ theme }) => theme.colors.text};
+  text-transform: uppercase;
 `
 
 export const QuantityWrapper = styled.div`
