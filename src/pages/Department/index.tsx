@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import useSWR from 'swr'
-import { DepartmentContainer, DepartmentContainerSkeleton } from '../../components'
+import { DepartmentContainer, DepartmentContainerSkeleton, Pagination } from '../../components'
 import { OrderBy } from '../../components/OrderBy'
 import { getBooksDepartment } from '../../services'
 import * as S from './styles'
@@ -21,8 +21,6 @@ export const Department = ({ category }: { category: string }) => {
   const [orderSelected, setOrderSelected] = useState(['relevance', 'Mais vendidos'])
 
   const totalProducts = booksDepartment?.totalItems ?? 0
-  // const totalProductsPerPage = 16
-  // const totalPages = Math.ceil(totalProducts / totalProductsPerPage)
 
   return (
     <S.Department>
@@ -39,6 +37,8 @@ export const Department = ({ category }: { category: string }) => {
       </S.DepartmentFilters>
 
       {booksDepartment ? <DepartmentContainer books={booksDepartment} filters={filters} /> : <DepartmentContainerSkeleton />}
+
+      <Pagination totalProducts={totalProducts} />
     </S.Department>
   )
 }

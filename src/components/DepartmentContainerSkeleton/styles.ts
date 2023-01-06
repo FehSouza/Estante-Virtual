@@ -58,5 +58,6 @@ export const BooksContainer = styled.ul`
   padding-left: 48px;
   margin-top: 48px;
   display: flex;
+  flex-wrap: wrap;
   gap: 38px;
 `
