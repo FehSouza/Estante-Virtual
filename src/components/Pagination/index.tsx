@@ -15,13 +15,14 @@ export const Pagination = ({ totalProducts }: PaginationProps) => {
   const totalPages = Math.ceil(totalProducts / totalProductsPerPage)
 
   const pages = new Array(totalPages >= 5 ? 5 : totalPages).fill(null).map((_, i) => i + 1)
-  const numberPages = pages.length
+  const numberOfPages = pages.length
 
   const pagination = pages.map((page) => {
-    if (currencyPage - 1 + numberPages > totalPages) {
-      return page + totalPages - numberPages
-    }
-    return page + currencyPage - 1
+    if (currencyPage <= 3) return page
+
+    if (currencyPage - 2 + numberOfPages > totalPages) return page + totalPages - numberOfPages
+
+    return currencyPage + page - 3
   })
 
   const handlePrevPage = () => {
@@ -48,7 +49,7 @@ export const Pagination = ({ totalProducts }: PaginationProps) => {
         <GrFormPrevious size={26} />
       </S.ArrowPage>
 
-      {currencyPage > 5 && <S.PageFixed onClick={() => handleSelectPage(FIRST_PAGE)}>{`${FIRST_PAGE} ...`}</S.PageFixed>}
+      {currencyPage > 3 && <S.PageFixed onClick={() => handleSelectPage(FIRST_PAGE)}>{`${FIRST_PAGE} ...`}</S.PageFixed>}
 
       {pagination.map((page) => (
         <S.Page key={page} currency={page === currencyPage} onClick={() => handleSelectPage(page)}>
@@ -56,7 +57,7 @@ export const Pagination = ({ totalProducts }: PaginationProps) => {
         </S.Page>
       ))}
 
-      {totalPages - currencyPage > 4 && <S.PageFixed onClick={() => handleSelectPage(totalPages)}>{`... ${totalPages}`}</S.PageFixed>}
+      {totalPages - currencyPage > 2 && <S.PageFixed onClick={() => handleSelectPage(totalPages)}>{`... ${totalPages}`}</S.PageFixed>}
 
       <S.ArrowPage className="next" onClick={handleNextPage} disabled={nextPageDisabled}>
         <GrFormPrevious size={26} />
