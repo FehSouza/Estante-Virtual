@@ -7,9 +7,9 @@ export const Container = () => {
   const { pathname } = useLocation()
 
   return (
-    <S.Container id="content">
+    <S.Container>
       <Header />
-      <S.Content key={pathname}>
+      <S.Content key={pathname} id="content">
         <Outlet />
         <Footer />
       </S.Content>

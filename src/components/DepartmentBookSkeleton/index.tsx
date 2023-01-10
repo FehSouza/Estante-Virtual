@@ -1,7 +1,7 @@
 import * as S from './styles'
 
 export const DepartmentBookSkeleton = () => {
-  const repeat = [0, 1, 2, 3, 4, 5, 6, 7]
+  const repeat = new Array(20).fill(null).map((_, i) => i + 1)
 
   return (
     <>

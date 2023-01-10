@@ -11,7 +11,7 @@ interface ContainerDepartmentProps {
 }
 
 export const DepartmentContainer = ({ books, filters }: ContainerDepartmentProps) => {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [_, setSearchParams] = useSearchParams()
 
   const authorList = useMemo(() => {
     if (!filters) return []

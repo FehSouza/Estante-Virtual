@@ -94,18 +94,12 @@ export const getBooksAuthor = async (nameAuthor?: string) => {
 interface PropsGetBooksDepartment {
   nameDepartment: string
   orderBySelected: string
-  initialElement: number
-  finalElement: number
+  initial: number
+  maxResults: number
   author: string | null
 }
 
-export const getBooksDepartment = async ({
-  nameDepartment,
-  orderBySelected,
-  initialElement,
-  finalElement,
-  author,
-}: PropsGetBooksDepartment) => {
+export const getBooksDepartment = async ({ nameDepartment, orderBySelected, initial, maxResults, author }: PropsGetBooksDepartment) => {
   if (ENABLE_MOCK) return { items: MOCK_BOOKS, totalItems: 22 }
 
   const authorName = author ? ` por ${author}` : ''
@@ -114,8 +108,8 @@ export const getBooksDepartment = async ({
     q: `livros de ${nameDepartment}${authorName}`,
     orderBy: orderBySelected,
     printType: 'books',
-    startIndex: String(initialElement),
-    maxResults: String(finalElement),
+    startIndex: String(initial),
+    maxResults: String(maxResults),
   })
 
   const response = await api.get<{ items: BooksResponseProps[]; totalItems: number }>(`?${params.toString()}`)
