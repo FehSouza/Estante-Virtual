@@ -10,15 +10,15 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "quotes": ["error", "single"],
-    "semi": ["error", "always"],
     "prefer-const": "error",
     "react/prop-types": "off",
     "@typescript-eslint/no-empty-interface": "off",
@@ -33,7 +33,7 @@
     "max-len": [
       "error",
       {
-        "code": 120,
+        "code": 140,
         "ignoreUrls": true,
         "ignoreComments": true,
         "ignoreStrings": true,

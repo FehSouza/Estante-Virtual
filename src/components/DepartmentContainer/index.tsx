@@ -42,8 +42,6 @@ export const DepartmentContainer = ({ books, filters }: ContainerDepartmentProps
             </S.AuthorName>
           )
         })}
-
-        <S.FilterTitle>Faixa de preço</S.FilterTitle>
       </S.Filter>
 
       <S.BooksContainer>

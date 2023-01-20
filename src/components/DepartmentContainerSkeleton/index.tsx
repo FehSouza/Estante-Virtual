@@ -3,7 +3,7 @@ import { DepartmentBookSkeleton } from '../DepartmentBookSkeleton'
 import * as S from './styles'
 
 export const DepartmentContainerSkeleton = () => {
-  const repeat = new Array(10).fill(null).map((_, i) => i + 1)
+  const repeat = new Array(12).fill(null).map((_, i) => i + 1)
 
   return (
     <S.Container>
@@ -12,11 +12,6 @@ export const DepartmentContainerSkeleton = () => {
           <MdFilterList size={24} />
           Filtros
         </S.Title>
-
-        <S.FilterTitle></S.FilterTitle>
-        {repeat.map((key) => (
-          <S.FilterName key={key} />
-        ))}
 
         <S.FilterTitle></S.FilterTitle>
         {repeat.map((key) => (

@@ -31,8 +31,6 @@ export const Department = ({ category }: { category: string }) => {
 
   return (
     <S.Department>
-      {booksDepartment ? <Pagination totalProducts={realTotalProducts} initialPage={Number(page)} /> : <PaginationSkeleton />}
-
       <S.DepartmentName>{category}</S.DepartmentName>
 
       <S.DepartmentFilters>
@@ -46,6 +44,8 @@ export const Department = ({ category }: { category: string }) => {
       </S.DepartmentFilters>
 
       {booksDepartment ? <DepartmentContainer books={booksDepartment} filters={filters} /> : <DepartmentContainerSkeleton />}
+
+      {booksDepartment ? <Pagination totalProducts={realTotalProducts} initialPage={Number(page)} /> : <PaginationSkeleton />}
     </S.Department>
   )
 }
