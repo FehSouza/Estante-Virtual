@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import useSWR from 'swr'
 import imageBanner from '../../assets/images/young-girl-student-2.png'
 import imageMainBanner from '../../assets/images/young-girl-student.png'
@@ -15,13 +16,17 @@ import {
 import * as S from './styles'
 
 export const Home = () => {
+  const navigate = useNavigate()
+
   const { data: booksBestSellers } = useSWR('api/best-sellers', getBestSellers)
-  const { data: booksChildren } = useSWR('api/children', getBooksChildren)
-  const { data: booksBestSellersAction } = useSWR('api/best-sellers-action', getBestSellersAction)
-  const { data: booksBestSellersPoliceRomance } = useSWR('api/best-sellers-police-romance', getBestSellersPoliceRomance)
+  const { data: booksChildren } = useSWR('api/best-sellers-infantis', getBooksChildren)
+  const { data: booksBestSellersAction } = useSWR('api/best-sellers-de-ação', getBestSellersAction)
+  const { data: booksBestSellersPoliceRomance } = useSWR('api/best-sellers-de-romance-policial', getBestSellersPoliceRomance)
   const { data: booksBestSellersHorror } = useSWR('api/best-sellers-horror', getBestSellersHorror)
-  const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-poetry', getBestSellersPoetry)
+  const { data: booksBestSellersPoetry } = useSWR('api/best-sellers-de-poesia', getBestSellersPoetry)
   const { data: booksBestSellersSelfHelp } = useSWR('api/best-sellers-self-help', getBestSellersSelfHelp)
+
+  const handleNavigateDepartment = (category: string) => navigate(`/livros/${category}`)
 
   return (
     <S.Container>
@@ -30,7 +35,7 @@ export const Home = () => {
           <S.TextBannerWrapper>
             <S.Title>Grandes descontos em livros infantis</S.Title>
             <S.Text>Descontos em livros infantis para todas as idades!</S.Text>
-            <S.Button>Venha conferir</S.Button>
+            <S.Button onClick={() => handleNavigateDepartment('livros-infantis')}>Venha conferir</S.Button>
           </S.TextBannerWrapper>
 
           <S.ImageWrapper>
@@ -56,7 +61,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Ação</S.ShelfTitle>
-          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-acao')}>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
       </S.ShelfModel2>
@@ -64,7 +69,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Romance Policial</S.ShelfTitle>
-          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-romance-policial')}>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
       </S.ShelfModel2>
@@ -81,7 +86,7 @@ export const Home = () => {
             “Clássica é a obra que tem dimensão universal: consegue atravessar gerações, fronteiras e nacionalidades, sem perder as suas
             características.” - Renato Rocha
           </S.Citation>
-          <S.Button>Ver todos</S.Button>
+          <S.Button onClick={() => handleNavigateDepartment('best-sellers')}>Ver todos</S.Button>
         </S.TextBanner2Wrapper>
         <S.ImageBanner2Wrapper>
           <S.ImageBanner2 src={imageBanner} alt="Imagem de uma menina segurando uma pilha de livros"></S.ImageBanner2>
@@ -91,7 +96,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Poesia</S.ShelfTitle>
-          <S.ButtonSeeMore>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-poesia')}>Ver todos</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersPoetry && <CarouselSixSlides bookList={booksBestSellersPoetry} />}
       </S.ShelfModel2>
