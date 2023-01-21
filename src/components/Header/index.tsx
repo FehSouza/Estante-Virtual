@@ -1,21 +1,12 @@
-import { useEffect } from 'react'
-import { BsHandbag, BsPerson, BsSearch } from 'react-icons/bs'
-import { useLocation, useMatch, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { BsHandbag, BsPerson } from 'react-icons/bs'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksResponseProps } from '../../@types'
 import { dispatchQuantityMiniCart, useOrderFormSelect, useQuantityMiniCart } from '../../states'
 import { Logo } from '../Logo'
+import { NavBar } from '../NavBar'
+import { NavBarSearch } from '../NavBarSearch'
 import * as S from './styles'
-
-const NavBarLink = ({ to, children }: { to: string; children: string }) => {
-  const match = useMatch(to)
-
-  return (
-    <S.NavLinkWrapper>
-      <S.DepartmentName to={to}>{children}</S.DepartmentName>
-      {!!match && <S.ActiveDepartmentBar layoutId="ActiveDepartmentBar" />}
-    </S.NavLinkWrapper>
-  )
-}
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -24,29 +15,22 @@ export const Header = () => {
   const orderForm = useOrderFormSelect()
   const [quantityMiniCart] = useQuantityMiniCart()
 
+  const [searchActive, setSearchActive] = useState(false)
+
   const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
 
   const totalProducts = orderForm.reduce((acc: number, item: BooksResponseProps) => acc + Number(item.quantity), 0)
 
   useEffect(() => dispatchQuantityMiniCart(totalProducts), [totalProducts])
 
+  const handleSearch = () => setSearchActive((prev) => !prev)
+
   return (
     <S.Header>
       <S.Container>
         <Logo />
 
-        <S.NavBar>
-          <NavBarLink to="/livros/ficcao-cientifica">Ficção Científica</NavBarLink>
-          <NavBarLink to="/livros/fantasia">Fantasia</NavBarLink>
-          <NavBarLink to="/livros/poesia">Poesia</NavBarLink>
-          <NavBarLink to="/livros/policial">Policial</NavBarLink>
-          <NavBarLink to="/livros/romance">Romance</NavBarLink>
-          <NavBarLink to="/livros/suspense">Suspense</NavBarLink>
-          <NavBarLink to="/livros/terror">Terror</NavBarLink>
-          <S.Search>
-            <BsSearch />
-          </S.Search>
-        </S.NavBar>
+        {!searchActive ? <NavBar handleSearch={handleSearch} /> : <NavBarSearch handleSearch={handleSearch} />}
 
         <S.UserMenu>
           <S.MiniCart onClick={handleOpenMiniCart}>
