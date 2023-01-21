@@ -61,7 +61,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Ação</S.ShelfTitle>
-          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-acao')}>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-acao')}>Clique aqui e veja todos!</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersAction && <CarouselSixSlides bookList={booksBestSellersAction} />}
       </S.ShelfModel2>
@@ -69,7 +69,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Romance Policial</S.ShelfTitle>
-          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-romance-policial')}>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-romance-policial')}>Clique aqui e veja todos!</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersPoliceRomance && <CarouselSixSlides bookList={booksBestSellersPoliceRomance} />}
       </S.ShelfModel2>
@@ -96,7 +96,7 @@ export const Home = () => {
       <S.ShelfModel2>
         <S.WrapperTitle>
           <S.ShelfTitle>Os Populares de Poesia</S.ShelfTitle>
-          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-poesia')}>Ver todos</S.ButtonSeeMore>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-poesia')}>Clique aqui e veja todos!</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersPoetry && <CarouselSixSlides bookList={booksBestSellersPoetry} />}
       </S.ShelfModel2>

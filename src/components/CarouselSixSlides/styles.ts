@@ -8,7 +8,6 @@ export const ShelfWrapper = styled.div`
   gap: 16px;
   margin-top: 48px;
   position: relative;
-  padding-bottom: 84px;
 
   & > div {
     width: calc((100% - (16px * 5)) / 6);
@@ -114,9 +113,8 @@ export const BookAuthor = styled.span`
 
 export const ButtonCarousel = styled.button`
   position: absolute;
-  bottom: 0px;
-  right: calc(50% - 33px);
-  transform: translateX(50%);
+  top: -82px;
+  right: calc((100% - 1440px) / 2);
   width: 48px;
   height: 48px;
   border-radius: 100%;
@@ -127,8 +125,7 @@ export const ButtonCarousel = styled.button`
   justify-content: center;
 
   &.button-prev {
-    right: calc(50% + 33px);
-    transform: translateX(50%);
+    right: calc((100% - 1440px) / 2 + 68px);
   }
 
   &:hover {

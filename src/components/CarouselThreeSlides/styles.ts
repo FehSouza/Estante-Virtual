@@ -198,7 +198,7 @@ export const MiniCartInt = styled.div<{ color?: string }>`
 export const ButtonCarousel = styled.button`
   position: absolute;
   top: 0px;
-  right: calc((100% - 1440px - 32px));
+  right: calc((100% - 1440px) / 2);
   width: 48px;
   height: 48px;
   border-radius: 100%;
@@ -209,7 +209,7 @@ export const ButtonCarousel = styled.button`
   justify-content: center;
 
   &.button-prev {
-    right: calc((100% - 1440px - 32px + 66px));
+    right: calc((100% - 1440px) / 2 + 68px);
   }
 
   &:hover {
@@ -219,6 +219,14 @@ export const ButtonCarousel = styled.button`
   & svg {
     font-size: 32px;
     color: ${({ theme }) => theme.colors.text};
+  }
+
+  @media (max-width: 1480px) {
+    right: 16px;
+
+    &.button-prev {
+      right: 84px;
+    }
   }
 `
 

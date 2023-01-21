@@ -133,7 +133,6 @@ export const BannerShelf1 = styled.div`
 
 export const WrapperTitle = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `
 
@@ -145,19 +144,14 @@ export const ShelfTitleBanner = styled.h3`
 `
 
 export const ButtonSeeMore = styled.button`
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: 500;
-  background-image: linear-gradient(
-    100deg,
-    ${({ theme }) => `${lighten(0.275, theme.colors.primary)}, ${lighten(0.275, theme.colors.secondary)}`}
-  );
-  padding: 16px 24px;
-  border-radius: 24px;
+  margin-left: 32px;
+  margin-top: 8px;
+  color: ${({ theme }) => theme.colors.textLight};
+  font-weight: 400;
   transition-duration: 350ms;
 
   &:hover {
-    background-image: ${({ theme }) =>
-      `linear-gradient(100deg, ${lighten(0.225, theme.colors.primary)}, ${lighten(0.225, theme.colors.secondary)})`};
+    text-decoration: underline;
   }
 `
 
@@ -195,6 +189,10 @@ export const ShelfModel1 = styled.div`
   padding-left: calc((100% - 1440px - 32px + 32px) / 2);
   position: relative;
   margin-top: 96px;
+
+  @media (max-width: 1480px) {
+    padding-left: 16px;
+  }
 `
 
 export const ShelfTitle = styled.h3`

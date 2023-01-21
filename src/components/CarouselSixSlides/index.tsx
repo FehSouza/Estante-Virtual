@@ -54,6 +54,22 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
   return (
     <>
       <S.ShelfWrapper>
+        {bookList.length >= 7 && (
+          <>
+            <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
+              <S.ButtonCarouselInt>
+                <GrFormPrevious />
+              </S.ButtonCarouselInt>
+            </S.ButtonCarousel>
+
+            <S.ButtonCarousel onClick={handleNext}>
+              <S.ButtonCarouselInt>
+                <GrFormNext />
+              </S.ButtonCarouselInt>
+            </S.ButtonCarousel>
+          </>
+        )}
+
         <AnimatePresence mode="popLayout" key={id}>
           {slidesToShow.slice(0, lastBook).map((slide) => {
             const book = bookList[slide]
@@ -88,22 +104,6 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
             )
           })}
         </AnimatePresence>
-
-        {bookList.length >= 7 && (
-          <>
-            <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
-              <S.ButtonCarouselInt>
-                <GrFormPrevious />
-              </S.ButtonCarouselInt>
-            </S.ButtonCarousel>
-
-            <S.ButtonCarousel onClick={handleNext}>
-              <S.ButtonCarouselInt>
-                <GrFormNext />
-              </S.ButtonCarouselInt>
-            </S.ButtonCarousel>
-          </>
-        )}
       </S.ShelfWrapper>
     </>
   )
