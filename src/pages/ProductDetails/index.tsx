@@ -37,7 +37,7 @@ export const ProductDetails = () => {
     return () => resetSelectedBook()
   }, [param.idBook])
 
-  const handleSeeDetails = (id?: string) => navigate(`/product/${id}`)
+  const handleSeeDetails = (id?: string) => navigate(`/produto/${id}`)
 
   const handleAddItemMiniCart = () => {
     miniCartAddItem({ bookDetails, quantity: 1 })

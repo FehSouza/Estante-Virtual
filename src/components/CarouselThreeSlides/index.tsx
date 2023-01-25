@@ -49,7 +49,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
     }))
   }
 
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  const handleSelectBook = (id: string) => navigate(`/produto/${id}`, { state: { backgroundLocation: location } })
 
   return (
     <>

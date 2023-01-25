@@ -38,7 +38,7 @@ export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
     }))
   }
 
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  const handleSelectBook = (id: string) => navigate(`/produto/${id}`, { state: { backgroundLocation: location } })
 
   return (
     <>

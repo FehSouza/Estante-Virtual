@@ -49,7 +49,7 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
       sixth: prev.sixth === 0 ? lastBook : prev.sixth - 1,
     }))
 
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  const handleSelectBook = (id: string) => navigate(`/produto/${id}`, { state: { backgroundLocation: location } })
 
   return (
     <>

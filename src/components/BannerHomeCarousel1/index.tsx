@@ -30,7 +30,7 @@ export const BannerHomeCarousel1 = ({ bookList }: BannerHomeCarousel1Props) => {
   const lastBook = bookList.length - 1
   const slidesToShow = Object.values(slide)
 
-  const handleSelectBook = (id: string) => navigate(`/product/${id}`, { state: { backgroundLocation: location } })
+  const handleSelectBook = (id: string) => navigate(`/produto/${id}`, { state: { backgroundLocation: location } })
 
   const handleNext = () => {
     setDirection(1)

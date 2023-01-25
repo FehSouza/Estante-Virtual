@@ -53,10 +53,10 @@ export const AppRoutes = () => {
               <Route path="livros-romance-policial" element={<Department category="Best Sellers de Romance Policial" />} />
               <Route path="livros-de-poesia" element={<Department category="Best Sellers de Poesia" />} />
               <Route path="best-sellers" element={<Department category="Best Sellers" />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path=":search" element={<Department />} />
             </Route>
 
-            <Route path="/product">
+            <Route path="/produto">
               <Route path=":idBook" element={<Product />} />
             </Route>
 
@@ -83,7 +83,7 @@ export const AppRoutes = () => {
           <Routes key={location.pathname} location={location}>
             <Route path="/mini-cart" element={<MiniCart />} />
 
-            <Route path="/product">
+            <Route path="/produto">
               <Route path=":idBook" element={<ProductDetails />} />
             </Route>
           </Routes>

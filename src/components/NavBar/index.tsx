@@ -1,5 +1,6 @@
 import { BsSearch } from 'react-icons/bs'
 import { useMatch } from 'react-router-dom'
+import { searchOpen } from '../../states'
 import * as S from './styles'
 
 const NavBarLink = ({ to, children }: { to: string; children: string }) => {
@@ -13,11 +14,7 @@ const NavBarLink = ({ to, children }: { to: string; children: string }) => {
   )
 }
 
-interface PropsNavBar {
-  handleSearch: () => void
-}
-
-export const NavBar = ({ handleSearch }: PropsNavBar) => {
+export const NavBar = () => {
   return (
     <S.NavBar>
       <NavBarLink to="/livros/ficcao-cientifica">Ficção Científica</NavBarLink>
@@ -27,7 +24,8 @@ export const NavBar = ({ handleSearch }: PropsNavBar) => {
       <NavBarLink to="/livros/romance">Romance</NavBarLink>
       <NavBarLink to="/livros/suspense">Suspense</NavBarLink>
       <NavBarLink to="/livros/terror">Terror</NavBarLink>
-      <S.Search onClick={handleSearch}>
+
+      <S.Search onClick={(e) => searchOpen(e)}>
         <BsSearch />
       </S.Search>
     </S.NavBar>

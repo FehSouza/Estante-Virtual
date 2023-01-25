@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { DepartmentContainer, DepartmentContainerSkeleton, Pagination, PaginationSkeleton } from '../../components'
 import { OrderBy } from '../../components/OrderBy'
@@ -7,7 +7,9 @@ import { LIMIT_PAGES, TOTAL_PRODUCTS_PER_PAGE } from '../../dictionary'
 import { getBooksDepartment } from '../../services'
 import * as S from './styles'
 
-export const Department = ({ category }: { category: string }) => {
+export const Department = ({ category }: { category?: string }) => {
+  const params = useParams()
+
   const [searchParams, setSearchParams] = useSearchParams()
   const filter = searchParams.get('filter')
   const page = searchParams.get('page')
@@ -16,12 +18,14 @@ export const Department = ({ category }: { category: string }) => {
 
   const initial = page ? Number(page) * TOTAL_PRODUCTS_PER_PAGE - TOTAL_PRODUCTS_PER_PAGE : 0
 
-  const { data: filters } = useSWR(`api/books-department/${category}`, () =>
-    getBooksDepartment({ nameDepartment: category, orderBySelected: orderSelected[0], initial: 0, maxResults: 20, author: null })
+  const term = category ?? String(params.search)
+
+  const { data: filters } = useSWR(`api/books-department/${term}`, () =>
+    getBooksDepartment({ nameDepartment: term, orderBySelected: orderSelected[0], initial: 0, maxResults: 20, author: null })
   )
 
-  const { data: booksDepartment, mutate } = useSWR(`api/books-department/${category}/${filter ?? ''}/${initial}`, () =>
-    getBooksDepartment({ nameDepartment: category, orderBySelected: orderSelected[0], initial: initial, maxResults: 20, author: filter })
+  const { data: booksDepartment, mutate } = useSWR(`api/books-department/${term}/${filter ?? ''}/${initial}`, () =>
+    getBooksDepartment({ nameDepartment: term, orderBySelected: orderSelected[0], initial: initial, maxResults: 20, author: filter })
   )
 
   const [orderSelected, setOrderSelected] = useState(['relevance', 'Mais vendidos'])
@@ -31,7 +35,7 @@ export const Department = ({ category }: { category: string }) => {
 
   return (
     <S.Department>
-      <S.DepartmentName>{category}</S.DepartmentName>
+      <S.DepartmentName>{term}</S.DepartmentName>
 
       <S.DepartmentFilters>
         {booksDepartment ? (

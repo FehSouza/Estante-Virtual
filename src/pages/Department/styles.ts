@@ -12,7 +12,7 @@ export const shimmer = keyframes`
 export const Department = styled.section`
   max-width: 1440px;
   width: calc(100% - 32px);
-  padding: 16px 0;
+  padding: 0 16px;
   margin: 0 auto;
   margin-top: 68px;
   display: flex;

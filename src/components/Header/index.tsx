@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BsHandbag, BsPerson } from 'react-icons/bs'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksResponseProps } from '../../@types'
-import { dispatchQuantityMiniCart, useOrderFormSelect, useQuantityMiniCart } from '../../states'
+import { dispatchQuantityMiniCart, useOrderFormSelect, useQuantityMiniCart, useSearchSelect } from '../../states'
 import { Logo } from '../Logo'
 import { NavBar } from '../NavBar'
 import { NavBarSearch } from '../NavBarSearch'
@@ -14,23 +14,20 @@ export const Header = () => {
 
   const orderForm = useOrderFormSelect()
   const [quantityMiniCart] = useQuantityMiniCart()
-
-  const [searchActive, setSearchActive] = useState(false)
-
-  const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
+  const search = useSearchSelect()
 
   const totalProducts = orderForm.reduce((acc: number, item: BooksResponseProps) => acc + Number(item.quantity), 0)
 
   useEffect(() => dispatchQuantityMiniCart(totalProducts), [totalProducts])
 
-  const handleSearch = () => setSearchActive((prev) => !prev)
+  const handleOpenMiniCart = () => navigate('/mini-cart', { state: { backgroundLocation: location } })
 
   return (
     <S.Header>
       <S.Container>
         <Logo />
 
-        {!searchActive ? <NavBar handleSearch={handleSearch} /> : <NavBarSearch handleSearch={handleSearch} />}
+        {!search ? <NavBar /> : <NavBarSearch />}
 
         <S.UserMenu>
           <S.MiniCart onClick={handleOpenMiniCart}>
