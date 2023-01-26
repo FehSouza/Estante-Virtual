@@ -89,8 +89,8 @@ export const getBook = async (id: string) => {
 
 export const getBooksAuthor = async (nameAuthor?: string) => {
   if (ENABLE_MOCK) return filterBooksWithoutPricesOrImages(MOCK_BOOKS)
-
-  const response = await api.get<{ items: BooksResponseProps[] }>(`?q=+inauthor:${nameAuthor}&maxResults=40`)
+  const normalizedName = nameAuthor?.replace(' ', '-')
+  const response = await api.get<{ items: BooksResponseProps[] }>(`?q=+inauthor:${normalizedName}&maxResults=40`)
   const result = filterBooksWithoutPricesOrImages(response.data.items)
   return result
 }

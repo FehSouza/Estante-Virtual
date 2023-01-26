@@ -18,5 +18,8 @@ export const formatDate = (date: string) => {
 
   const monthWord = dictionary[Number(month) - 1]
 
-  return `${day} de ${monthWord} de ${year}`
+  const dayVerify = day ? `${day} de` : ''
+  const monthVerify = monthWord ? `${monthWord} de` : ''
+
+  return `${dayVerify} ${monthVerify} ${year}`
 }

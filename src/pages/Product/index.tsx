@@ -6,10 +6,10 @@ import { IoReaderOutline } from 'react-icons/io5'
 import { TbClock2 } from 'react-icons/tb'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
-import { BookInformation, CarouselSixSlides } from '../../components'
+import { BookInformation, CarouselSixSlides, CarouselSixSlidesSkeleton } from '../../components'
 import { getBook, getBooksAuthor } from '../../services'
 import { getOrderForm } from '../../states'
-import { miniCartAddItem, customStorage, formatCurrency, formatDate } from '../../utils'
+import { customStorage, formatCurrency, formatDate, miniCartAddItem } from '../../utils'
 import * as S from './styles'
 
 const variantsDesc = { opened: { height: 152, overflow: 'auto' }, closed: { height: 66, overflow: 'hidden' } } as const
@@ -22,15 +22,17 @@ export const Product = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { data: booksAuthor } = useSWR('api/get-books-author', () => getBooksAuthor(bookDetails?.volumeInfo.authors[0].replace(' ', '-')))
-  const { data: bookDetails } = useSWR('api/get-book', () => getBook(params.idBook ?? ''))
+  const { data: bookDetails } = useSWR(`api/get-book/${params.idBook}`, () => getBook(params.idBook ?? ''))
+  const { data: booksAuthor, isValidating } = useSWR(`api/get-books-author/${params.idBook}`, () =>
+    getBooksAuthor(bookDetails?.volumeInfo.authors[0])
+  )
 
   const bookId = String(bookDetails?.id)
   const bookName = bookDetails?.volumeInfo.title
   const authors = bookDetails?.volumeInfo.authors
   const bookAuthors = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
   const bookPrice = bookDetails?.saleInfo.listPrice?.amount
-  const bookPriceFormatted = formatCurrency(bookPrice || 0)
+  const bookPriceFormatted = bookPrice ? formatCurrency(bookPrice) : 'Grátis'
   const bookDescription = bookDetails?.volumeInfo.description
   const bookAverage = String(bookDetails?.volumeInfo.averageRating)
   const bookPages = String(bookDetails?.volumeInfo.pageCount)
@@ -52,8 +54,7 @@ export const Product = () => {
 
   const [quantity, setQuantity] = useState<number | string>(1)
 
-  const bestPrice = bookPrice ? Math.abs(bookPrice * 0.75 * Number(quantity)) : 0
-  const bestPriceFormatted = formatCurrency(bestPrice)
+  const bestPrice = bookPrice ? formatCurrency(Math.abs(bookPrice * 0.75 * Number(quantity))) : 'Grátis'
 
   const handleAddProduct = () => setQuantity((prev) => Number(prev) + 1)
   const handleRemoveProduct = () => setQuantity((prev) => Number(prev) - 1)
@@ -85,6 +86,8 @@ export const Product = () => {
     navigate('/mini-cart', { state: { backgroundLocation: location } })
   }
 
+  console.log({ booksAuthor, bookAuthors, isValidating }, booksAuthor?.length)
+
   return (
     <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
       <S.ProductInfo>
@@ -93,20 +96,22 @@ export const Product = () => {
           <S.BookAuthors>{bookAuthors}</S.BookAuthors>
           <S.BookPrice>{bookPriceFormatted}</S.BookPrice>
 
-          <S.DescriptionWrapper>
-            <S.BookDescription
-              className="book-description-page"
-              variants={variantsDesc}
-              transition={transitionDescription}
-              animate={animate}
-              initial={false}
-              dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
-            />
+          {bookDescription && (
+            <S.DescriptionWrapper>
+              <S.BookDescription
+                className="book-description-page"
+                variants={variantsDesc}
+                transition={transitionDescription}
+                animate={animate}
+                initial={false}
+                dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
+              />
 
-            <S.ButtonSeeMore variants={variantsButton} animate={animate} onClick={handleShowDescription}>
-              <GrFormNext size={32} />
-            </S.ButtonSeeMore>
-          </S.DescriptionWrapper>
+              <S.ButtonSeeMore variants={variantsButton} animate={animate} onClick={handleShowDescription}>
+                <GrFormNext size={32} />
+              </S.ButtonSeeMore>
+            </S.DescriptionWrapper>
+          )}
 
           <BookInformation
             titles={['Avaliações:', 'Páginas:', 'Editora:', 'Data de lançamento:']}
@@ -141,7 +146,7 @@ export const Product = () => {
             </S.ButtonRead>
           </S.ButtonOptions>
 
-          {bookPriceFormatted && (
+          {bookPrice && (
             <>
               <S.ListPriceWrapper>
                 <S.PriceTitle>Preço original</S.PriceTitle>
@@ -157,8 +162,8 @@ export const Product = () => {
 
           <S.BestPriceWrapper>
             <S.PriceWrapper>
-              {bookPriceFormatted && <S.PriceTitle>Preço com desconto</S.PriceTitle>}
-              <S.BestPrice>{bestPriceFormatted}</S.BestPrice>
+              {bookPrice && <S.PriceTitleBest>Preço com desconto</S.PriceTitleBest>}
+              <S.BestPrice>{bestPrice}</S.BestPrice>
             </S.PriceWrapper>
 
             <S.QuantityWrapper>
@@ -206,15 +211,20 @@ export const Product = () => {
 
       <S.ShelfModel1>
         <S.ShelfTitle>Veja outros livros deste autor</S.ShelfTitle>
-        {!!booksAuthor && <CarouselSixSlides bookList={booksAuthor} />}
+        {isValidating && <CarouselSixSlidesSkeleton />}
+        {!isValidating && booksAuthor && booksAuthor.length > 0 && <CarouselSixSlides bookList={booksAuthor} key={params.idBook} />}
+        {!isValidating && !booksAuthor?.length && <S.EmptyBookList>Este autor não possui outros livros.</S.EmptyBookList>}
       </S.ShelfModel1>
 
       <S.Hr ref={refHR} />
 
       <S.DetailsWrapper>
-        <S.DetailsTitle>Descrição do produto</S.DetailsTitle>
-
-        <S.BookDescription dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }} />
+        {bookDescription && (
+          <>
+            <S.DetailsTitle>Descrição do produto</S.DetailsTitle>
+            <S.BookDescription dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }} />
+          </>
+        )}
 
         <S.DetailsTitle>Detalhes do produto</S.DetailsTitle>
 

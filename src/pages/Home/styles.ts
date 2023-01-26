@@ -327,7 +327,6 @@ export const AuthorImage = styled.img`
 
 export const AuthorName = styled.span`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 16px;
   font-weight: 500;
   line-height: 24px;
 `

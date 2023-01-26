@@ -102,7 +102,6 @@ export const BookAuthor = styled.span`
   margin-top: 16px;
   padding-bottom: 4px;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 16px;
   display: inline-block;
   width: 100%;
   text-align: left;
@@ -135,6 +134,14 @@ export const ButtonCarousel = styled.button`
   & svg {
     font-size: 32px;
     color: ${({ theme }) => theme.colors.text};
+  }
+
+  @media (max-width: 1480px) {
+    right: 0px;
+
+    &.button-prev {
+      right: 68px;
+    }
   }
 `
 

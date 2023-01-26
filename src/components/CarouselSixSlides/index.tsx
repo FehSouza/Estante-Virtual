@@ -70,8 +70,8 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
           </>
         )}
 
-        <AnimatePresence mode="popLayout" key={id}>
-          {slidesToShow.slice(0, lastBook).map((slide) => {
+        <AnimatePresence mode="popLayout">
+          {slidesToShow.slice(0, bookList.length).map((slide) => {
             const book = bookList[slide]
             const bookId = book.id
             const bookName = book.volumeInfo.title

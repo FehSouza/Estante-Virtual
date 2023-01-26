@@ -9,7 +9,6 @@ export const OrderWrapper = styled.div`
 `
 
 export const OrderTitle = styled.span`
-  font-size: 16px;
   line-height: 22px;
   color: ${({ theme }) => theme.colors.text};
 `
@@ -26,7 +25,6 @@ export const OrderSelector = styled.div<{ showOrder: boolean }>`
   align-items: center;
   padding-left: 16px;
   box-sizing: border-box;
-  font-size: 16px;
   line-height: 22px;
   color: ${({ theme }) => theme.colors.textLight};
 
@@ -70,7 +68,6 @@ export const OrderOptions = styled(motion.ul)`
 `
 
 export const OrderOption = styled.li`
-  font-size: 16px;
   line-height: 22px;
   color: ${({ theme }) => theme.colors.text};
   margin-top: 16px;

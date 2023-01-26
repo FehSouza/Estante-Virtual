@@ -67,7 +67,6 @@ export const DescriptionWrapper = styled.div`
 `
 
 export const BookDescription = styled(motion.p)`
-  font-size: 16px;
   line-height: 22px;
   color: ${({ theme }) => theme.colors.text};
   padding-right: 8px;
@@ -221,6 +220,7 @@ export const DiscountWrapper = styled.section`
 `
 
 export const BestPriceWrapper = styled.section`
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -240,20 +240,24 @@ export const PriceTitle = styled.span`
   color: ${({ theme }) => theme.colors.text};
 `
 
+export const PriceTitleBest = styled.span`
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 14px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
 export const ListPrice = styled.span`
-  font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.text};
 `
 
 export const Discount = styled.span`
-  font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.primary};
 `
 
 export const BestPrice = styled.span`
-  margin-top: 16px;
   font-size: 30px;
   font-weight: 600;
   line-height: 30px;
@@ -269,7 +273,6 @@ export const QuantityButton = styled.button`
   transform: rotate(90deg);
   width: 32px;
   height: 32px;
-  padding-top: 16px;
 
   & svg > polyline {
     stroke: ${({ theme }) => theme.colors.text};
@@ -317,7 +320,6 @@ export const InputWrapper = styled.div`
 
 export const QuantityInput = styled.input`
   width: 51px;
-  font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.text};
   text-align: right;
@@ -327,7 +329,6 @@ export const QuantityInput = styled.input`
 
 export const TextInput = styled.span`
   width: 51px;
-  font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.text};
   margin-top: 2px;
@@ -367,7 +368,6 @@ export const ButtonAddBag = styled.button`
   align-items: center;
   justify-content: center;
   gap: 16px;
-  font-size: 16px;
   line-height: 16px;
   color: ${({ theme }) => theme.colors.white};
   transition-duration: 350ms;
@@ -425,12 +425,19 @@ export const ShelfModel1 = styled.div`
   padding-left: calc((100% - 1440px - 32px + 32px) / 2);
   position: relative;
   margin-top: 96px;
+  display: flex;
+  flex-direction: column;
 `
 
 export const ShelfTitle = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 28px;
   font-weight: 600;
+`
+
+export const EmptyBookList = styled.span`
+  margin-top: 48px;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const DetailsWrapper = styled.div`
