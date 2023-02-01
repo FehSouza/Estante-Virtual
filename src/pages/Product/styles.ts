@@ -22,7 +22,7 @@ export const ProductLeft = styled.div`
   box-sizing: border-box;
 `
 
-export const BookName = styled.h2`
+export const BookName = styled.h1`
   font-size: 34px;
   font-weight: 600;
   line-height: 36px;
