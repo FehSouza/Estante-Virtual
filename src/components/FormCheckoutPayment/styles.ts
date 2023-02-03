@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
+  position: relative;
 
   & + div {
     border-top: 1px solid ${({ theme }) => theme.colors.shadow};
@@ -30,16 +31,17 @@ export const Wrapper = styled.div`
 `
 
 export const Checkbox = styled.input`
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+`
+
+export const CheckboxFake = styled.div`
   height: 20px;
   width: 20px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.textLight};
   transition-duration: 350ms;
-
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-    box-shadow: 0px 0 16px #00000026;
-  }
 `
 
 export const Text = styled.label`
@@ -51,5 +53,9 @@ export const Icons = styled.div`
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.text};
+  }
 `

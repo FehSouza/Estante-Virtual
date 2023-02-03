@@ -1,5 +1,3 @@
-import { FaApplePay, FaPaypal } from 'react-icons/fa'
-import { SiMastercard, SiVisa } from 'react-icons/si'
 import { FormCheckout, FormCheckoutPayment } from '../../components'
 import * as S from './styles'
 
@@ -21,12 +19,6 @@ const deliveryInfo = [
   { label: 'Complemento', id: 'complement' },
 ]
 
-const payment = [
-  { label: 'Apple Pay', id: 'apple', icons: [<FaApplePay />] },
-  { label: 'Pay Pal', id: 'payPal', icons: [<FaPaypal />] },
-  { label: 'Cartão de débito u crédito', id: 'card', icons: [<SiMastercard />, <SiVisa />] },
-]
-
 export const Checkout = () => {
   return (
     <S.Container>
@@ -35,7 +27,7 @@ export const Checkout = () => {
         <S.ContentLeft>
           <FormCheckout title="Informações pessoais:" form={personalInfo} />
           <FormCheckout title="Informações de entrega:" form={deliveryInfo} />
-          <FormCheckoutPayment form={payment} />
+          <FormCheckoutPayment />
         </S.ContentLeft>
 
         <S.ContentRight></S.ContentRight>

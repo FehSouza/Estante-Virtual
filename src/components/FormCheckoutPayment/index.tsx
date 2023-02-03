@@ -1,30 +1,40 @@
+import { FaApplePay, FaPaypal } from 'react-icons/fa'
+import { SiMastercard, SiVisa } from 'react-icons/si'
 import * as S from './styles'
 
-interface FormCheckoutPaymentProps {
-  form: {
-    label: string
-    id: string
-    icons: JSX.Element[]
-  }[]
-}
-
-export const FormCheckoutPayment = ({ form }: FormCheckoutPaymentProps) => {
+export const FormCheckoutPayment = () => {
   return (
     <S.Form>
       <S.Title>Pagamento:</S.Title>
 
       <S.Container>
-        {form.map((item) => (
-          <S.Wrapper key={item.id}>
-            <S.Checkbox id={item.id} type="checkbox" />
-            <S.Text htmlFor={item.id}>{item.label}</S.Text>
-            <S.Icons>
-              {item.icons.map((icon, i) => (
-                <div key={i}>{icon}</div>
-              ))}
-            </S.Icons>
-          </S.Wrapper>
-        ))}
+        <S.Wrapper>
+          <S.Checkbox id="apple" type="checkbox" />
+          <S.CheckboxFake />
+          <S.Text htmlFor="apple">Apple Pay</S.Text>
+          <S.Icons>
+            <FaApplePay size={48} />
+          </S.Icons>
+        </S.Wrapper>
+
+        <S.Wrapper>
+          <S.Checkbox id="payPal" type="checkbox" />
+          <S.CheckboxFake />
+          <S.Text htmlFor="payPal">Pay Pal</S.Text>
+          <S.Icons>
+            <FaPaypal size={26} />
+          </S.Icons>
+        </S.Wrapper>
+
+        <S.Wrapper>
+          <S.Checkbox id="card" type="checkbox" />
+          <S.CheckboxFake />
+          <S.Text htmlFor="card">Cartão de débito ou crédito</S.Text>
+          <S.Icons>
+            <SiMastercard size={32} />
+            <SiVisa size={44} />
+          </S.Icons>
+        </S.Wrapper>
       </S.Container>
     </S.Form>
   )
