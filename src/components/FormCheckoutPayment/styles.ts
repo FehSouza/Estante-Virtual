@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Form = styled.form`
@@ -24,29 +25,40 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
   & + div {
     border-top: 1px solid ${({ theme }) => theme.colors.shadow};
   }
 `
 
-export const Checkbox = styled.input`
+export const Radio = styled.input`
   opacity: 0;
   z-index: -1;
-  position: absolute;
 `
 
-export const CheckboxFake = styled.div`
+export const RadioFake = styled.div<{ checked: boolean }>`
   height: 20px;
   width: 20px;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.textLight};
+  border-radius: 10px;
+  border: 1px solid ${({ theme, checked }) => (checked ? theme.colors.primary : theme.colors.textLight)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition-duration: 350ms;
 `
 
-export const Text = styled.label`
+export const RadioFakeInt = styled(motion.div).attrs({ initial: { scale: 0 }, animate: { scale: 1 }, exit: { scale: 0 } })`
+  height: 14px;
+  width: 14px;
+  border-radius: 7px;
+  background-color: ${({ theme }) => theme.colors.primary};
+`
+
+export const Label = styled.label`
   margin-left: 16px;
   color: ${({ theme }) => theme.colors.text};
+  cursor: pointer;
 `
 
 export const Icons = styled.div`
