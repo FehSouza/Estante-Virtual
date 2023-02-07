@@ -28,6 +28,8 @@ export const Wrapper = styled.div`
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.colors.textLight};
+  font-size: 14px;
+  line-height: 16px;
   transition-duration: 350ms;
   user-select: none;
 `

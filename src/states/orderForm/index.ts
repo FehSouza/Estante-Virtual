@@ -7,4 +7,4 @@ const storage = customStorage.getItem('orderForm')
 
 const initialValue = storage ?? []
 
-export const {  useOrderForm, useOrderFormSelect, dispatchOrderForm, getOrderForm } = createReStateMethods(orderFormKey, initialValue)
+export const { useOrderForm, useOrderFormSelect, dispatchOrderForm, getOrderForm } = createReStateMethods(orderFormKey, initialValue)

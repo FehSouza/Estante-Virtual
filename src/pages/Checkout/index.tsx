@@ -1,4 +1,4 @@
-import { FormCheckoutDelivery, FormCheckoutPayment, FormCheckoutPersonal } from '../../components'
+import { CheckoutYourOrder, FormCheckoutDelivery, FormCheckoutPayment, FormCheckoutPersonal } from '../../components'
 import * as S from './styles'
 
 export const Checkout = () => {
@@ -12,7 +12,9 @@ export const Checkout = () => {
           <FormCheckoutPayment />
         </S.ContentLeft>
 
-        <S.ContentRight></S.ContentRight>
+        <S.ContentRight>
+          <CheckoutYourOrder />
+        </S.ContentRight>
       </S.Content>
     </S.Container>
   )

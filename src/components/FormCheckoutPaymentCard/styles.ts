@@ -1,35 +1,29 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const Form = styled.form`
+export const Container = styled(motion.section).attrs({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+})`
   display: flex;
-  flex-direction: column;
-`
-
-export const Title = styled.h2`
-  margin-top: 56px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 20px;
-  color: ${({ theme }) => theme.colors.text};
-`
-
-export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 32px;
 `
 
 export const Wrapper = styled.div`
   margin-top: 20px;
-  width: calc(50% - 16px);
+  width: calc(25% - 24px);
   display: flex;
   flex-direction: column;
+
+  &:first-child {
+    min-width: calc(50% - 16px);
+  }
 `
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.colors.textLight};
-  font-size: 14px;
-  line-height: 16px;
   transition-duration: 350ms;
   user-select: none;
 `

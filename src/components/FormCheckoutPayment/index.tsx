@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { FaApplePay, FaPaypal } from 'react-icons/fa'
 import { SiMastercard, SiVisa } from 'react-icons/si'
+import { FormCheckoutPaymentCard } from '../FormCheckoutPaymentCard'
 import * as S from './styles'
 
 export const FormCheckoutPayment = () => {
@@ -51,6 +52,8 @@ export const FormCheckoutPayment = () => {
             <SiVisa size={44} />
           </S.Icons>
         </S.Wrapper>
+
+        <AnimatePresence>{cardVerify && <FormCheckoutPaymentCard />}</AnimatePresence>
       </S.Container>
     </S.Form>
   )
