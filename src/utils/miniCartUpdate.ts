@@ -1,6 +1,6 @@
-import { BooksResponseProps } from '../@types';
-import { dispatchOrderForm, getOrderForm } from '../states';
-import { customStorage } from './customStorage';
+import { BooksResponseProps } from '../@types'
+import { dispatchOrderForm, getOrderForm } from '../states'
+import { customStorage } from './customStorage'
 
 export const miniCartUpdate = ({ id, operator }: { id: string; operator: string }) => {
   const orderForm = getOrderForm()

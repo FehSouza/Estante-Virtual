@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-export const useScrollToTop = (disabled?: boolean, selector: string = 'html') => {
+export const useScrollToTop = (disabled?: boolean, selector?: string) => {
   const { pathname } = useLocation()
 
   useEffect(() => {

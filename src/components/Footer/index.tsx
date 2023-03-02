@@ -1,7 +1,7 @@
 import { AiOutlineSafety } from 'react-icons/ai'
 import { BsClockHistory, BsFacebook, BsFillJournalBookmarkFill, BsInstagram, BsYoutube } from 'react-icons/bs'
 import { GiRibbonMedal } from 'react-icons/gi'
-import { useWindowSize } from '../../hooks/index'
+import { useWindowSize } from '../../Hooks/index'
 import { CarouselBenefitsBar } from '../CarouselBenefitsBar'
 import { Logo } from '../Logo'
 import * as S from './styles'

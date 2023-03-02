@@ -24,8 +24,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -52,8 +51,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -84,8 +82,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {},
   },
@@ -111,8 +108,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -142,8 +138,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -174,8 +169,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -202,8 +196,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -233,8 +226,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {},
   },
@@ -261,8 +253,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -292,8 +283,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -324,8 +314,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -356,8 +345,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -384,8 +372,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -416,8 +403,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {},
   },
@@ -443,8 +429,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -474,8 +459,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -506,8 +490,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -534,8 +517,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -565,8 +547,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {},
   },
@@ -593,8 +574,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -624,8 +604,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -656,8 +635,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
         },
       ],
       language: 'pt-BR',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      description: 'Descrição',
     },
     saleInfo: {
       listPrice: {
@@ -728,7 +706,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       ],
       language: 'pt-BR',
       description:
-        "<p>Há uma trama, Harry Potter. Uma trama para fazer coisas terríveis acontecerem na Escola de Magia e Bruxaria de Hogwarts este ano.'<br><br>O verão de Harry Potter incluiu o pior aniversário de todos, avisos macabros de um elfo doméstico chamado Dobby, e ser resgatado dos Dursleys por seu amigo Rony Weasley em um carro voador mágico! De volta à Escola de Magia e Bruxaria de Hogwarts para seu segundo ano, Harry ouve estranhos sussurros ecoando pelos corredores vazios - e então, os ataques começam! Estudantes são encontrados transformados em pedra... As previsões sinistras de Dobby parecem estar se tornando realidade.</p>",
+        '<p>Há uma trama, Harry Potter. Uma trama para fazer coisas terríveis acontecerem na Escola de Magia e Bruxaria de Hogwarts este ano.</p>',
     },
     saleInfo: {
       listPrice: {
@@ -762,7 +740,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       ],
       language: 'pt-BR',
       description:
-        "<p>Bem-vindo ao ônibus Nôitibus Andante, o transporte de emergência para bruxos e bruxas perdidos. Basta esticar a mão da varinha, subir a bordo e podemos levá-lo aonde quiser.'<br><br>Quando o ônibus Nôitibus Andante surge repentinamente da escuridão e solta um guincho de seu freio bem à sua frente, mais um ano nada normal em Hogwarts começa para Harry Potter. Sirius Black, assassino em série fugitivo e seguidor do Lorde Voldemort, está à solta - e dizem que está indo atrás de Harry. Em sua primeira aula de Adivinhação, a professora Trelawney vê um agouro de morte nas folhas do chá de Harry... Mas talvez a parte mais assustadora seja os Dementadores patrulhando os pátios da escola, com seus beijos que sugam a alma...</p>",
+        '<p>Bem-vindo ao ônibus Nôitibus Andante, o transporte de emergência para bruxos e bruxas perdidos. Basta esticar a mão da varinha, subir a bordo e podemos levá-lo aonde quiser.</p>',
     },
     saleInfo: {
       listPrice: {
@@ -796,7 +774,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       ],
       language: 'pt-BR',
       description:
-        "<p>Haverá três tarefas, espaçadas durante o ano letivo, que servirão para testar os campeões de diferentes maneiras... sua perícia em magia, sua coragem, seus poderes de dedução e, naturalmente, sua capacidade de enfrentar o perigo.'<br><br>O Torneio Tribruxo será realizado em Hogwarts. Apenas bruxos acima dos dezessete anos de idade podem se inscrever - mas isso não impede que Harry sonhe em vencer a competição. E então, no Dia das Bruxas, quando o Cálice de Fogo faz sua seleção, Harry se surpreende ao ver que seu nome é um dos que a taça mágica escolhe. Ele terá de enfrentar tarefas mortais, dragões e bruxos das trevas, mas com a ajuda de seus melhores amigos, Ron e Hermione, talvez ele consiga sair dessa - vivo!</p>",
+        '<p>Haverá três tarefas, espaçadas durante o ano letivo, que servirão para testar os campeões de diferentes maneiras... sua perícia em magia, sua coragem, seus poderes de dedução e, naturalmente, sua capacidade de enfrentar o perigo.</p>',
     },
     saleInfo: {
       listPrice: {
@@ -830,7 +808,7 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
       ],
       language: 'pt-BR',
       description:
-        "<p>Você está compartilhando os pensamentos e emoções do Lorde das Trevas. O diretor acha que é desaconselhável que isto continue a acontecer. E quer que eu lhe ensine como fechar a mente ao Lorde das Trevas.'<br><br>Tempos sombrios se abateram sobre Hogwarts. Depois do ataque dos Dementadores ao seu primo Dudley, Harry Potter sabe que Voldemort fará tudo para encontrá-lo. Muitos negam o retorno do Lorde das Trevas, mas Harry não está sozinho: uma ordem secreta se reúne no Largo Grimmauld para fazer frente às forças sombrias. Harry precisa permitir que o professor Snape o ensine a se proteger dos vorazes ataques de Voldemort à sua mente. Mas eles estão ficando cada vez mais fortes, e o tempo de Harry está acabando...</p>",
+        '<p>Você está compartilhando os pensamentos e emoções do Lorde das Trevas. O diretor acha que é desaconselhável que isto continue a acontecer. E quer que eu lhe ensine como fechar a mente ao Lorde das Trevas.</p>',
     },
     saleInfo: {
       listPrice: {
@@ -907,4 +885,3 @@ export const MOCK_OUR_SUGGESTIONS: BooksProps[] = [
     },
   },
 ]
-
