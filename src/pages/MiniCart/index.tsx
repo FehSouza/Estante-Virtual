@@ -4,9 +4,9 @@ import { GrFormPrevious } from 'react-icons/gr'
 import { useNavigate } from 'react-router-dom'
 import { BooksResponseProps } from '../../@types'
 import { CardMiniCart } from '../../components'
-import { useOrderFormSelect, useQuantityMiniCart } from '../../states'
-import { dispatchTotalsMiniCart, getTotalsMiniCart } from '../../states/totalsMiniCart'
+import { dispatchTotalsMiniCart, getTotalsMiniCart, useOrderFormSelect, useQuantityMiniCart } from '../../states'
 import { formatCurrency } from '../../utils'
+import { miniCartTotals } from '../../utils/miniCartTotals'
 import * as S from './styles'
 
 export const MiniCart = () => {
@@ -19,21 +19,11 @@ export const MiniCart = () => {
 
   const stopCloseMiniCart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => e.stopPropagation()
 
-  const subTotalMiniCart = orderForm.reduce((acc: number, item: BooksResponseProps) => {
-    const price = item.saleInfo.listPrice?.amount
-    const quantity = Number(item.quantity)
+  const totals = miniCartTotals(orderForm)
 
-    if (!price) return acc
-    return acc + price * quantity
-  }, 0)
+  dispatchTotalsMiniCart({ subTotal: totals.subTotalMiniCart, discount: totals.discountMiniCart, total: totals.totalMiniCart })
 
-  const discountMiniCart = subTotalMiniCart * 0.25
-
-  const totalMiniCart = subTotalMiniCart - discountMiniCart
-
-  dispatchTotalsMiniCart({ subTotal: subTotalMiniCart, discount: discountMiniCart, total: totalMiniCart })
-
-  const totalsMiniCart = getTotalsMiniCart()
+  const stateTotals = getTotalsMiniCart()
 
   return (
     <S.Container onClick={handleCloseMiniCart}>
@@ -73,17 +63,17 @@ export const MiniCart = () => {
                 <S.Footer>
                   <S.PriceFooter>
                     <S.PriceTitle>Subtotal</S.PriceTitle>
-                    <S.SubTotal>{formatCurrency(totalsMiniCart.subTotal)}</S.SubTotal>
+                    <S.SubTotal>{formatCurrency(stateTotals.subTotal)}</S.SubTotal>
                   </S.PriceFooter>
 
                   <S.PriceFooter>
                     <S.PriceTitle>Descontos</S.PriceTitle>
-                    <S.Discounts>{`- ${formatCurrency(totalsMiniCart.discount)}`}</S.Discounts>
+                    <S.Discounts>{`- ${formatCurrency(stateTotals.discount)}`}</S.Discounts>
                   </S.PriceFooter>
 
                   <S.PriceFooter>
                     <S.PriceTitle className="price-title-total">Total</S.PriceTitle>
-                    <S.Total>{formatCurrency(totalsMiniCart.total)}</S.Total>
+                    <S.Total>{formatCurrency(stateTotals.total)}</S.Total>
                   </S.PriceFooter>
                   <S.KeepBuyingButton onClick={handleCloseMiniCart}>Continuar comprando</S.KeepBuyingButton>
                   <S.CheckoutButton to="/checkout">Finalizar compra</S.CheckoutButton>

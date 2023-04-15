@@ -37,7 +37,7 @@ export const Label = styled.label`
 export const Input = styled.input`
   margin-top: 10px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.textLight};
   padding: 0 12px;
   transition-duration: 350ms;

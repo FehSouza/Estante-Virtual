@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.h1`
+export const Container = styled.main`
   max-width: 1440px;
   width: calc(100% - 32px);
   padding: 0 16px;
@@ -29,4 +29,16 @@ export const ContentRight = styled.div`
   width: 40%;
   padding-left: 88px;
   box-sizing: border-box;
+`
+
+export const BuyButton = styled.button`
+  margin-top: 32px;
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 600;
+  text-transform: uppercase;
 `

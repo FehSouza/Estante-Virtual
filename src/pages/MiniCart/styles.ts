@@ -192,7 +192,7 @@ export const KeepBuyingButton = styled.button`
   background-color: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.text};
-  border-radius: 20px;
+  border-radius: 16px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -214,7 +214,7 @@ export const CheckoutButton = styled(NavLink)`
   background-color: ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
-  border-radius: 20px;
+  border-radius: 16px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
