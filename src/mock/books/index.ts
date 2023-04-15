@@ -28,7 +28,7 @@ export const MOCK_BOOKS: BooksResponseProps[] = [
     },
     saleInfo: {
       listPrice: {
-        amount: 37.9,
+        amount: 0,
       },
     },
   },

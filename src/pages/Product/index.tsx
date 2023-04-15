@@ -86,8 +86,6 @@ export const Product = () => {
     navigate('/mini-cart', { state: { backgroundLocation: location } })
   }
 
-  console.log({ booksAuthor, bookAuthors, isValidating }, booksAuthor?.length)
-
   return (
     <S.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transitionDescription}>
       <S.ProductInfo>
@@ -146,7 +144,7 @@ export const Product = () => {
             </S.ButtonRead>
           </S.ButtonOptions>
 
-          {bookPrice && (
+          {!!bookPrice && (
             <>
               <S.ListPriceWrapper>
                 <S.PriceTitle>Preço original</S.PriceTitle>
@@ -162,7 +160,7 @@ export const Product = () => {
 
           <S.BestPriceWrapper>
             <S.PriceWrapper>
-              {bookPrice && <S.PriceTitleBest>Preço com desconto</S.PriceTitleBest>}
+              {!!bookPrice && <S.PriceTitleBest>Preço com desconto</S.PriceTitleBest>}
               <S.BestPrice>{bestPrice}</S.BestPrice>
             </S.PriceWrapper>
 

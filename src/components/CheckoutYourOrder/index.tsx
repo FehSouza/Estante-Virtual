@@ -1,10 +1,11 @@
+import { getTotalsMiniCart } from '../../states/totalsMiniCart'
 import { formatCurrency } from '../../utils'
-import { totalOrderForm } from '../../utils/miniCartTotals'
 import * as S from './styles'
 
 export const CheckoutYourOrder = () => {
+  const totalsMiniCart = getTotalsMiniCart()
   const delivery = 10
-  const total = totalOrderForm + delivery
+  const total = totalsMiniCart.total + delivery
 
   return (
     <S.Container>
@@ -12,7 +13,7 @@ export const CheckoutYourOrder = () => {
 
       <S.Wrapper>
         <S.SubTitle>Subtotal:</S.SubTitle>
-        <S.Price>{formatCurrency(totalOrderForm)}</S.Price>
+        <S.Price>{formatCurrency(totalsMiniCart.total)}</S.Price>
       </S.Wrapper>
 
       <S.Wrapper>
