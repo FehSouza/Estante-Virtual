@@ -32,13 +32,68 @@ export const ContentRight = styled.div`
 `
 
 export const BuyButton = styled.button`
-  margin-top: 32px;
+  margin-top: 36px;
   width: 100%;
-  height: 48px;
-  border: none;
+  height: 50px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition-duration: 350ms;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
+`
+
+export const ContentEmptyBag = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  align-items: center;
+`
+
+export const EmptyBagText = styled.span`
+  margin-top: 32px;
+  font-size: 20px;
+  line-height: 20px;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const EmptyBagButton = styled.button`
+  margin-top: 32px;
+  font-weight: 500;
+  padding: 16px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
-  font-weight: 600;
   text-transform: uppercase;
+  font-weight: 600;
+  transition-duration: 350ms;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
+`
+
+export const Shelf = styled.div`
+  max-width: calc(((100% - 1440px) / 2) + 1440px);
+  padding-left: calc((100% - 1440px - 32px + 32px) / 2);
+  position: relative;
+  margin-top: 80px;
+
+  @media (max-width: 1480px) {
+    padding-left: 16px;
+  }
+`
+
+export const ShelfTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 28px;
+  font-weight: 600;
 `

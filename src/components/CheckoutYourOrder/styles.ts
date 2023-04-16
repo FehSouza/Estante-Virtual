@@ -11,7 +11,7 @@ export const Title = styled.h2`
 `
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,5 +38,5 @@ export const Hr = styled.hr`
   background-color: ${({ theme }) => theme.colors.shadow};
   border: none;
   margin: 0;
-  margin-top: 20px;
+  margin-top: 16px;
 `

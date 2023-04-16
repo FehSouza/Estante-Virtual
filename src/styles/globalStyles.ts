@@ -86,7 +86,7 @@ export const GlobalStyles = css`
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: 0px;
+    border-radius: 10px;
     background-color: ${({ theme }) => lighten(0.1, theme.colors.textLight)};
     border: none;
   }

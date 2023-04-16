@@ -3,6 +3,7 @@ import { BsHandbag, BsHeart, BsListTask } from 'react-icons/bs'
 import { FiCheckSquare } from 'react-icons/fi'
 import { GrFormNext } from 'react-icons/gr'
 import { IoReaderOutline } from 'react-icons/io5'
+import { MdOutlineNoPhotography } from 'react-icons/md'
 import { TbClock2 } from 'react-icons/tb'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useSWR from 'swr'
@@ -121,7 +122,13 @@ export const Product = () => {
         </S.ProductLeft>
 
         <S.ProductCenter>
-          <S.BookImage src={bookImagem} />
+          {bookImagem ? (
+            <S.BookImage src={bookImagem} />
+          ) : (
+            <S.WithoutImage>
+              <MdOutlineNoPhotography size={40} />
+            </S.WithoutImage>
+          )}
         </S.ProductCenter>
 
         <S.ProductRight>

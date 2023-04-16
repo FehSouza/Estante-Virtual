@@ -7,7 +7,7 @@ export const Form = styled.form`
 `
 
 export const Title = styled.h2`
-  margin-top: 56px;
+  margin-top: 48px;
   font-size: 18px;
   font-weight: 600;
   line-height: 20px;
@@ -15,13 +15,13 @@ export const Title = styled.h2`
 `
 
 export const Container = styled.div`
-  margin-top: 20px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
 `
 
 export const Wrapper = styled.div`
-  height: 50px;
+  height: 48px;
   display: flex;
   align-items: center;
   position: relative;

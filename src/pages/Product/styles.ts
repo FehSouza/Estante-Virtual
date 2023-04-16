@@ -160,6 +160,16 @@ export const BookImage = styled.img`
   border-radius: 20px;
 `
 
+export const WithoutImage = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.shadow};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const ProductRight = styled.div`
   display: flex;
   flex-direction: column;

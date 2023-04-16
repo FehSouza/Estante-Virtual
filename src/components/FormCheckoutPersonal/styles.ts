@@ -20,7 +20,7 @@ export const Container = styled.div`
 `
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 16px;
   width: calc(50% - 16px);
   display: flex;
   flex-direction: column;
@@ -35,8 +35,8 @@ export const Label = styled.label`
 `
 
 export const Input = styled.input`
-  margin-top: 10px;
-  height: 40px;
+  margin-top: 8px;
+  height: 38px;
   border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.textLight};
   padding: 0 12px;

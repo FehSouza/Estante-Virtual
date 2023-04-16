@@ -118,7 +118,7 @@ export const EmptyBagButton = styled.button`
     ${({ theme }) => `${lighten(0.275, theme.colors.white)}, ${lighten(0.275, theme.colors.secondary)}`}
   );
   padding: 16px;
-  border-radius: 24px;
+  border-radius: 16px;
 
   &:hover {
     background-image: linear-gradient(

@@ -1,10 +1,10 @@
-import { getOrderForm } from '../../states'
+import { useOrderForm } from '../../states'
 import { formatCurrency } from '../../utils'
 import { miniCartTotals } from '../../utils/miniCartTotals'
 import * as S from './styles'
 
 export const CheckoutYourOrder = () => {
-  const orderForm = getOrderForm()
+  const [orderForm] = useOrderForm()
 
   const totals = miniCartTotals(orderForm)
 

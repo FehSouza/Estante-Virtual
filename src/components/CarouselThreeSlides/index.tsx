@@ -5,7 +5,7 @@ import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { BooksProps } from '../../@types'
 import { getOrderForm, useSelectedBookSelect } from '../../states'
-import { miniCartAddItem, customStorage, formatCurrency } from '../../utils'
+import { customStorage, formatCurrency, miniCartAddItem } from '../../utils'
 import * as S from './styles'
 
 const variants = {
@@ -79,6 +79,8 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
                 miniCartAddItem({ bookDetails: book, quantity: 1 })
                 const orderForm = getOrderForm()
                 customStorage.setItem('orderForm', orderForm)
+
+                if (location.pathname === '/checkout') return
 
                 navigate('/mini-cart', { state: { backgroundLocation: location } })
               }
