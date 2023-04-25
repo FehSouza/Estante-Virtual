@@ -12,6 +12,7 @@ const baseTheme = {
     modalDetails: '#151e29',
     modalDetailsShadow: '#0000005A',
     modalDetailsText: '#929096',
+    error: '#FF0000',
   },
 } as const
 

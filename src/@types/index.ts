@@ -1,3 +1,5 @@
+import { FieldError, FieldValid } from '../Hooks'
+
 export interface BooksResponseProps {
   id: string
   quantity?: number | string
@@ -56,4 +58,22 @@ export interface AuthorsProps {
   name: string
   image: string
   description: string
+}
+
+export interface FormsCheckoutProps {
+  fields: {
+    firstName: string
+    lastName: string
+    phone: string
+    email: string
+    cep: string
+    country: string
+    state: string
+    city: string
+    neighborhood: string
+    address: string
+    number: string
+  }
+  setField: <T extends keyof this['fields']>(field: T, value: this['fields'][T]) => void
+  validation: Record<keyof this['fields'], FieldError | FieldValid>
 }

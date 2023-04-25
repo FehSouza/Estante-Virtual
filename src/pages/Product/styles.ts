@@ -70,6 +70,7 @@ export const BookDescription = styled(motion.p)`
   line-height: 22px;
   color: ${({ theme }) => theme.colors.text};
   padding-right: 8px;
+  width: 100%;
 
   & b,
   p {

@@ -106,9 +106,11 @@ export const Product = () => {
                 dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }}
               />
 
-              <S.ButtonSeeMore variants={variantsButton} animate={animate} onClick={handleShowDescription}>
-                <GrFormNext size={32} />
-              </S.ButtonSeeMore>
+              {bookDescription.length > 170 && (
+                <S.ButtonSeeMore variants={variantsButton} animate={animate} onClick={handleShowDescription}>
+                  <GrFormNext size={32} />
+                </S.ButtonSeeMore>
+              )}
             </S.DescriptionWrapper>
           )}
 

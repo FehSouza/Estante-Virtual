@@ -47,3 +47,10 @@ export const Input = styled.input`
     box-shadow: 0px 0 16px #00000026;
   }
 `
+
+export const Error = styled.span`
+  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.error};
+  font-size: 14px;
+  line-height: 16px;
+`
