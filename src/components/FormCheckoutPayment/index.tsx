@@ -1,18 +1,18 @@
 import { AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
 import { FaApplePay, FaPaypal } from 'react-icons/fa'
 import { SiMastercard, SiVisa } from 'react-icons/si'
+import { FormsCheckoutProps } from '../../@types'
 import { FormCheckoutPaymentCard } from '../FormCheckoutPaymentCard'
 import * as S from './styles'
 
-export const FormCheckoutPayment = () => {
-  const [checked, setChecked] = useState('')
+export const FormCheckoutPayment = ({ fields, setField, validation }: FormsCheckoutProps) => {
+  const appleVerify = fields.payment === 'apple'
+  const payPalVerify = fields.payment === 'payPal'
+  const cardVerify = fields.payment === 'card'
 
-  const appleVerify = checked === 'apple'
-  const payPalVerify = checked === 'payPal'
-  const cardVerify = checked === 'card'
-
-  const handleCheck = (id: string) => setChecked(id)
+  const handleCheck = (type: string) => {
+    setField('payment', type)
+  }
 
   return (
     <S.Form>
@@ -53,7 +53,11 @@ export const FormCheckoutPayment = () => {
           </S.Icons>
         </S.Wrapper>
 
-        <AnimatePresence>{cardVerify && <FormCheckoutPaymentCard />}</AnimatePresence>
+        <AnimatePresence>
+          {cardVerify && <FormCheckoutPaymentCard fields={fields} setField={setField} validation={validation} />}
+        </AnimatePresence>
+
+        {validation.payment.error && <S.Error>{validation.payment.message}</S.Error>}
       </S.Container>
     </S.Form>
   )

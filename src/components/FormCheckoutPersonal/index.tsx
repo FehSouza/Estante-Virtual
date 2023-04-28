@@ -21,7 +21,7 @@ export const FormCheckoutPersonal = ({ fields, setField, validation }: FormsChec
 
         <S.Wrapper>
           <S.Label htmlFor="phone">Telefone</S.Label>
-          <S.Input id="phone" value={fields.phone} onChange={(e) => setField('phone', e.target.value)} />
+          <S.Input id="phone" value={fields.phone} onChange={(e) => setField('phone', e.target.value)} maxLength={15} />
           {validation.phone.error && <S.Error>{validation.phone.message}</S.Error>}
         </S.Wrapper>
 

@@ -71,3 +71,10 @@ export const Icons = styled.div`
     color: ${({ theme }) => theme.colors.text};
   }
 `
+
+export const Error = styled.span`
+  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.error};
+  font-size: 14px;
+  line-height: 16px;
+`

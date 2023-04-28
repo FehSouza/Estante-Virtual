@@ -24,8 +24,10 @@ export const Product = () => {
   const location = useLocation()
 
   const { data: bookDetails } = useSWR(`api/get-book/${params.idBook}`, () => getBook(params.idBook ?? ''))
-  const { data: booksAuthor, isValidating } = useSWR(`api/get-books-author/${params.idBook}`, () =>
-    getBooksAuthor(bookDetails?.volumeInfo.authors[0])
+
+  const { data: booksAuthor, isValidating } = useSWR(
+    () => (bookDetails?.volumeInfo.authors[0] ? `api/get-books-author/${bookDetails?.volumeInfo.authors[0]}` : null),
+    () => getBooksAuthor(bookDetails?.volumeInfo.authors[0])
   )
 
   const bookId = String(bookDetails?.id)

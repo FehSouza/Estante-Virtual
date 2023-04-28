@@ -4,6 +4,7 @@ import { Container } from '../components'
 import {
   AboutUs,
   Checkout,
+  CheckoutConfirmation,
   ContactUs,
   Department,
   ExchangesAndReturns,
@@ -38,6 +39,7 @@ export const AppRoutes = () => {
             <Route path="/mini-cart" element={<Navigate to="/checkout" replace />} />
 
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/confirmation" element={<CheckoutConfirmation />} />
 
             <Route path="/livros">
               <Route index element={<Department category="todos" />} />

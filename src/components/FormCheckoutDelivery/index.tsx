@@ -9,7 +9,7 @@ export const FormCheckoutDelivery = ({ fields, setField, validation }: FormsChec
       <S.Container>
         <S.Wrapper>
           <S.Label htmlFor="postalCode">CEP</S.Label>
-          <S.Input id="postalCode" value={fields.cep} onChange={(e) => setField('cep', e.target.value)} />
+          <S.Input id="postalCode" value={fields.cep} onChange={(e) => setField('cep', e.target.value)} maxLength={9} />
           {validation.cep.error && <S.Error>{validation.cep.message}</S.Error>}
         </S.Wrapper>
 
@@ -51,7 +51,7 @@ export const FormCheckoutDelivery = ({ fields, setField, validation }: FormsChec
 
         <S.Wrapper>
           <S.Label htmlFor="complement">Complemento</S.Label>
-          <S.Input id="complement" />
+          <S.Input id="complement" value={fields.complement} onChange={(e) => setField('complement', e.target.value)} />
         </S.Wrapper>
       </S.Container>
     </S.Form>

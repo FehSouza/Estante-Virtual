@@ -9,8 +9,27 @@ import {
   FormCheckoutPersonal,
 } from '../../components'
 import { MOCK_OUR_SUGGESTIONS } from '../../mock'
-import { useOrderForm } from '../../states/orderForm'
-import { cepMask, cepValidation, emailValidation, numberValidation, phoneMask, phoneValidation, textValidation } from '../../utils'
+import { dispatchDataUser } from '../../states/dataUser'
+import { dispatchOrderForm, useOrderForm } from '../../states/orderForm'
+import {
+  cardCvcMask,
+  cardCvcValidation,
+  cardNumberMask,
+  cardNumberValidation,
+  cardValidityMask,
+  cardValidityValidation,
+  cepMask,
+  cepValidation,
+  customStorage,
+  emailValidation,
+  numberValidation,
+  paymentValidation,
+  phoneMask,
+  phoneValidation,
+  stateValidation,
+  textValidation,
+} from '../../utils'
+import { miniCartTotals } from '../../utils/miniCartTotals'
 import * as S from './styles'
 
 const initialValues = {
@@ -25,16 +44,21 @@ const initialValues = {
   neighborhood: '',
   address: '',
   number: '',
+  complement: '',
+  payment: '',
+  cardNumber: '',
+  cardValidity: '',
+  cardCVC: '',
 }
 
 export const Checkout = () => {
   const [orderForm] = useOrderForm()
   const navigate = useNavigate()
 
-  const { fields, setField, validation } = useFields({
+  const { fields, setField, validation, validate, isValid } = useFields({
     initialValues,
-    formatters: { phone: phoneMask, cep: cepMask },
-    // shouldValidate: false,
+    formatters: { phone: phoneMask, cep: cepMask, cardNumber: cardNumberMask, cardValidity: cardValidityMask, cardCVC: cardCvcMask },
+    shouldValidate: false,
     validators: {
       firstName: (value) => textValidation(value, 'Digite um nome válido'),
       lastName: (value) => textValidation(value, 'Digite um nome válido'),
@@ -42,13 +66,43 @@ export const Checkout = () => {
       email: emailValidation,
       cep: cepValidation,
       country: (value) => textValidation(value, 'Digite um país válido'),
-      state: (value) => textValidation(value, 'Digite um estado válido'),
+      state: stateValidation,
       city: (value) => textValidation(value, 'Digite uma cidade válida'),
       neighborhood: (value) => textValidation(value, 'Digite um bairro válido'),
       address: (value) => textValidation(value, 'Digite um endereço válido'),
       number: numberValidation,
+      payment: paymentValidation,
+      cardNumber: cardNumberValidation,
+      cardValidity: cardValidityValidation,
+      cardCVC: cardCvcValidation,
     },
   })
+
+  const totals = miniCartTotals(orderForm)
+  const delivery = 10
+  const total = totals.totalMiniCart + delivery
+
+  const handleBuy = () => {
+    validate()
+
+    if (!isValid) return
+
+    dispatchDataUser({
+      firstName: fields.firstName,
+      address: fields.address,
+      number: fields.number,
+      complement: fields.complement,
+      neighborhood: fields.neighborhood,
+      city: fields.city,
+      state: fields.state,
+      cep: fields.cep,
+      totalValue: total,
+    })
+
+    dispatchOrderForm([])
+    customStorage.setItem('orderForm', [])
+    navigate('/checkout/confirmation')
+  }
 
   return (
     <S.Container>
@@ -59,12 +113,12 @@ export const Checkout = () => {
           <S.ContentLeft>
             <FormCheckoutPersonal fields={fields} setField={setField} validation={validation} />
             <FormCheckoutDelivery fields={fields} setField={setField} validation={validation} />
-            <FormCheckoutPayment />
+            <FormCheckoutPayment fields={fields} setField={setField} validation={validation} />
           </S.ContentLeft>
 
           <S.ContentRight>
             <CheckoutYourOrder />
-            <S.BuyButton>Comprar</S.BuyButton>
+            <S.BuyButton onClick={() => handleBuy()}>Comprar</S.BuyButton>
             <CheckoutOrderSummary />
           </S.ContentRight>
         </S.Content>

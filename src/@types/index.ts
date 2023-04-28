@@ -73,6 +73,11 @@ export interface FormsCheckoutProps {
     neighborhood: string
     address: string
     number: string
+    complement: string
+    payment: string
+    cardNumber: string
+    cardValidity: string
+    cardCVC: string
   }
   setField: <T extends keyof this['fields']>(field: T, value: this['fields'][T]) => void
   validation: Record<keyof this['fields'], FieldError | FieldValid>
