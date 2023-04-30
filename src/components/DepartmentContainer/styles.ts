@@ -11,7 +11,7 @@ export const Filter = styled.div`
   flex-direction: column;
 `
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   font-weight: 600;

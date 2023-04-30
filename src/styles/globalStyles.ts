@@ -7,6 +7,7 @@ export const GlobalStyles = css`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    font-display: swap;
     font-size: 16px;
     font-weight: 400;
     width: 100vw;
@@ -26,6 +27,7 @@ export const GlobalStyles = css`
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    font-display: swap;
     font-size: 16px;
     font-weight: 400;
     display: inline-block;
@@ -40,6 +42,7 @@ export const GlobalStyles = css`
     border: none;
     background-color: transparent;
     font-family: 'Roboto', sans-serif;
+    font-display: swap;
     font-size: 16px;
     font-weight: 400;
   }
