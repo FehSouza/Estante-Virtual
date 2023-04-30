@@ -10,23 +10,35 @@ Proporcionou ainda, além do estudo de rotas, todo um estudo sobre animações, 
 
 Além disto, contribuiu com o entendimento do uso de estados globais, e as transições de dados por meio dos estados e das rotas criadas.
 
+Foi realizado também um estudo de acessibilidade e SEO encima desse desenvolvimento, afim de alcançar bons índices na análise do PageSpeed nessas duas categorias. Toda a implementação foi realizada visando uma boa performance de navegação, onde foram alcançados índices acima de 92 pontos em todas as páginas.
+
+<img src="./src/assets/images/img-store.png">
+
+<hr>
+
 ## Tecnologias usadas
 
 Front-end:
 
 Desenvolvido usando: HTML5, Styled Components, Polished, React, React Router Dom, re-state, Typescript, Framer Motion, SWR, Axios, eslint, prettier
 
-## Instalando Dependências
+<hr>
+
+## Instalando dependências
 
 Front-end:
 
 yarn install
+
+<hr>
 
 ## Executando aplicação
 
 Para rodar o Front-end:
 
 yarn start
+
+<hr>
 
 ## Link Netlify:
 
