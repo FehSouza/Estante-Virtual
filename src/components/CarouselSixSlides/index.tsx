@@ -56,13 +56,13 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
       <S.ShelfWrapper>
         {bookList.length >= 7 && (
           <>
-            <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
+            <S.ButtonCarousel title="Seta Anterior" aria-label="arrow-prev" className="button-prev" onClick={handlePrev}>
               <S.ButtonCarouselInt>
                 <GrFormPrevious />
               </S.ButtonCarouselInt>
             </S.ButtonCarousel>
 
-            <S.ButtonCarousel onClick={handleNext}>
+            <S.ButtonCarousel title="Seta Próximo" aria-label="arrow-next" onClick={handleNext}>
               <S.ButtonCarouselInt>
                 <GrFormNext />
               </S.ButtonCarouselInt>

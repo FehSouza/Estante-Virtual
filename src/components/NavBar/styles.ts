@@ -18,7 +18,7 @@ export const NavLinkWrapper = styled.div`
 
 export const DepartmentName = styled(NavLink)`
   list-style: none;
-  color: ${({ theme }) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.text};
   padding: 14px 16px;
   margin: auto;
   text-align: center;
@@ -35,7 +35,7 @@ export const DepartmentName = styled(NavLink)`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.textLight};
   }
 
   @media (max-width: 1024px) and (min-width: 901px) {
@@ -63,14 +63,14 @@ export const ActiveDepartmentBar = styled(motion.div)`
 `
 
 export const Search = styled.button`
-  color: ${({ theme }) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.text};
   padding: 11px 16px;
   transition-duration: 350ms;
   font-size: 20px;
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.textLight};
   }
 
   @media (max-width: 1024px) {

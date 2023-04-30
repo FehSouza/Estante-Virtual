@@ -25,7 +25,7 @@ export const NavBar = () => {
       <NavBarLink to="/livros/suspense">Suspense</NavBarLink>
       <NavBarLink to="/livros/terror">Terror</NavBarLink>
 
-      <S.Search onClick={(e) => searchOpen(e)}>
+      <S.Search title="Botão de pesquisa" aria-label="button-search" onClick={(e) => searchOpen(e)}>
         <BsSearch />
       </S.Search>
     </S.NavBar>

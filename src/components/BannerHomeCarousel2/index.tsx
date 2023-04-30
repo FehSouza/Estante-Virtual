@@ -72,7 +72,7 @@ export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
           })}
       </AnimatePresence>
 
-      <S.ButtonCarousel onClick={handleNext}>
+      <S.ButtonCarousel title="Seta Próximo" aria-label="arrow-next" onClick={handleNext}>
         <GrFormNext />
       </S.ButtonCarousel>
     </>

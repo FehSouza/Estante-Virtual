@@ -7,13 +7,13 @@ export const CarouselSixSlidesSkeleton = () => {
   return (
     <>
       <S.ShelfWrapper>
-        <S.ButtonCarousel className="button-prev">
+        <S.ButtonCarousel title="Seta Anterior" aria-label="arrow-prev" className="button-prev">
           <S.ButtonCarouselInt>
             <GrFormPrevious />
           </S.ButtonCarouselInt>
         </S.ButtonCarousel>
 
-        <S.ButtonCarousel>
+        <S.ButtonCarousel title="Seta Próximo" aria-label="arrow-next">
           <S.ButtonCarouselInt>
             <GrFormNext />
           </S.ButtonCarouselInt>

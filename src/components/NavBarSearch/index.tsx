@@ -29,7 +29,7 @@ export const NavBarSearch = () => {
     <S.NavBarSearch onClick={(e) => e.stopPropagation()}>
       <S.Input autoFocus placeholder="O que você está buscando?" onKeyUp={(e) => handleValue(e)}></S.Input>
 
-      <S.Search onClick={handleSearch}>
+      <S.Search title="Botão de pesquisa" aria-label="button-search" onClick={handleSearch}>
         <BsSearch />
       </S.Search>
     </S.NavBarSearch>

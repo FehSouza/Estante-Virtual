@@ -18,7 +18,7 @@ export const Card = styled(motion.div)<{ selected?: boolean }>`
   border-radius: 22px;
 `
 
-export const BookWrapper = styled.li<{ color?: string }>`
+export const BookWrapper = styled.div<{ color?: string }>`
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -36,8 +36,11 @@ export const BookWrapper = styled.li<{ color?: string }>`
 `
 
 export const ImageWrapper = styled.div`
-  width: 100%;
+  min-width: 194px;
+  width: 194px;
+  max-width: 194px;
   min-height: 256px;
+  height: 256px;
   max-height: 256px;
   aspect-ratio: 6/9;
   display: flex;

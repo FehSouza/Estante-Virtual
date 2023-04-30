@@ -91,11 +91,11 @@ export const Login = styled.div`
   font-size: 20px;
   display: flex;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.text};
   transition-duration: 350ms;
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.textLight};
   }
 `

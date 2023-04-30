@@ -53,7 +53,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
 
   return (
     <>
-      <S.ButtonCarousel className="button-prev" onClick={handlePrev}>
+      <S.ButtonCarousel title="Seta Anterior" aria-label="arrow-prev" className="button-prev" onClick={handlePrev}>
         <S.ButtonCarouselInt>
           <GrFormPrevious />
         </S.ButtonCarouselInt>
@@ -127,7 +127,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
         </AnimatePresence>
       </S.ShelfWrapper>
 
-      <S.ButtonCarousel onClick={handleNext}>
+      <S.ButtonCarousel title="Seta Próximo" aria-label="arrow-next" onClick={handleNext}>
         <S.ButtonCarouselInt>
           <GrFormNext />
         </S.ButtonCarouselInt>

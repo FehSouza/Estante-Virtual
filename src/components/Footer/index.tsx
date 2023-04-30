@@ -54,13 +54,13 @@ export const Footer = () => {
         <Logo />
 
         <S.SocialNetworks>
-          <S.Link href="https://pt-br.facebook.com/" target="_blank">
+          <S.Link aria-label="Link for Facebook" href="https://pt-br.facebook.com/" target="_blank">
             <BsFacebook />
           </S.Link>
-          <S.Link href="https://www.instagram.com/" target="_blank">
+          <S.Link aria-label="Link for Instagram" href="https://www.instagram.com/" target="_blank">
             <BsInstagram />
           </S.Link>
-          <S.Link href="https://www.youtube.com/" target="_blank">
+          <S.Link aria-label="Link for YouTube" href="https://www.youtube.com/" target="_blank">
             <BsYoutube />
           </S.Link>
         </S.SocialNetworks>

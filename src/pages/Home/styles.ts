@@ -44,7 +44,7 @@ export const TextBannerWrapper = styled.div`
   }
 `
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   font-size: 36px;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
@@ -65,7 +65,7 @@ export const Text = styled.span`
   }
 `
 
-export const Button = styled.a`
+export const Button = styled.button`
   margin-top: 40px;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
@@ -82,13 +82,15 @@ export const Button = styled.a`
 export const ImageWrapper = styled.div`
   max-width: 50%;
   min-width: 50%;
-  height: auto;
+  width: 532px;
+  height: 720px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 `
 
 export const Image = styled.img`
+  width: 532px;
   max-width: 100%;
   height: auto;
   margin-top: -32px;
@@ -322,7 +324,8 @@ export const AuthorImageWrapper = styled.div`
 
 export const AuthorImage = styled.img`
   margin-top: 62px;
-  width: 100%;
+  width: 220px;
+  height: auto;
 `
 
 export const AuthorName = styled.span`
