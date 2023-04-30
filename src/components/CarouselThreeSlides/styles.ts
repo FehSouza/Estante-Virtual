@@ -48,8 +48,7 @@ export const ImageWrapper = styled.div`
 
 export const BookImage = styled.img`
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
   border-radius: 16px;
 `
 
