@@ -92,7 +92,7 @@ export const Shelf = styled.div`
   }
 `
 
-export const ShelfTitle = styled.h3`
+export const ShelfTitle = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 28px;
   font-weight: 600;
