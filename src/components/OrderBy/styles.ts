@@ -26,7 +26,7 @@ export const OrderSelector = styled.div<{ showOrder: boolean }>`
   padding-left: 16px;
   box-sizing: border-box;
   line-height: 22px;
-  color: ${({ theme }) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.text};
 
   & > svg {
     transform: ${({ showOrder }) => (showOrder ? 'rotate(90deg)' : 'rotate(270deg)')};
@@ -44,7 +44,7 @@ export const OrderSelector = styled.div<{ showOrder: boolean }>`
   &:hover {
     cursor: pointer;
     border: solid 1px ${({ theme }) => theme.colors.textLight};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.textLight};
 
     & > svg > polyline {
       stroke: ${({ theme }) => theme.colors.textLight};

@@ -122,7 +122,7 @@ export const ButtonSeeDetails = styled.button`
   margin-top: 12px;
   font-size: 14px;
   line-height: 14px;
-  color: ${({ theme }) => theme.colors.textLight};
+  color: ${({ theme }) => theme.colors.text};
   position: relative;
   width: fit-content;
   transition-duration: 350ms;
@@ -131,7 +131,7 @@ export const ButtonSeeDetails = styled.button`
     content: '';
     width: 100%;
     height: 2px;
-    background-color: ${({ theme }) => theme.colors.textLight};
+    background-color: ${({ theme }) => theme.colors.text};
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -440,7 +440,7 @@ export const ShelfModel1 = styled.div`
   flex-direction: column;
 `
 
-export const ShelfTitle = styled.h3`
+export const ShelfTitle = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 28px;
   font-weight: 600;

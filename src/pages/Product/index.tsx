@@ -193,6 +193,7 @@ export const Product = () => {
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  aria-label="input-quantity"
                 />
                 <S.TextInput>Unid.</S.TextInput>
               </S.InputWrapper>
