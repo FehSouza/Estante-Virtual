@@ -45,7 +45,7 @@ export const CarouselBenefitsBar = ({ listOfCarousel }: CarouselBenefitsBarProps
 
   return (
     <>
-      <S.ButtonPrevCarousel onClick={handlePrevCarousel}>
+      <S.ButtonPrevCarousel title="Seta Anterior" aria-label="arrow-prev" onClick={handlePrevCarousel}>
         <GrFormPrevious />
       </S.ButtonPrevCarousel>
 
@@ -69,7 +69,7 @@ export const CarouselBenefitsBar = ({ listOfCarousel }: CarouselBenefitsBarProps
         </motion.div>
       </AnimatePresence>
 
-      <S.ButtonNextCarousel onClick={handleNextCarousel}>
+      <S.ButtonNextCarousel title="Seta Próximo" aria-label="arrow-next" onClick={handleNextCarousel}>
         <GrFormNext />
       </S.ButtonNextCarousel>
     </>

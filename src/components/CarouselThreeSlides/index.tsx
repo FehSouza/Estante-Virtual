@@ -109,7 +109,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
 
                       <S.WrapperPrice>
                         <S.BookPrice color={bookColor}>{bookPrice}</S.BookPrice>
-                        <S.BookPage color={bookColor}>
+                        <S.BookPage aria-label="book-page" color={bookColor}>
                           <GrFormNext />
                         </S.BookPage>
                       </S.WrapperPrice>

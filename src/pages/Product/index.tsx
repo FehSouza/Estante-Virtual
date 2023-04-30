@@ -109,7 +109,7 @@ export const Product = () => {
               />
 
               {bookDescription.length > 170 && (
-                <S.ButtonSeeMore variants={variantsButton} animate={animate} onClick={handleShowDescription}>
+                <S.ButtonSeeMore aria-label="button-see-more" variants={variantsButton} animate={animate} onClick={handleShowDescription}>
                   <GrFormNext size={32} />
                 </S.ButtonSeeMore>
               )}
@@ -176,7 +176,12 @@ export const Product = () => {
             </S.PriceWrapper>
 
             <S.QuantityWrapper>
-              <S.QuantityButton disabled={quantity === 1 ? true : false} className="button-minus" onClick={handleRemoveProduct}>
+              <S.QuantityButton
+                aria-label="button-quantity-minus"
+                disabled={quantity === 1 ? true : false}
+                className="button-minus"
+                onClick={handleRemoveProduct}
+              >
                 <GrFormNext size={32} />
               </S.QuantityButton>
 
@@ -192,14 +197,19 @@ export const Product = () => {
                 <S.TextInput>Unid.</S.TextInput>
               </S.InputWrapper>
 
-              <S.QuantityButton disabled={quantity === 99 ? true : false} className="button-plus" onClick={handleAddProduct}>
+              <S.QuantityButton
+                aria-label="button-quantity-plus"
+                disabled={quantity === 99 ? true : false}
+                className="button-plus"
+                onClick={handleAddProduct}
+              >
                 <GrFormNext size={32} />
               </S.QuantityButton>
             </S.QuantityWrapper>
           </S.BestPriceWrapper>
 
           <S.ButtonsWrapper>
-            <S.ButtonAddFavorites>
+            <S.ButtonAddFavorites aria-label="button-add-favorites">
               <BsHeart size={28} />
             </S.ButtonAddFavorites>
 

@@ -71,7 +71,7 @@ export const BookBestPrice = styled.div`
   background-size: 1000px 100%;
 `
 
-export const ButtonBuy = styled.button`
+export const ButtonBuy = styled.div`
   margin-top: 16px;
   width: 100%;
   height: 40px;

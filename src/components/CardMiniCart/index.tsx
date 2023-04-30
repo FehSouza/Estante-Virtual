@@ -24,7 +24,7 @@ export const CardMiniCart = ({ item }: PropsCardMiniCart) => {
       <S.InfoWrapper>
         <S.NameAndDelete>
           <S.Name to={`/produto/${item.id}`}>{nameBook}</S.Name>
-          <S.ButtonDelete onClick={() => miniCartDelete(item.id)}>
+          <S.ButtonDelete aria-label="button-delete" onClick={() => miniCartDelete(item.id)}>
             <MdDeleteForever size={24} />
           </S.ButtonDelete>
         </S.NameAndDelete>
@@ -37,6 +37,7 @@ export const CardMiniCart = ({ item }: PropsCardMiniCart) => {
 
           <S.QuantityWrapper>
             <S.ButtonQuantity
+              aria-label="button-quantity-minus"
               onClick={() => {
                 miniCartUpdate({ id: item.id, operator: 'minus' })
               }}
@@ -45,6 +46,7 @@ export const CardMiniCart = ({ item }: PropsCardMiniCart) => {
             </S.ButtonQuantity>
             <S.Quantity>{bookQuantity}</S.Quantity>
             <S.ButtonQuantity
+              aria-label="button-quantity-plus"
               onClick={() => {
                 miniCartUpdate({ id: item.id, operator: 'plus' })
               }}
