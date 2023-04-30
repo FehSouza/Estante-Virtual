@@ -2,8 +2,8 @@ const baseTheme = {
   colors: {
     text: '#010001',
     textLight: '#8AA1BB',
-    primary: '#0099ff',
-    secondary: '#56bbff',
+    primary: '#0059ff',
+    secondary: '#0099ff',
     white: '#ffffff',
     shadow: '#0000001A',
     bannerPrimary: '#fbfbfb',

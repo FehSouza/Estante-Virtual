@@ -36,9 +36,9 @@ export const BookWrapper = styled.div<{ color?: string }>`
 `
 
 export const ImageWrapper = styled.div`
-  min-width: 194px;
-  width: 194px;
-  max-width: 194px;
+  min-width: 171px;
+  width: 171px;
+  max-width: 171px;
   min-height: 256px;
   height: 256px;
   max-height: 256px;
