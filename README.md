@@ -42,4 +42,4 @@ yarn start
 
 ## Link Netlify:
 
-https://elegant-parfait-52f20b.netlify.app/
+https://estante-virtual.netlify.app/
