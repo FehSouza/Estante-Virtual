@@ -39,6 +39,7 @@ export const Home = () => {
           </S.TextBannerWrapper>
 
           <S.ImageWrapper>
+            <link rel="preload" href={imageMainBanner} as="image" />
             <S.Image src={imageMainBanner} alt="Imagem de uma menina segurando uma pilha de livros" />
             <S.CircleInt />
             <S.CircleExt />

@@ -21,7 +21,7 @@ export const MOCK_AUTHORS: AuthorsProps[] = [
   },
   {
     name: 'Cassandra Clare',
-    image: 'https://www.inlivros.net/wp-content/uploads/Cassandra-clare-225x300.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Cassandra_Clare_by_Gage_Skidmore%2C_2013_b.jpg',
     description:
       'Judith Lewis, conhecida pelo pseudônimo Cassandra Clare, é uma escritora norte-americana, conhecida por escrever a série de livros Os Instrumentos Mortais. Autora best-seller, até 2016 ela havia vendido mais de 1,6 milhão de livros no Brasil e 36 milhões no mundo todo.',
   },

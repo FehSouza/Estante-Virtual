@@ -323,7 +323,7 @@ export const AuthorImageWrapper = styled.div`
 `
 
 export const AuthorImage = styled.img`
-  margin-top: 62px;
+  margin-top: 56px;
   width: 220px;
   height: auto;
 `
