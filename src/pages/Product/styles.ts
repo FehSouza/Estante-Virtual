@@ -154,16 +154,19 @@ export const ProductCenter = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.shadow};
   display: flex;
   align-items: center;
+  aspect-ratio: 6/8;
+  overflow: hidden;
 `
 
 export const BookImage = styled.img`
   width: 100%;
+  max-height: 100%;
   border-radius: 20px;
 `
 
 export const WithoutImage = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 2px);
   border-radius: 20px;
   border: 1px solid ${({ theme }) => theme.colors.shadow};
   display: flex;
