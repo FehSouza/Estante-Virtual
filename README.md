@@ -14,7 +14,7 @@ Foi realizado também um estudo de acessibilidade e SEO encima desse desenvolvim
 
 <img src="./src/assets/images/img-store.png">
 
-<hr>
+&nbsp;
 
 ## Tecnologias usadas
 
@@ -22,23 +22,23 @@ Front-end:
 
 Desenvolvido usando: HTML5, Styled Components, Polished, React, React Router Dom, re-state, Typescript, Framer Motion, SWR, Axios, eslint, prettier
 
-<hr>
+&nbsp;
 
-## Instalando dependências
+## Instalando as dependências
 
 Front-end:
 
 yarn install
 
-<hr>
+&nbsp;
 
-## Executando aplicação
+## Executando a aplicação
 
 Para rodar o Front-end:
 
 yarn start
 
-<hr>
+&nbsp;
 
 ## Link Netlify:
 
