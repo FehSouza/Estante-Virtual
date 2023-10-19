@@ -40,6 +40,6 @@ yarn start
 
 &nbsp;
 
-## Link Netlify:
+## Link Netlify
 
 https://estante-virtual.netlify.app/
