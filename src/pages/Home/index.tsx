@@ -76,7 +76,10 @@ export const Home = () => {
       </S.ShelfModel2>
 
       <S.ShelfModel1>
-        <S.ShelfTitle>Os Populares de Terror</S.ShelfTitle>
+        <S.WrapperTitle>
+          <S.ShelfTitle>Os Populares de Terror</S.ShelfTitle>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-terror')}>Clique aqui e veja todos!</S.ButtonSeeMore>
+        </S.WrapperTitle>
         {!!booksBestSellersHorror && <CarouselThreeSlides bookList={booksBestSellersHorror} />}
       </S.ShelfModel1>
 
@@ -103,7 +106,10 @@ export const Home = () => {
       </S.ShelfModel2>
 
       <S.ShelfModel1>
-        <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
+        <S.WrapperTitle>
+          <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
+          <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-auto-ajuda')}>Clique aqui e veja todos!</S.ButtonSeeMore>
+        </S.WrapperTitle>
         {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}
       </S.ShelfModel1>
 
