@@ -78,7 +78,8 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
             const bookImage = book.volumeInfo.imageLinks.thumbnail
             const authors = book.volumeInfo.authors
             const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
-            const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
+            const bookPrice = book.saleInfo.listPrice.amount
+            const bookPriceFormatted = bookPrice ? formatCurrency(bookPrice) : 'GRÁTIS'
 
             return (
               <S.Card
@@ -95,7 +96,7 @@ export const CarouselSixSlides = ({ bookList }: CarouselSixSlidesProps) => {
                 <S.BookWrapper onClick={() => handleSelectBook(bookId)}>
                   <S.ImagePriceWrapper>
                     <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
-                    <S.BookPrice>{bookPrice}</S.BookPrice>
+                    <S.BookPrice>{bookPriceFormatted}</S.BookPrice>
                   </S.ImagePriceWrapper>
                   <S.BookName>{bookName}</S.BookName>
                   <S.BookAuthor>{bookAuthor}</S.BookAuthor>

@@ -52,7 +52,8 @@ export const ProductDetails = () => {
   const bookName = bookDetails?.volumeInfo.title
   const authors = bookDetails?.volumeInfo.authors
   const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
-  const bookPrice = formatCurrency(bookDetails?.saleInfo.listPrice?.amount || 0)
+  const bookPrice = bookDetails?.saleInfo.listPrice?.amount || 0
+  const bookPriceFormatted = bookPrice ? formatCurrency(bookPrice) : 'Grátis'
   const bookPages = bookDetails?.volumeInfo.pageCount
   const bookAverage = bookDetails?.volumeInfo.averageRating
   const bookDescription = bookDetails?.volumeInfo.description
@@ -77,7 +78,7 @@ export const ProductDetails = () => {
 
             <S.InfoWrapper>
               <S.PriceWrapper width={spaceInfo}>
-                <S.PriceBook>{bookPrice}</S.PriceBook>
+                <S.PriceBook>{bookPriceFormatted}</S.PriceBook>
                 <S.PriceTitle>Preço</S.PriceTitle>
               </S.PriceWrapper>
               <S.PageWrapper width={spaceInfo}>

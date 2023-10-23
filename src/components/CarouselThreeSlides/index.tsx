@@ -69,7 +69,8 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
               const bookImage = book.volumeInfo.imageLinks.thumbnail
               const authors = book.volumeInfo.authors
               const bookAuthor = authors && (authors.length <= 2 ? authors?.join(' e ') : `${authors[0]}, ${authors[1]} e outros`)
-              const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
+              const bookPrice = book.saleInfo.listPrice.amount
+              const bookPriceFormatted = bookPrice ? formatCurrency(bookPrice) : 'GRÁTIS'
               const bookColor = book.color
               const bookDescription = book.volumeInfo.description
 
@@ -108,7 +109,7 @@ export const CarouselThreeSlides = ({ bookList }: CarouselThreeSlidesProps) => {
                       <S.BookDescription dangerouslySetInnerHTML={{ __html: bookDescription ?? '' }} color={bookColor} />
 
                       <S.WrapperPrice>
-                        <S.BookPrice color={bookColor}>{bookPrice}</S.BookPrice>
+                        <S.BookPrice color={bookColor}>{bookPriceFormatted}</S.BookPrice>
                         <S.BookPage aria-label="book-page" color={bookColor}>
                           <GrFormNext />
                         </S.BookPage>

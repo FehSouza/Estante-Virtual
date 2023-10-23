@@ -49,7 +49,8 @@ export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
             const bookId = book.id
             const bookName = book.volumeInfo.title
             const bookImage = book.volumeInfo.imageLinks.thumbnail
-            const bookPrice = formatCurrency(book.saleInfo.listPrice.amount)
+            const bookPrice = book.saleInfo.listPrice.amount
+            const bookPriceFormatted = bookPrice ? formatCurrency(bookPrice) : 'GRÁTIS'
 
             return (
               <S.Card
@@ -65,7 +66,7 @@ export const BannerHomeCarousel2 = ({ bookList }: BannerHomeCarousel2Props) => {
               >
                 <S.BookWrapper onClick={() => handleSelectBook(bookId)}>
                   <S.BookImage alt={`Imagem da capa do livro "${bookName}"`} src={bookImage} />
-                  <S.BookPrice>{bookPrice}</S.BookPrice>
+                  <S.BookPrice>{bookPriceFormatted}</S.BookPrice>
                 </S.BookWrapper>
               </S.Card>
             )
