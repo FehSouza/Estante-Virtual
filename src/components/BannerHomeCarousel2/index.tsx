@@ -13,7 +13,7 @@ const variants = {
   exit: { x: -24, opacity: 0, scale: 0.5, y: 0 },
 } as const
 
-const transition = { x: { type: 'just', duration: 0.35 } } as const
+const transition = { x: { type: 'tween', ease: 'easeOut', duration: 0.35 } } as const
 
 interface BannerHomeCarousel2Props {
   bookList: BooksProps[]

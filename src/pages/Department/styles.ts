@@ -17,6 +17,7 @@ export const Department = styled.section`
   margin-top: 68px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 `
 
 export const DepartmentName = styled.h1`

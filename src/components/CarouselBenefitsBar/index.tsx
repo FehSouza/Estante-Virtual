@@ -9,7 +9,7 @@ const variants = {
   exit: { x: -150, opacity: 0 },
 } as const
 
-const transition = { x: { type: 'just', duration: 0.35 } } as const
+const transition = { x: { type: 'tween', ease: 'easeOut', duration: 0.35 } } as const
 
 const dragConstraints = { left: 0, right: 0 }
 

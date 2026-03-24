@@ -31,7 +31,7 @@ export const MiniCart = () => {
         initial={{ x: 512, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: 512, opacity: 0 }}
-        transition={{ x: { type: 'just' } }}
+        transition={{ x: { type: 'tween', ease: 'easeOut', duration: 0.35 } }}
       >
         <S.MiniCart onClick={stopCloseMiniCart}>
           <S.Header>

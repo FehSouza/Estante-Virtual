@@ -43,18 +43,20 @@ export const AppRoutes = () => {
 
             <Route path="/livros">
               <Route index element={<Department category="todos" />} />
-              <Route path="ficcao-cientifica" element={<Department category="Ficção Científica" />} />
-              <Route path="fantasia" element={<Department category="Fantasia" />} />
-              <Route path="poesia" element={<Department category="Poesia" />} />
-              <Route path="policial" element={<Department category="Policial" />} />
-              <Route path="romance" element={<Department category="Romance" />} />
-              <Route path="suspense" element={<Department category="Suspense" />} />
-              <Route path="terror" element={<Department category="Terror" />} />
-              <Route path="livros-infantis" element={<Department category="Best Sellers Infantis" />} />
-              <Route path="livros-de-acao" element={<Department category="Best Sellers de Ação" />} />
-              <Route path="livros-romance-policial" element={<Department category="Best Sellers de Romance Policial" />} />
-              <Route path="livros-de-poesia" element={<Department category="Best Sellers de Poesia" />} />
-              <Route path="best-sellers" element={<Department category="Best Sellers" />} />
+              <Route path="ficcao-cientifica" element={<Department category="science+fiction" />} />
+              <Route path="fantasia" element={<Department category="fantasy" />} />
+              <Route path="poesia" element={<Department category="poetry" />} />
+              <Route path="policial" element={<Department category="crime" />} />
+              <Route path="romance" element={<Department category="romance" />} />
+              <Route path="suspense" element={<Department category="thriller" />} />
+              <Route path="terror" element={<Department category="horror" />} />
+              <Route path="livros-infantis" element={<Department category="juvenile+fiction" />} />
+              <Route path="livros-de-acao" element={<Department category="adventure" />} />
+              <Route path="livros-romance-policial" element={<Department category="crime" />} />
+              <Route path="livros-de-terror" element={<Department category="horror" />} />
+              <Route path="best-sellers" element={<Department category="classics" />} />
+              <Route path="livros-de-poesia" element={<Department category="poetry" />} />
+              <Route path="livros-de-auto-ajuda" element={<Department category="self+help" />} />
               <Route path=":search" element={<Department />} />
             </Route>
 

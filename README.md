@@ -40,6 +40,22 @@ yarn start
 
 &nbsp;
 
+## Configuração do BFF
+
+A API key da Google Books e a baseUrl são gerenciadas pelo BFF (Backend For Frontend). O front-end apenas precisa apontar para a URL do BFF.
+
+Crie um arquivo `.env` na raiz do projeto com:
+
+```env
+REACT_APP_BASE_URL=http://localhost:3333
+```
+
+No Netlify, configure a mesma variável passando o endereço da hospedagem do BFF em:
+
+`Site settings > Environment variables`
+
+&nbsp;
+
 ## Link Netlify
 
 https://estante-virtual.netlify.app/

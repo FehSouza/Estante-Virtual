@@ -14,8 +14,8 @@ import { customStorage, formatCurrency, formatDate, miniCartAddItem } from '../.
 import * as S from './styles'
 
 const variantsDesc = { opened: { height: 152, overflow: 'auto' }, closed: { height: 66, overflow: 'hidden' } } as const
-const variantsButton = { opened: { transform: 'rotate(270deg)' }, closed: { transform: 'rotate(90deg)' } } as const
-const transitionDescription = { x: { type: 'just' }, duration: 0.35 } as const
+const variantsButton = { opened: { rotate: 270 }, closed: { rotate: 90 } } as const
+const transitionDescription = { duration: 0.35 } as const
 
 export const Product = () => {
   const params = useParams()

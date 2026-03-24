@@ -107,7 +107,7 @@ export const Home = () => {
 
       <S.ShelfModel1>
         <S.WrapperTitle>
-          <S.ShelfTitle>Os Populares de Auto Ajuda</S.ShelfTitle>
+          <S.ShelfTitle>Os Populares de Autoajuda</S.ShelfTitle>
           <S.ButtonSeeMore onClick={() => handleNavigateDepartment('livros-de-auto-ajuda')}>Clique aqui e veja todos!</S.ButtonSeeMore>
         </S.WrapperTitle>
         {!!booksBestSellersSelfHelp && <CarouselThreeSlides bookList={booksBestSellersSelfHelp} />}

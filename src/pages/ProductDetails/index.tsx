@@ -65,7 +65,7 @@ export const ProductDetails = () => {
           initial={{ x: 585, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 585, opacity: 0 }}
-          transition={{ x: { type: 'just' } }}
+          transition={{ x: { type: 'tween', ease: 'easeOut', duration: 0.35 } }}
         >
           <S.Modal onClick={stopCloseModal}>
             <S.ButtonClose onClick={handleClose}>

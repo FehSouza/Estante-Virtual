@@ -4,7 +4,7 @@ import { KeyedMutator } from 'swr'
 import * as S from './styles'
 
 const variants = { opened: { opacity: 1, zIndex: 2 }, closed: { opacity: 0, zIndex: -1 } } as const
-const transition = { x: { type: 'just' }, duration: 0.35 } as const
+const transition = { duration: 0.35 } as const
 
 interface PropsOrderBy {
   orderSelected: string[]
